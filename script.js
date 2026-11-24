@@ -22,10 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.contact": "تواصل معي",
 
       "hero.badge": "متاح للمشاريع والاستشارات المعمارية",
-      "hero.greeting": "أهلاً، أنا",
       "hero.name": "حسن أحمد",
-      "hero.subtitle": "مهندس معماري ومصمم إظهار بصري ثلاثي الأبعاد",
-      "hero.desc": "حاصل على بكالوريوس الهندسة المعمارية (CIC) معتمد من جامعة كيب بريتون - كندا. متخصص في التصميم المعماري، الديكور الداخلي، واللاندسكيب، مع سجل حافل بتسليم أكثر من 50 مشروعاً سكنياً وتجارياً وصناعياً من مرحلة الفكرة وحتى التسليم النهائي في كبرى المجمعات السكنية بمصر.",
+      "hero.subtitle": "مصمم معماري يقود التصميم والتنفيذ من الفكرة إلى التسليم",
+      "hero.desc": "أصمم وأقود مشاريع معمارية وداخلية في مصر، من تطوير الفكرة والمخططات إلى تنسيق الموقع والتسليم. يجمع عملي بين وضوح الرؤية، دقة التفاصيل، وخبرة تسليم أكثر من 50 مشروعاً سكنياً وتجارياً وصناعياً.",
       "hero.zero_violations": "صفر مخالفات هندسية عبر 30+ مشروع",
       "hero.view_work": "تصفح المشاريع",
       "hero.whatsapp": "محادثة واتساب",
@@ -54,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "projects.behance_cta": "عرض كافة الأعمال على Behance",
 
             // Estimator translations & 2025 Quotas (AR)
-      "est.tag": "نظام تسعير ذكي",
-      "est.title": "حاسبة تكلفة التشطيب والمقايسة الفورية 2025",
-      "est.subtitle": "احسب تكلفة تشطيب وحدتك بدقة واحترافية طبقاً لأسعار السوق المصري والاشتراطات الهندسية",
+      "est.tag": "تخطيط أولي للميزانية",
+      "est.title": "حاسبة تكلفة التشطيب التقديرية",
+      "est.subtitle": "تقدير أولي للتكلفة حسب المساحة ومستوى التشطيب. الأسعار والمزايا قابلة للتغيير؛ اطلب عرض سعر مكتوباً ومحدثاً قبل اتخاذ قرار أو توقيع عقد.",
       "est.unit_type_label": "نوع الوحدة العقارية",
       "est.unit_apt": "شقة سكنية",
       "est.unit_villa": "فيلا / دوبلكس",
@@ -64,15 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
       "est.unit_retail": "محل تجاري / ريتيل",
       "est.area_label": "المساحة الإجمالية (متر مربع)",
       "est.m2": "م²",
-      "est.tier_label": "باقات التشطيب الرسمية لعام 2025 والمزايا المشمولة",
-      "est.quotas_live_tag": "أسعار 2025 الرسمية + هدايا عينية",
+      "est.tier_label": "مستويات التشطيب وعناصر الباقة",
+      "est.quotas_live_tag": "أسعار استرشادية — تُؤكد بعرض سعر",
       "est.gift_box_title": "كوتة وهدايا الباقة المشمولة مجاناً:",
-      "est.gift_note": "مقدمة مجاناً وحصرياً ضمن تعاقدات الباقة لعام 2025.",
+      "est.gift_note": "تُحدد الإضافات والهدايا في عرض السعر الحالي.",
 
       // 2025 Quotas Matrix
-      "matrix.badge": "لائحة أسعار وكوتات 2025 المعتمدة",
-      "matrix.title": "جدول باقات التشطيب والهدايا الاستثنائية لعام 2025",
-      "matrix.desc": "شفافية هندسية كاملة — اختر الباقة المناسبة لميزانيتك واطلع على الهدايا العينية المشمولة مع كل مستوى",
+      "matrix.badge": "دليل استرشادي للباقات والمزايا",
+      "matrix.title": "مقارنة مستويات التشطيب والمزايا",
+      "matrix.desc": "استخدم القيم للتخطيط الأولي فقط. الأسعار والمزايا قد تتغير ويجب تأكيدها بعرض سعر مكتوب.",
 
       // 7 Tiers (AR)
       "tier.eco_name": "الباقة الإقتصادية (ECONOMIC)",
@@ -254,10 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.contact": "Contact",
 
       "hero.badge": "Available for Architecture & Interior Projects",
-      "hero.greeting": "Hello, I am",
       "hero.name": "Hassan Ahmed",
-      "hero.subtitle": "Architecture Engineer & 3D Visualization Specialist",
-      "hero.desc": "B.Sc. in Architecture Engineering from CIC, validated by Cape Breton University, Canada. Specializing in architectural design, interior fit-outs, and landscape planning, with a proven record of delivering 50+ projects from concept to final handover across Egypt's premier residential compounds.",
+      "hero.subtitle": "Architectural Design & Project Delivery",
+      "hero.desc": "Architectural and interior design across Egypt, from concept development and drawings through site coordination and handover. A detail-led approach backed by 50+ residential, retail, and industrial projects delivered.",
       "hero.zero_violations": "Zero Code Violations across 30+ projects",
       "hero.view_work": "Explore Projects",
       "hero.whatsapp": "WhatsApp Chat",
@@ -275,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "stats.p4_desc": "Mivida, Mountain View, Orascom, Al-Futtaim and more",
 
       "projects.tag": "Selected Portfolio",
-      "projects.title": "Curated Engineering Projects",
-      "projects.subtitle": "Real architectural works directed from conceptual mood boards to turnkey handover",
+      "projects.title": "Selected Work",
+      "projects.subtitle": "Selected projects demonstrating clear design intent, detailed coordination, and considered delivery.",
       "projects.filter_all": "All",
       "projects.filter_arch": "Architecture",
       "projects.filter_interior": "Interior Design",
@@ -286,9 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "projects.behance_cta": "View Full Portfolio on Behance",
 
             // Estimator translations & 2025 Quotas (EN)
-      "est.tag": "Smart Pricing Engine",
-      "est.title": "2025 Finishing Cost & BOQ Estimator",
-      "est.subtitle": "Calculate accurate, market-grounded finishing costs and bills of quantities according to Egyptian engineering standards",
+      "est.tag": "Early Budget Planner",
+      "est.title": "Finishing Cost Estimate",
+      "est.subtitle": "Build an initial budget from area and finish level. Prices and inclusions may change; confirm them in a current written quotation before making decisions or signing.",
       "est.unit_type_label": "Property Type",
       "est.unit_apt": "Apartment",
       "est.unit_villa": "Villa / Duplex",
@@ -296,15 +294,15 @@ document.addEventListener('DOMContentLoaded', () => {
       "est.unit_retail": "Retail Store",
       "est.area_label": "Total Floor Area (Square Meters)",
       "est.m2": "m²",
-      "est.tier_label": "Official 2025 Finishing Packages & Included Perks",
-      "est.quotas_live_tag": "2025 Official Rates + In-kind Gifts",
+      "est.tier_label": "Finishing levels and package inclusions",
+      "est.quotas_live_tag": "Indicative pricing · confirm by quotation",
       "est.gift_box_title": "Included Package Perks & Quota Bonus:",
-      "est.gift_note": "Complimentary signature gifts included with 2025 package contracts.",
+      "est.gift_note": "Package extras and gifts are confirmed in the current written quotation.",
 
       // 2025 Quotas Matrix (EN)
-      "matrix.badge": "Official 2025 Price & Quota Schedule",
-      "matrix.title": "2025 Finishing Packages & Exclusive Perks Matrix",
-      "matrix.desc": "Complete engineering transparency — choose the tier that matches your vision and explore in-kind bonus amenities.",
+      "matrix.badge": "Indicative package guide",
+      "matrix.title": "Finishing levels & package inclusions",
+      "matrix.desc": "Use these values for early planning only. Prices and inclusions can change; confirm them in a current written quote.",
 
       // 7 Tiers (EN)
       "tier.eco_name": "Economic Package",
@@ -1008,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================
-  // 4. Interactive 2025 BOQ & Finishing Cost Estimator (All 7 Quota Tiers)
+  // 4. Indicative BOQ & finishing cost estimator (All 7 Quota Tiers)
   // ==========================================
   const areaSlider = document.getElementById('areaSlider');
   const areaValue = document.getElementById('areaValue');
@@ -1033,7 +1031,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const giftMainText = document.getElementById('giftMainText');
   const giftSubText = document.getElementById('giftSubText');
 
-  // Official 2025 Pricing & Quotas Definition
+  // Indicative pricing and package inclusions
   const QUOTA_PACKAGES = {
     economic: {
       rate: 5500,
@@ -1050,8 +1048,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Medium Package',
       giftAr: 'سخانات كهرباء عادية للحمامات + تكييف 1.5 حصان ميديا (Midea)',
       giftEn: 'Electric water heaters for bathrooms + 1.5 HP Midea AC',
-      noteAr: 'مقدمة مجاناً وحصرياً ضمن تعاقدات الباقة المتوسطة لعام 2025.',
-      noteEn: 'Complimentary bonus for 2025 Medium contracts.'
+      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
+      noteEn: 'Package extras are confirmed in the current written quotation.'
     },
     vip: {
       rate: 9300,
@@ -1059,8 +1057,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'VIP Package',
       giftAr: 'تكييف 1.5 حصان ميديا + (2) شاشة LG 43 بوصة سمارت',
       giftEn: '1.5 HP Midea AC + (2) LG 43-inch Smart 4K TVs',
-      noteAr: 'مقدمة مجاناً وحصرياً ضمن تعاقدات باقة VIP لعام 2025.',
-      noteEn: 'Complimentary bonus for 2025 VIP contracts.'
+      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
+      noteEn: 'Package extras are confirmed in the current written quotation.'
     },
     ultravip: {
       rate: 11000,
@@ -1068,8 +1066,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Ultra VIP Package',
       giftAr: '(2) تكييف 1.5 حصان + (2) شاشة LG 43 بوصة بدقة 4K',
       giftEn: '(2) 1.5 HP ACs + (2) LG 43-inch Smart 4K TVs',
-      noteAr: 'مقدمة مجاناً وحصرياً ضمن تعاقدات باقة Ultra VIP لعام 2025.',
-      noteEn: 'Complimentary bonus for 2025 Ultra VIP contracts.'
+      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
+      noteEn: 'Package extras are confirmed in the current written quotation.'
     },
     superultravip: {
       rate: 13000,
@@ -1077,8 +1075,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Super Ultra VIP Package',
       giftAr: 'مطبخ كامل تفصيل هدية (15 متر) + جزامة مدخل تفصيل هدية',
       giftEn: 'Custom full kitchen (15m) + Custom entrance shoe cabinet',
-      noteAr: 'مقدمة مجاناً وحصرياً ضمن تعاقدات باقة Super Ultra VIP لعام 2025.',
-      noteEn: 'Complimentary bonus for 2025 Super Ultra VIP contracts.'
+      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
+      noteEn: 'Package extras are confirmed in the current written quotation.'
     },
     elite: {
       rate: 20000,
@@ -1086,8 +1084,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Elite Package (Architectural Choice)',
       giftAr: 'مطبخ كامل تفصيل هدية (15 متر) + دريسنج روم كامل تفصيل هدية (5 متر)',
       giftEn: 'Custom luxury kitchen (15m) + Custom dressing room (5m)',
-      noteAr: 'مقدمة مجاناً وحصرياً ضمن تعاقدات باقة إيليت (خيار النخبة المعمارية) لعام 2025.',
-      noteEn: 'Complimentary signature bonus for 2025 Elite contracts.'
+      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
+      noteEn: 'Package extras are confirmed in the current written quotation.'
     },
     luxury: {
       rate: 24000,
@@ -1095,8 +1093,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Luxury Royal Package',
       giftAr: 'مطبخ فاخر هدية (20 متر) + دريسنج روم ماستر هدية (8 متر) + غرفة أطفال كاملة مصنعة هدية (2 سرير 120 + 1 كومود + دولاب 160)',
       giftEn: 'Luxury kitchen (20m) + Master dressing room (8m) + Full custom kids bedroom set (2 beds 120 + nightstand + wardrobe 160)',
-      noteAr: 'مقدمة مجاناً وحصرياً لقصور وفلل باقة لاكشري الملكية لعام 2025.',
-      noteEn: 'Complimentary royal bonus for 2025 Luxury contracts.'
+      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
+      noteEn: 'Package extras are confirmed in the current written quotation.'
     }
   };
 
@@ -1199,14 +1197,14 @@ document.addEventListener('DOMContentLoaded', () => {
       let message = '';
       if (currentLang === 'ar') {
         message = `مرحباً م. حسن أحمد،
-استخدمت حاسبة المقايسة التفاعلية بموقعك لحساب تكلفة تشطيب لعام 2025:
+استخدمت الحاسبة للحصول على تقدير أولي للميزانية. أرجو إرسال عرض سعر محدث ومكتوب للتأكيد:
 
 ` +
           `• نوع الوحدة: ${uName}
 ` +
           `• المساحة: ${area} م²
 ` +
-          `• باقة التشطيب (أسعار 2025): ${tierName} (~${formatEGP(currentBaseRate)} ج.م/م²)
+          `• الباقة المختارة (سعر استرشادي): ${tierName} (~${formatEGP(currentBaseRate)} ج.م/م²)
 ` +
           `• 🎁 الهدايا المشمولة مجاناً: ${tierGift}
 ` +
@@ -1220,14 +1218,14 @@ document.addEventListener('DOMContentLoaded', () => {
           `برجاء إفادتي بإمكانية تحديد موعد لمعاينة الموقع ومناقشة تفاصيل التعاقد واستلام الهدايا المشمولة. شكراً لك!`;
       } else {
         message = `Hello Eng. Hassan Ahmed,
-I used the interactive finishing estimator on your portfolio for a 2025 project consultation:
+I used the estimator for an initial budget reference. Please send a current written quotation to confirm:
 
 ` +
           `• Property Type: ${uName}
 ` +
           `• Total Area: ${area} m²
 ` +
-          `• 2025 Finishing Package: ${tierName} (~${formatEGP(currentBaseRate)} EGP/m²)
+          `• Selected package (indicative rate): ${tierName} (~${formatEGP(currentBaseRate)} EGP/m²)
 ` +
           `• 🎁 Included Complimentary Perks: ${tierGift}
 ` +
