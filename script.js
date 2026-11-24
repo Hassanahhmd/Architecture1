@@ -552,7 +552,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "assets/projects/jewelry-store-2.jpg",
             "assets/projects/jewelry-store-3.jpg",
             "assets/projects/jewelry-store-4.jpg",
-            "assets/projects/jewelry-store-5.jpg"
+            "assets/projects/jewelry-store-5.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4a33ac187527269.689d265da1ea5.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/d7fb64187527269.689d265da2527.png"
         ],
         "desc_ar": "تصميم وتنفيذ متجر مجوهرات وألماس راقي بواجهات عرض زجاجية مضيئة، كاونترات رخامية فاخرة وتجاليد خشبية دافئة مع إضاءة سبوت متخصصة CRI 95+ لإبراز بريق الذهب والأحجار الكريمة.",
         "desc_en": "High-end luxury jewelry & diamond showroom featuring bespoke illuminated display vitrines, bookmatched marble consultation counters, and calibrated CRI 95+ accent lighting.",
@@ -572,7 +574,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "image": "assets/projects/neoclassical-building-detail.jpg",
         "gallery": [
             "assets/projects/neoclassical-building-detail.jpg",
-            "assets/projects/neoclassical-building-wide.jpg"
+            "assets/projects/neoclassical-building-wide.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/9ff924209462291.689d190e5cacf.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6d4112209462291.689d190e5bb93.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1523de209462291.689d190e5c312.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/b99700209462291.689d190e5b353.png"
         ],
         "desc_ar": "تصميم معماري لواجهة مبنى سكني فاخر من 6 طوابق بالطراز النيوكلاسيكي الملكي، يتضمن مصعداً بانورامياً زجاجياً مدمجاً، شرفات بأعمدة كلاسيكية وتيجان مذهبة، وتكسيات حجرية متينة.",
         "desc_en": "Architectural facade design for a 6-story royal neoclassical residential building featuring an integrated panoramic glass elevator shaft, classical colonnades, and gold-leaf corbels.",
@@ -592,7 +598,10 @@ document.addEventListener('DOMContentLoaded', () => {
         "image": "assets/projects/master-suite-dressing.jpg",
         "gallery": [
             "assets/projects/master-suite-dressing.jpg",
-            "assets/projects/dressing-vanity.jpg"
+            "assets/projects/dressing-vanity.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/01bbc2187967907.65946e7247ca8.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/830c34187967907.65946e7249b08.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/81e02e187967907.65946e7248e20.jpg"
         ],
         "desc_ar": "تصميم دريسنج روم مفتوح بتوزيع هندسي مدروس، خزائن بيضاء كلاسيكية بإضاءات LED خطية مدمجة، ركن تسريحة بمرآة مضيئة متموجة، ومنطقة جلوس استرخاء مخملية.",
         "desc_en": "Custom walk-in dressing suite with tailored modular joinery, integrated concealed LED channel lighting, organic wavy illuminated vanity mirror, and plush lounge seating.",
@@ -610,7 +619,10 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/master-bedroom-marble.jpg",
         "gallery": [
-            "assets/projects/master-bedroom-marble.jpg"
+            "assets/projects/master-bedroom-marble.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/2275a6183964601.6549635aa30f1.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/78191f183964601.6549635aa3c3f.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d7ab92183964601.6549635aa4c82.jpg"
         ],
         "desc_ar": "جناح نوم رئيسي يجمع بين الفخامة والسكينة، جدار خلفي من الرخام الأبيض متصل العروق مع إضاءات دافئة مخفية، ثريا زجاجية كريستالية، وكراسي مخملية زمردية.",
         "desc_en": "Luxury master bedroom suite proposal featuring a bookmatched marble accent wall, warm architectural cove lighting, a statement sculptural chandelier, and emerald velvet lounge chairs.",
@@ -628,7 +640,10 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/double-height-reception.jpg",
         "gallery": [
-            "assets/projects/double-height-reception.jpg"
+            "assets/projects/double-height-reception.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/fe737a231648797.688cd4ec62c63.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/712d22231648797.688cd4ec626d6.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/e5ea12231648797.688cd4ec63496.jpg"
         ],
         "desc_ar": "تصميم داخلي فخم بارتفاع مزدوج لفيلا سكنية، تكسيات رخامية متصلة وثريات معمارية عملاقة مع توزيع إضاءة مدروس لإبراز فخامة الفراغ.",
         "desc_en": "Palatial double-height interior space with continuous bookmatched marble, statement chandeliers, and layered illumination.",
@@ -646,7 +661,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "architectural",
         "image": "assets/projects/luxe-villa.jpg",
         "gallery": [
-            "assets/projects/luxe-villa.jpg"
+            "assets/projects/luxe-villa.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/dcacba209324363.66fd8244941c3.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/a7f6c8209324363.66fd82449b656.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/84928f209324363.66fd8244984e3.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1730fd209324363.66fd8244951c2.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/752706209324363.66fd8244921c0.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/14d1d4209324363.66fd824492cfb.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/e71fcd209324363.66fd824499b17.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/a71624209324363.66fd82449a243.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/b0da73209324363.66fd824494a12.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/f8ce3c209324363.66fd824493731.jpg"
         ],
         "desc_ar": "دراسة كتل معمارية ودمج المساحات الخضراء والمسابح مع الكتل السكنية لتحقيق أقصى درجات الخصوصية والجمال الهندسي.",
         "desc_en": "Massing study and seamless integration of landscape and pool areas with residential volumes for ultimate privacy and aesthetic balance.",
@@ -664,7 +689,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "architectural",
         "image": "assets/projects/villa-entrance.jpg",
         "gallery": [
-            "assets/projects/villa-entrance.jpg"
+            "assets/projects/villa-entrance.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/dcb271194502831.65fcde6154d2c.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/841e1a194502831.65fcde6154154.jpg"
         ],
         "desc_ar": "تصميم مدخل رئيسي لفيلا خاصة بكتل معمارية متدرجة، مسارات مائية وإضاءات أرضية مخفية توجه حركة الزوار نحو الباب الرئيسي.",
         "desc_en": "Monumental private villa entrance featuring terraced volumes, water features, and recessed ground lighting guiding visitors toward the grand foyer.",
@@ -682,7 +709,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "retail",
         "image": "assets/projects/boss-desk.jpg",
         "gallery": [
-            "assets/projects/boss-desk.jpg"
+            "assets/projects/boss-desk.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1ba745187385871.6587402ef2021.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/4e3f36187385871.6587402ef2b90.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d9430f187385871.6587402ef1217.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/f226c7187385871.6587402ef3777.jpg"
         ],
         "desc_ar": "بيئة عمل تنفيذية راقية بتكسيات خشبية داكنة وجلسة اجتماعات مدمجة تعكس هوية الشركة وقوتها الإدارية.",
         "desc_en": "High-end corporate executive suite featuring rich wood paneling, acoustic integration, and executive meeting zone.",
@@ -700,7 +731,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/modern-kitchen-360.jpg",
         "gallery": [
-            "assets/projects/modern-kitchen-360.jpg"
+            "assets/projects/modern-kitchen-360.jpg",
+            "https://kuula.co/shareimg/6512-fc76-981f-4805/en_3716/01-cover.jpg"
         ],
         "desc_ar": "استغلال هندسي دقيق للمساحات، جزيرة مطبخ رخامية مدمجة مع أحدث أنظمة التخزين والإضاءة الذكية والتهوية المخفية.",
         "desc_en": "Ergonomic kitchen design featuring a monolithic marble island, concealed storage systems, and smart task lighting.",
@@ -717,7 +749,12 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "architectural",
         "image": "assets/projects/roof-design.png",
         "gallery": [
-            "assets/projects/roof-design.png"
+            "assets/projects/roof-design.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/3e7e09243825161.6989ff455c333.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/3afba3243825161.6989ff455e065.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/3147ce243825161.6989ff455d0ec.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6e0882243825161.6989ff455d8cd.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/05187b243825161.6989ff455c966.jpg"
         ],
         "desc_ar": "تنسيق موقع خارجي وبرجولات خشبية ومناطق شواء مع مراعاة العزل المائي والحراري للأسطح وتصريف مياه الأمطار.",
         "desc_en": "Rooftop terrace featuring wooden pergolas, fire pit, and BBQ zone with strict waterproofing & thermal insulation engineering.",
@@ -734,7 +771,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/majles-luxury.jpg",
         "gallery": [
-            "assets/projects/majles-luxury.jpg"
+            "assets/projects/majles-luxury.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/fdc30d185126543.655e2db971a72.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/106121185126543.655e2db972538.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/ff286a185126543.655e2db972f9d.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/830014185126543.655e2db970f85.jpg"
         ],
         "desc_ar": "تصميم مجلس عربي بطابع مودرن راقي يجمع بين الأصالة وفخامة الخامات والخطوط المعمارية الهادئة مع لمسات ذهبية أنيقة.",
         "desc_en": "Sophisticated contemporary majles blending cultural hospitality with refined materials and minimalist architectural lines.",
@@ -751,7 +792,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/neoclassical-apartment.jpg",
         "gallery": [
-            "assets/projects/neoclassical-apartment.jpg"
+            "assets/projects/neoclassical-apartment.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/9cbafe179155205.64f4f765a826a.jpg"
         ],
         "desc_ar": "تشطيب كامل من الطوب الأحمر وحتى المفتاح، إشراف موقعي دقيق وتنسيق كافة البنود المعمارية والكهربائية بصفر مخالفات.",
         "desc_en": "Turnkey fit-out from bare shell to final handover with on-site engineering supervision and refined neoclassical detailing.",
@@ -769,7 +811,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/panoramic-bedroom.jpg",
         "gallery": [
-            "assets/projects/panoramic-bedroom.jpg"
+            "assets/projects/panoramic-bedroom.jpg",
+            "https://kuula.co/shareimg/6534-1bbd-0449-1163/en_6767/01-cover.jpg"
         ],
         "desc_ar": "إطلالة بانورامية كاملة مع دراسة وافية للإضاءة الطبيعية والستائر الكهربائية وتوزيع الأثاث بما يحقق أقصى راحة للضيوف.",
         "desc_en": "Panoramic guest bedroom with sweeping glazed views, motorized solar shading integration, and acoustic comfort zoning.",
@@ -786,7 +829,10 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/reception-american.jpg",
         "gallery": [
-            "assets/projects/reception-american.jpg"
+            "assets/projects/reception-american.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/c1c802179852147.6500c484b4270.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6c52e6179852147.6500c484b372d.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/434966179852147.6500c484b2b72.jpg"
         ],
         "desc_ar": "مفهوم المساحات المفتوحة (Open Concept) يدمج منطقة الاستقبال مع مطبخ أمريكي عصري بركن إفطار رخامي متناسق.",
         "desc_en": "Open-concept living space seamlessly bridging the formal reception with a contemporary American open kitchen and breakfast bar.",
@@ -804,7 +850,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/luxury-bathroom.jpg",
         "gallery": [
-            "assets/projects/luxury-bathroom.jpg"
+            "assets/projects/luxury-bathroom.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/1063a8186382467.65746c2ee9fb5.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/030e8f186382467.65746c2ee9101.jpg"
         ],
         "desc_ar": "حمام ماستر بتكسيات رخامية متصلة، كابينة شاور زجاج سيكوريت مع أطقم وخلاطات دفن جروهي الألمانية وحوض رخامي معلق.",
         "desc_en": "Luxury master bathroom with floor-to-ceiling porcelain slabs, frameless glass shower enclosure, Grohe concealed brassware, and floating vanity.",
@@ -821,7 +869,13 @@ document.addEventListener('DOMContentLoaded', () => {
         "category": "interior",
         "image": "assets/projects/kitchen-design.png",
         "gallery": [
-            "assets/projects/kitchen-design.png"
+            "assets/projects/kitchen-design.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/375904243825531.698a121ba5cfe.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/08723d243825531.698a121ba7dfa.png",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/73e500243825531.698a121ba63b9.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/31e5eb243825531.698a121ba70af.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/ea700f243825531.698a121ba6a55.jpg",
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/c58aeb243825531.698a121ba7759.jpg"
         ],
         "desc_ar": "مطبخ مودرن مدمج بتشطيبات مات وأجهزة بيلت-إن وتوزيع ميكانيكي وكهربائي دقيق لتسهيل الحركة والعمل.",
         "desc_en": "Modern integrated kitchen featuring matte cabinetry, flush built-in appliances, and precision ergonomic work triangle.",
