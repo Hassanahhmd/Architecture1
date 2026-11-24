@@ -3868,10 +3868,7 @@ input:focus-visible {
   filter: drop-shadow(0 15px 25px rgba(40, 55, 38, 0.25));
 }
 .portrait-badge {
-  left: 50%;
-  right: auto;
-  inset-inline: auto;
-  bottom: 14px;
+  inset: auto auto 14px 50%;
   width: max-content;
   max-width: calc(100% - 1rem);
   padding: 0.45rem 1.15rem;
