@@ -3838,3 +3838,72 @@ input:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Restored hero portrait card reference styling */
+.hero-section {
+  background:
+    linear-gradient(rgba(72, 95, 67, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72, 95, 67, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #f8f9f6 0%, #f4f5f2 100%);
+  background-size: 40px 40px, 40px 40px, auto;
+}
+.hero-visual { justify-content: center; }
+.arch-card-frame {
+  width: min(100%, 370px);
+  max-width: 370px;
+  height: 490px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem 0;
+  background: linear-gradient(165deg, #ffffff 0%, var(--bg-secondary) 100%);
+  box-shadow: 0 25px 60px rgba(50, 65, 45, 0.12), 0 0 35px var(--accent-olive-soft);
+  overflow: hidden;
+}
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 15px 25px rgba(40, 55, 38, 0.25));
+}
+.portrait-badge {
+  left: 50%;
+  right: auto;
+  inset-inline: auto;
+  bottom: 14px;
+  width: max-content;
+  max-width: calc(100% - 1rem);
+  padding: 0.45rem 1.15rem;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text-main);
+  box-shadow: 0 8px 20px rgba(50, 65, 45, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateX(-50%);
+}
+.portrait-badge .p-name { color: var(--text-main); }
+.portrait-badge .p-title { color: var(--accent-olive-dark); }
+.corner { opacity: 0.95; }
+.floating-badge {
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-card);
+}
+.badge-num { color: var(--accent-olive-dark); }
+
+@media (max-width: 1023px) {
+  .arch-card-frame { width: min(100%, 370px); max-width: 370px; height: 490px; }
+}
+@media (max-width: 640px) {
+  .arch-card-frame {
+    width: min(100%, 370px);
+    max-width: 370px;
+    height: clamp(440px, 118vw, 490px);
+  }
+}
+
