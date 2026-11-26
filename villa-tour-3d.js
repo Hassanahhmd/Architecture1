@@ -148,8 +148,18 @@ if (shell && viewport && canvas) {
   }
 
   function addSphere(x, y, z, radius, material, parent = scene) {
-    const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 18, 12), material);
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 24, 16), material);
     mesh.position.set(x, y, z);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+    parent.add(mesh);
+    return mesh;
+  }
+
+  function addCushion(x, y, z, width, height, depth, material, parent = scene) {
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), material);
+    mesh.position.set(x, y, z);
+    mesh.scale.set(width / 2, height / 2, depth / 2);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     parent.add(mesh);
@@ -369,13 +379,14 @@ if (shell && viewport && canvas) {
     const fabric = new THREE.MeshStandardMaterial({ color, roughness: 0.94 });
     const pillow = new THREE.MeshStandardMaterial({ color: 0xe6decf, roughness: 0.92 });
     const leg = new THREE.MeshStandardMaterial({ color: 0x8a6d41, metalness: 0.6, roughness: 0.36 });
-    addBox(0, 0.38, 0, length, 0.38, 0.94, fabric, group);
-    addBox(0, 0.92, -0.38, length, 0.8, 0.22, fabric, group);
-    addBox(-length / 2 + 0.12, 0.68, 0.02, 0.25, 0.65, 1.02, fabric, group);
-    addBox(length / 2 - 0.12, 0.68, 0.02, 0.25, 0.65, 1.02, fabric, group);
+    addBox(0, 0.32, 0, length, 0.3, 0.96, fabric, group);
+    addCushion(0, 0.49, 0.02, length - 0.12, 0.28, 0.88, fabric, group);
+    addCushion(0, 0.92, -0.34, length - 0.08, 0.86, 0.3, fabric, group);
+    addCushion(-length / 2 + 0.16, 0.66, 0.05, 0.34, 0.62, 0.98, fabric, group);
+    addCushion(length / 2 - 0.16, 0.66, 0.05, 0.34, 0.62, 0.98, fabric, group);
     for (let i = 0; i < Math.max(2, Math.floor(length / 0.9)); i++) {
       const pillowX = -length / 2 + 0.65 + i * (length - 1.3) / Math.max(1, Math.floor(length / 0.9) - 1);
-      addBox(pillowX, 0.82, 0.14, 0.48, 0.4, 0.18, pillow, group, false);
+      addCushion(pillowX, 0.8, 0.17, 0.5, 0.34, 0.2, pillow, group);
     }
     [-length / 2 + 0.25, length / 2 - 0.25].forEach(px => {
       addBox(px, 0.13, -0.31, 0.07, 0.26, 0.07, leg, group, false);
@@ -399,8 +410,8 @@ if (shell && viewport && canvas) {
     for (let i = -1; i <= 1; i++) {
       [-1, 1].forEach(side => {
         const cz = side * 1.0;
-        addBox(i * 0.74, 0.48, cz, 0.55, 0.18, 0.55, oliveMat, group);
-        addBox(i * 0.74, 0.86, cz + side * 0.22, 0.55, 0.7, 0.12, oliveMat, group);
+        addCushion(i * 0.74, 0.53, cz, 0.57, 0.26, 0.56, oliveMat, group);
+        addCushion(i * 0.74, 0.91, cz + side * 0.22, 0.57, 0.7, 0.2, oliveMat, group);
         addBox(i * 0.74, 0.12, cz, 0.08, 0.24, 0.08, brassMat, group);
       });
     }
@@ -418,6 +429,24 @@ if (shell && viewport && canvas) {
       light.position.set(px, 2.4, pz);
       scene.add(light);
     }
+  }
+
+  function addWallArtX(x, y, z, width, height, color) {
+    const frame = new THREE.MeshStandardMaterial({ color: 0x8f713f, metalness: 0.52, roughness: 0.38 });
+    const artwork = new THREE.MeshStandardMaterial({ color, roughness: 0.9 });
+    addBox(x, y, z, 0.09, height + 0.16, width + 0.16, frame, scene, false);
+    addBox(x + (x < 0 ? 0.055 : -0.055), y, z, 0.045, height, width, artwork, scene, false);
+    addBox(x + (x < 0 ? 0.084 : -0.084), y - height * 0.26, z, 0.02, 0.045, width * 0.64, brassMat, scene, false);
+    addBox(x + (x < 0 ? 0.084 : -0.084), y + height * 0.1, z, 0.02, 0.035, width * 0.45, creamMat, scene, false);
+  }
+
+  function addWallArtZ(z, y, x, width, height, color) {
+    const frame = new THREE.MeshStandardMaterial({ color: 0x8f713f, metalness: 0.52, roughness: 0.38 });
+    const artwork = new THREE.MeshStandardMaterial({ color, roughness: 0.9 });
+    addBox(x, y, z, width + 0.16, height + 0.16, 0.09, frame, scene, false);
+    addBox(x, y, z + (z < 0 ? 0.055 : -0.055), width, height, 0.045, artwork, scene, false);
+    addBox(x, y - height * 0.25, z + (z < 0 ? 0.084 : -0.084), width * 0.62, 0.045, 0.02, brassMat, scene, false);
+    addBox(x, y + height * 0.1, z + (z < 0 ? 0.084 : -0.084), width * 0.43, 0.035, 0.02, creamMat, scene, false);
   }
 
   // Majlis and guest reception seating.
@@ -463,6 +492,12 @@ if (shell && viewport && canvas) {
   addPlant(8.9, 10.8, 0.8);
   addLight(6.3, 2.7, 10.2, 0.35, 7);
   addChandelier(0, -1.0);
+  // Quiet olive, ivory and brass artwork gives each public room a clear focal point.
+  addWallArtZ(6.82, 2.05, -6.5, 1.8, 1.35, 0x414b35);
+  addWallArtZ(-2.22, 2.05, -6.7, 1.45, 1.15, 0xd4a45e);
+  addWallArtZ(-6.82, 2.05, -6.5, 1.8, 1.3, 0x8d8777);
+  addWallArtX(10.42, 2.05, 1.35, 1.15, 1.5, 0x414b35);
+  addWallArtX(-10.42, 2.05, -1.35, 1.15, 1.5, 0x8d8777);
   addLight(-6.4, 2.65, 4.6, 0.45, 6);
   addLight(-6.4, 2.65, -4.9, 0.48, 7);
   addLight(6.5, 2.65, 2.4, 0.42, 6);
