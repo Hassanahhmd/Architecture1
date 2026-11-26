@@ -4363,3 +4363,21 @@ input:focus-visible {
 .project-card,
 .tiktok-video-card { background: var(--surface-card); }
 .contact-section { background: linear-gradient(180deg, var(--bg-secondary), #f6f2e9); }
+
+
+/* Responsive refinement: keep the four interactive lab tabs balanced on mobile. */
+@media (max-width: 760px) {
+  .lab-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+  .lab-tab-btn {
+    justify-content: center;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0.7rem 0.65rem;
+    text-align: center;
+    white-space: normal;
+  }
+}
