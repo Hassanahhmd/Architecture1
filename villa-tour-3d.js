@@ -379,14 +379,13 @@ if (shell && viewport && canvas) {
     const fabric = new THREE.MeshStandardMaterial({ color, roughness: 0.94 });
     const pillow = new THREE.MeshStandardMaterial({ color: 0xe6decf, roughness: 0.92 });
     const leg = new THREE.MeshStandardMaterial({ color: 0x8a6d41, metalness: 0.6, roughness: 0.36 });
-    addBox(0, 0.32, 0, length, 0.3, 0.96, fabric, group);
-    addCushion(0, 0.49, 0.02, length - 0.12, 0.28, 0.88, fabric, group);
-    addCushion(0, 0.92, -0.34, length - 0.08, 0.86, 0.3, fabric, group);
-    addCushion(-length / 2 + 0.16, 0.66, 0.05, 0.34, 0.62, 0.98, fabric, group);
-    addCushion(length / 2 - 0.16, 0.66, 0.05, 0.34, 0.62, 0.98, fabric, group);
+    addBox(0, 0.36, 0, length, 0.34, 0.94, fabric, group);
+    addBox(0, 0.92, -0.36, length, 0.82, 0.22, fabric, group);
+    addBox(-length / 2 + 0.12, 0.68, 0.02, 0.25, 0.65, 1.02, fabric, group);
+    addBox(length / 2 - 0.12, 0.68, 0.02, 0.25, 0.65, 1.02, fabric, group);
     for (let i = 0; i < Math.max(2, Math.floor(length / 0.9)); i++) {
       const pillowX = -length / 2 + 0.65 + i * (length - 1.3) / Math.max(1, Math.floor(length / 0.9) - 1);
-      addCushion(pillowX, 0.8, 0.17, 0.5, 0.34, 0.2, pillow, group);
+      addCushion(pillowX, 0.8, 0.11, 0.44, 0.28, 0.16, pillow, group);
     }
     [-length / 2 + 0.25, length / 2 - 0.25].forEach(px => {
       addBox(px, 0.13, -0.31, 0.07, 0.26, 0.07, leg, group, false);
