@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=architecture1-first-impression-20261126">
+  <link rel="stylesheet" href="style.css?v=architecture1-interactive-tour-20261127">
 </head>
 <body class="theme-olive-classic">
   <!-- Top Architectural Scroll Progress -->
@@ -209,27 +209,64 @@
     <section class="showreel-section reveal-on-scroll" id="showreel">
       <div class="container">
         <div class="section-header text-center">
-          <div class="section-tag" data-i18n="reel.tag">جولة افتراضية — فيلا كلاسيكية</div>
-          <h2 class="section-title" data-i18n="reel.title">من الواجهة إلى أدق تفاصيل الداخل</h2>
-          <p class="section-subtitle" data-i18n="reel.subtitle">جولة داخل فيلا كلاسيكية فاخرة — من الواجهة الحجرية إلى تفاصيل الفراغات والإضاءة والخامات</p>
+          <div class="section-tag" data-i18n="reel.tag">جولة تفاعلية لمشروع الفيلا</div>
+          <h2 class="section-title" data-i18n="reel.title">ادخل الفيلا وتنقّل بين فراغاتها</h2>
+          <p class="section-subtitle" data-i18n="reel.subtitle">اختر غرفة أو استخدم الأسهم للانتقال بين مشاهد المشروع. افتح الجولة بملء الشاشة واستكشف المسار على راحتك.</p>
         </div>
 
-        <div class="showreel-frame">
-          <div class="showreel-top-hud">
-            <div class="hud-brand-pill">
-              <span class="rec-dot"></span>
-              <span>HASSAN AHMED · CLASSIC VILLA TOUR</span>
+        <div class="villa-tour-shell" id="villaTourShell">
+          <div class="villa-tour-toolbar">
+            <div class="villa-tour-identity">
+              <span class="villa-tour-mark" aria-hidden="true">HA</span>
+              <div>
+                <strong>HASSAN AHMED</strong>
+                <span data-i18n="walk.status">جولة تفاعلية للمخطط الأرضي</span>
+              </div>
             </div>
+            <div class="villa-tour-actions">
+              <span class="villa-tour-live"><i aria-hidden="true"></i><span data-i18n="walk.type">مشاهد تصورية</span></span>
+              <button type="button" class="villa-tour-fullscreen" id="villaTourFullscreenBtn" aria-label="فتح الجولة بملء الشاشة">
+                <span aria-hidden="true">⛶</span>
+                <span id="villaTourFullscreenText" data-i18n="walk.fullscreen">فتح بملء الشاشة</span>
+              </button>
             </div>
+          </div>
 
-          <div class="showreel-video-wrap">
-            <iframe class="showreel-video showreel-embed"
-              src="https://share.descript.com/embed/7ZAGcb9aQqy"
-              title="Hassan Ahmed — Classic Villa Virtual Tour"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="villa-tour-viewer" id="villaTourViewer" role="group" aria-label="مشهد الجولة التفاعلية">
+            <img class="villa-tour-image" id="villaTourImage" src="assets/projects/facade.png" alt="الواجهة الكلاسيكية للفيلا" fetchpriority="high">
+            <div class="villa-tour-vignette" aria-hidden="true"></div>
+            <div class="villa-tour-scene-index">
+              <span id="villaTourCounter">01 / 06</span>
+              <span class="villa-tour-scene-kind" data-i18n="walk.type">مشهد تصوري</span>
+            </div>
+            <div class="villa-tour-caption" aria-live="polite">
+              <span class="villa-tour-eyebrow" data-i18n="walk.route">مسار الجولة</span>
+              <h3 id="villaTourSceneTitle">الواجهة الرئيسية</h3>
+              <p id="villaTourSceneDescription">ابدأ من الواجهة الكلاسيكية للفيلا.</p>
+            </div>
+            <button type="button" class="villa-tour-arrow villa-tour-arrow-prev" id="villaTourPrevBtn" aria-label="المشهد السابق">
+              <span aria-hidden="true">←</span><span data-i18n="walk.prev">السابق</span>
+            </button>
+            <button type="button" class="villa-tour-arrow villa-tour-arrow-next" id="villaTourNextBtn" aria-label="المشهد التالي">
+              <span data-i18n="walk.next">التالي</span><span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="villa-tour-navigation">
+            <div class="villa-tour-nav-heading">
+              <strong data-i18n="walk.rooms">تنقّل بين الفراغات</strong>
+              <span><b id="villaTourCurrentStep">01</b> <span data-i18n="walk.of">من</span> 06</span>
+            </div>
+            <div class="villa-tour-progress" aria-hidden="true"><span id="villaTourProgress"></span></div>
+            <nav class="villa-tour-room-list" aria-label="غرف الجولة">
+              <button type="button" class="villa-tour-room active" data-tour-scene="0" aria-pressed="true"><span>01</span><span data-i18n="walk.room.facade">الواجهة</span></button>
+              <button type="button" class="villa-tour-room" data-tour-scene="1" aria-pressed="false"><span>02</span><span data-i18n="walk.room.majlis">المجلس</span></button>
+              <button type="button" class="villa-tour-room" data-tour-scene="2" aria-pressed="false"><span>03</span><span data-i18n="walk.room.living">المعيشة</span></button>
+              <button type="button" class="villa-tour-room" data-tour-scene="3" aria-pressed="false"><span>04</span><span data-i18n="walk.room.dining">الطعام</span></button>
+              <button type="button" class="villa-tour-room" data-tour-scene="4" aria-pressed="false"><span>05</span><span data-i18n="walk.room.kitchen">المطبخ</span></button>
+              <button type="button" class="villa-tour-room" data-tour-scene="5" aria-pressed="false"><span>06</span><span data-i18n="walk.room.outdoor">جلسة خارجية</span></button>
+            </nav>
+            <p class="villa-tour-note" data-i18n="walk.note">المشاهد الداخلية أمثلة مرئية من أعمال الاستوديو؛ المخطط المرفق يوضح توزيع الفراغات فقط.</p>
           </div>
         </div>
       </div>
@@ -1340,6 +1377,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=architecture1-villa-tour-20261126"></script>
+  <script src="assets/villa-tour-facade.js?v=interactive-tour-20261127"></script>
+  <script src="script.js?v=architecture1-interactive-tour-20261127"></script>
 </body>
 </html>
