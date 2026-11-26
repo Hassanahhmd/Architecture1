@@ -4365,8 +4365,8 @@ input:focus-visible {
 .contact-section { background: linear-gradient(180deg, var(--bg-secondary), #f6f2e9); }
 
 
-/* Responsive refinement: keep the four interactive lab tabs balanced on mobile. */
-@media (max-width: 760px) {
+/* Responsive refinement: keep the four interactive lab tabs balanced on compact screens. */
+@media (max-width: 900px) {
   .lab-tabs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
