@@ -49,11 +49,11 @@ if (shell && viewport && canvas) {
   const roomOrder = ["facade", "majlis", "diningA", "living", "diningB", "kitchen", "store", "outdoor", "maid", "laundry"];
   const roomStops = {
     facade: { x: 0, z: 11.4, yaw: 0 },
-    majlis: { x: -6.3, z: 4.3, yaw: -Math.PI / 2 },
-    diningA: { x: -6.2, z: 0.1, yaw: -Math.PI / 2 },
-    living: { x: -6.3, z: -4.8, yaw: -Math.PI / 2 },
-    diningB: { x: 6.2, z: 2.7, yaw: Math.PI / 2 },
-    kitchen: { x: 6.2, z: -1.8, yaw: Math.PI / 2 },
+    majlis: { x: -6.3, z: 4.3, yaw: Math.PI / 2 },
+    diningA: { x: -6.2, z: 0.1, yaw: Math.PI / 2 },
+    living: { x: -6.3, z: -4.8, yaw: Math.PI / 2 },
+    diningB: { x: 6.2, z: 2.7, yaw: -Math.PI / 2 },
+    kitchen: { x: 6.2, z: -1.8, yaw: -Math.PI / 2 },
     store: { x: 9, z: -2.9, yaw: Math.PI / 2 },
     outdoor: { x: 5.8, z: 10.6, yaw: 0 },
     maid: { x: 4.8, z: -5.6, yaw: -Math.PI / 2 },
