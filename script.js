@@ -1911,4 +1911,6 @@ I just completed your architectural style quiz and my result was:
     revealTargets.forEach(el => el.classList.add('is-revealed'));
   }
 
+  // Apply Arabic as the default language after all page data and handlers are ready.
+  applyLanguage('ar');
 });
