@@ -232,22 +232,41 @@
             </div>
           </div>
 
-          <div class="villa-tour-viewer" id="villaTourViewer" role="group" aria-label="مشهد الجولة التفاعلية">
-            <img class="villa-tour-image" id="villaTourImage" src="assets/projects/facade.png" alt="الواجهة الكلاسيكية للفيلا" fetchpriority="high">
+          <div class="villa-tour-viewer" id="villaTourViewer" role="application" aria-label="جولة تفاعلية ثلاثية الأبعاد">
+            <canvas class="villa-tour-canvas" id="villaTourCanvas" aria-label="المشهد ثلاثي الأبعاد للفيلا"></canvas>
+            <div class="villa-tour-intro" id="villaTourIntro">
+              <img class="villa-tour-intro-image" id="villaTourIntroImage" src="assets/projects/facade.png" alt="واجهة الفيلا الكلاسيكية">
+              <div class="villa-tour-intro-shade" aria-hidden="true"></div>
+              <div class="villa-tour-intro-copy">
+                <span class="villa-tour-eyebrow" data-i18n="walk.route">مسار الجولة</span>
+                <h3 data-i18n="walk.introTitle">اكتشف الفيلا من الداخل</h3>
+                <p data-i18n="walk.introText">تجوّل بحرية في نموذج ثلاثي الأبعاد تصوري مبني على المخطط الأرضي المرفق.</p>
+                <button type="button" class="villa-tour-start" id="villaTourStartBtn">
+                  <span aria-hidden="true">↗</span><span data-i18n="walk.start">ابدأ الجولة</span>
+                </button>
+              </div>
+            </div>
             <div class="villa-tour-vignette" aria-hidden="true"></div>
             <div class="villa-tour-scene-index">
-              <span id="villaTourCounter">01 / 06</span>
-              <span class="villa-tour-scene-kind" data-i18n="walk.type">مشهد تصوري</span>
+              <span id="villaTourCurrentRoom">01 · الواجهة</span>
+              <span class="villa-tour-scene-kind" data-i18n="walk.type">نموذج تصوري</span>
             </div>
             <div class="villa-tour-caption" aria-live="polite">
               <span class="villa-tour-eyebrow" data-i18n="walk.route">مسار الجولة</span>
               <h3 id="villaTourSceneTitle">الواجهة الرئيسية</h3>
               <p id="villaTourSceneDescription">ابدأ من الواجهة الكلاسيكية للفيلا.</p>
             </div>
-            <button type="button" class="villa-tour-arrow villa-tour-arrow-prev" id="villaTourPrevBtn" aria-label="المشهد السابق">
+            <div class="villa-tour-controls-hint" id="villaTourControlsHint" data-i18n="walk.controls">اسحب للنظر · WASD أو الأسهم للحركة</div>
+            <div class="villa-tour-touch-controls" aria-label="أزرار الحركة">
+              <button type="button" data-walk="turn-left" id="villaTourTurnLeft" aria-label="لف يساراً">↶</button>
+              <button type="button" data-walk="forward" id="villaTourForward" aria-label="تحرك للأمام">↑</button>
+              <button type="button" data-walk="turn-right" id="villaTourTurnRight" aria-label="لف يميناً">↷</button>
+              <button type="button" data-walk="backward" id="villaTourBackward" aria-label="تحرك للخلف">↓</button>
+            </div>
+            <button type="button" class="villa-tour-arrow villa-tour-arrow-prev" id="villaTourPrevBtn" aria-label="الغرفة السابقة">
               <span aria-hidden="true">←</span><span data-i18n="walk.prev">السابق</span>
             </button>
-            <button type="button" class="villa-tour-arrow villa-tour-arrow-next" id="villaTourNextBtn" aria-label="المشهد التالي">
+            <button type="button" class="villa-tour-arrow villa-tour-arrow-next" id="villaTourNextBtn" aria-label="الغرفة التالية">
               <span data-i18n="walk.next">التالي</span><span aria-hidden="true">→</span>
             </button>
           </div>
@@ -255,18 +274,22 @@
           <div class="villa-tour-navigation">
             <div class="villa-tour-nav-heading">
               <strong data-i18n="walk.rooms">تنقّل بين الفراغات</strong>
-              <span><b id="villaTourCurrentStep">01</b> <span data-i18n="walk.of">من</span> 06</span>
+              <span><b id="villaTourCurrentStep">01</b> <span data-i18n="walk.of">من</span> 10</span>
             </div>
             <div class="villa-tour-progress" aria-hidden="true"><span id="villaTourProgress"></span></div>
             <nav class="villa-tour-room-list" aria-label="غرف الجولة">
-              <button type="button" class="villa-tour-room active" data-tour-scene="0" aria-pressed="true"><span>01</span><span data-i18n="walk.room.facade">الواجهة</span></button>
-              <button type="button" class="villa-tour-room" data-tour-scene="1" aria-pressed="false"><span>02</span><span data-i18n="walk.room.majlis">المجلس</span></button>
-              <button type="button" class="villa-tour-room" data-tour-scene="2" aria-pressed="false"><span>03</span><span data-i18n="walk.room.living">المعيشة</span></button>
-              <button type="button" class="villa-tour-room" data-tour-scene="3" aria-pressed="false"><span>04</span><span data-i18n="walk.room.dining">الطعام</span></button>
-              <button type="button" class="villa-tour-room" data-tour-scene="4" aria-pressed="false"><span>05</span><span data-i18n="walk.room.kitchen">المطبخ</span></button>
-              <button type="button" class="villa-tour-room" data-tour-scene="5" aria-pressed="false"><span>06</span><span data-i18n="walk.room.outdoor">جلسة خارجية</span></button>
+              <button type="button" class="villa-tour-room active" data-tour-room="facade" aria-pressed="true"><span>01</span><span data-i18n="walk.room.facade">الواجهة</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="majlis" aria-pressed="false"><span>02</span><span data-i18n="walk.room.majlis">المجلس</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="diningA" aria-pressed="false"><span>03</span><span data-i18n="walk.room.dining1">طعام ١</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="living" aria-pressed="false"><span>04</span><span data-i18n="walk.room.living">المعيشة</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="diningB" aria-pressed="false"><span>05</span><span data-i18n="walk.room.dining2">طعام ٢</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="kitchen" aria-pressed="false"><span>06</span><span data-i18n="walk.room.kitchen">المطبخ</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="store" aria-pressed="false"><span>07</span><span data-i18n="walk.room.store">المخزن</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="outdoor" aria-pressed="false"><span>08</span><span data-i18n="walk.room.outdoor">الجلوس الخارجي</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="maid" aria-pressed="false"><span>09</span><span data-i18n="walk.room.maid">غرفة العاملة</span></button>
+              <button type="button" class="villa-tour-room" data-tour-room="laundry" aria-pressed="false"><span>10</span><span data-i18n="walk.room.laundry">الغسيل والكي</span></button>
             </nav>
-            <p class="villa-tour-note" data-i18n="walk.note">المشاهد الداخلية أمثلة مرئية من أعمال الاستوديو؛ المخطط المرفق يوضح توزيع الفراغات فقط.</p>
+            <p class="villa-tour-note" data-i18n="walk.note">هذا نموذج ثلاثي الأبعاد تصوري مبني على المخطط المرفق؛ الأبعاد والتشطيبات الداخلية تحتاج اعتماداً قبل اعتباره تنفيذاً نهائياً.</p>
           </div>
         </div>
       </div>
@@ -1377,7 +1400,8 @@
     </div>
   </footer>
 
-  <script src="assets/villa-tour-facade.js?v=interactive-tour-20261127"></script>
-  <script src="script.js?v=architecture1-interactive-tour-20261127"></script>
+  <script src="assets/villa-tour-facade.js?v=interactive-walk-20261127"></script>
+  <script src="script.js?v=architecture1-walkthrough-20261127"></script>
+  <script type="module" src="villa-tour-3d.js?v=walkthrough-20261127"></script>
 </body>
 </html>
