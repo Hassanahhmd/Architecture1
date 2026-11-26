@@ -22,10 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.contact": "تواصل معي",
 
       "hero.portrait_role": "Architecture Engineer & 3D Visualization Specialist",
-      "reel.tag": "جولة افتراضية — فيلا كلاسيكية",
-      "reel.title": "من الواجهة إلى أدق تفاصيل الداخل",
-      "reel.subtitle": "جولة داخل فيلا كلاسيكية فاخرة — من الواجهة الحجرية إلى تفاصيل الفراغات والإضاءة والخامات",
-      "reel.kicker": "جولة افتراضية من الواجهة إلى كل غرفة",
+      "reel.tag": "جولة تفاعلية لمشروع الفيلا",
+      "reel.title": "ادخل الفيلا وتنقّل بين فراغاتها",
+      "reel.subtitle": "اختر غرفة أو استخدم الأسهم للانتقال بين مشاهد المشروع. افتح الجولة بملء الشاشة واستكشف المسار على راحتك.",
+      "reel.kicker": "مشهد تصوري من الواجهة إلى الفراغات",
+      "walk.status": "جولة تفاعلية للمخطط الأرضي",
+      "walk.type": "مشاهد تصورية",
+      "walk.fullscreen": "فتح بملء الشاشة",
+      "walk.exit": "إنهاء ملء الشاشة",
+      "walk.route": "مسار الجولة",
+      "walk.prev": "السابق",
+      "walk.next": "التالي",
+      "walk.rooms": "تنقّل بين الفراغات",
+      "walk.of": "من",
+      "walk.room.facade": "الواجهة",
+      "walk.room.majlis": "المجلس",
+      "walk.room.living": "المعيشة",
+      "walk.room.dining": "الطعام",
+      "walk.room.kitchen": "المطبخ",
+      "walk.room.outdoor": "جلسة خارجية",
+      "walk.note": "المشاهد الداخلية أمثلة مرئية من أعمال الاستوديو؛ المخطط المرفق يوضح توزيع الفراغات فقط.",
       "hero.badge": "متاح للمشاريع والاستشارات المعمارية",
       "hero.name": "حسن أحمد",
       "hero.quiz": "ابدأ اختبار الطراز المعماري",
@@ -266,10 +282,26 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.contact": "Contact",
 
       "hero.portrait_role": "Architecture Engineer & 3D Visualization Specialist",
-      "reel.tag": "Virtual Classic Villa Tour",
-      "reel.title": "From the Facade to Every Interior Detail",
-      "reel.subtitle": "Step inside a classic luxury villa, from its stone facade to the lighting, materials, and details of every room.",
-      "reel.kicker": "A virtual tour from facade to every room",
+      "reel.tag": "Interactive Villa Walkthrough",
+      "reel.title": "Step inside and move room by room",
+      "reel.subtitle": "Choose a room or use the arrows to move through the project. Open full screen and explore the route at your own pace.",
+      "reel.kicker": "A concept walk from the facade through the rooms",
+      "walk.status": "GROUND FLOOR WALKTHROUGH",
+      "walk.type": "CONCEPT VIEWS",
+      "walk.fullscreen": "OPEN FULL SCREEN",
+      "walk.exit": "EXIT FULL SCREEN",
+      "walk.route": "WALK THE PLAN",
+      "walk.prev": "Previous",
+      "walk.next": "Next",
+      "walk.rooms": "Choose a room",
+      "walk.of": "of",
+      "walk.room.facade": "Facade",
+      "walk.room.majlis": "Majlis",
+      "walk.room.living": "Living",
+      "walk.room.dining": "Dining",
+      "walk.room.kitchen": "Kitchen",
+      "walk.room.outdoor": "Outdoor",
+      "walk.note": "Interior scenes are selected studio references; the supplied plan establishes room layout only.",
       "hero.badge": "Available for Architecture & Interior Projects",
       "hero.name": "Hassan Ahmed",
       "hero.quiz": "Take the Architectural Style Quiz",
@@ -524,6 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Re-render projects and update estimator text in the new language
     renderProjects(activeFilter);
     calculateEstimate();
+    renderVillaTourScene();
   }
 
   const langToggleBtn = document.getElementById('langToggle');
@@ -1831,67 +1864,181 @@ I just completed your architectural style quiz and my result was:
     }, { passive: true });
   }
 
-  // Showreel video controls & chapter sync
-  const reelVideo = document.getElementById('studioShowreelVideo');
-  const reelPlayPauseBtn = document.getElementById('reelPlayPauseBtn');
-  const reelPlayIcon = document.getElementById('reelPlayIcon');
-  const reelFullscreenBtn = document.getElementById('reelFullscreenBtn');
-  const reelActiveCaption = document.getElementById('reelActiveCaption');
-  const reelChapterBtns = document.querySelectorAll('.reel-chapter-btn');
-
-  if (reelVideo) {
-    // Ensure autoplay starts smoothly on browsers allowing muted playback
-    reelVideo.play().catch(() => {});
-
-    if (reelPlayPauseBtn) {
-      reelPlayPauseBtn.addEventListener('click', () => {
-        if (reelVideo.paused) {
-          reelVideo.play();
-          if (reelPlayIcon) reelPlayIcon.textContent = '⏸';
-        } else {
-          reelVideo.pause();
-          if (reelPlayIcon) reelPlayIcon.textContent = '▶';
-        }
-      });
+  // Interactive villa walkthrough
+  const villaTourShell = document.getElementById('villaTourShell');
+  const villaTourImage = document.getElementById('villaTourImage');
+  const villaTourTitle = document.getElementById('villaTourSceneTitle');
+  const villaTourDescription = document.getElementById('villaTourSceneDescription');
+  const villaTourCounter = document.getElementById('villaTourCounter');
+  const villaTourCurrentStep = document.getElementById('villaTourCurrentStep');
+  const villaTourProgress = document.getElementById('villaTourProgress');
+  const villaTourFullscreenBtn = document.getElementById('villaTourFullscreenBtn');
+  const villaTourFullscreenText = document.getElementById('villaTourFullscreenText');
+  const villaTourViewer = document.getElementById('villaTourViewer');
+  const villaTourScenes = [
+    {
+      image: window.villaTourFacade || 'assets/projects/facade.png',
+      title_ar: 'الواجهة الرئيسية',
+      title_en: 'The villa facade',
+      alt_ar: 'الواجهة الكلاسيكية للفيلا',
+      alt_en: 'Classic villa facade concept',
+      description_ar: 'ابدأ من الواجهة الكلاسيكية للفيلا.',
+      description_en: 'Begin at the classic facade concept.'
+    },
+    {
+      image: 'assets/projects/majles-luxury.jpg',
+      title_ar: 'مجلس الضيوف',
+      title_en: 'Guest majlis',
+      alt_ar: 'تصور داخلي لمجلس الضيوف',
+      alt_en: 'Selected portfolio reference for a guest majlis',
+      description_ar: 'تصور استرشادي لمجلس استقبال الضيوف.',
+      description_en: 'A selected studio reference for the guest majlis.'
+    },
+    {
+      image: 'assets/projects/double-height-reception.jpg',
+      title_ar: 'صالة المعيشة',
+      title_en: 'The living hall',
+      alt_ar: 'تصور داخلي لصالة معيشة واسعة',
+      alt_en: 'Selected portfolio reference for a spacious living hall',
+      description_ar: 'مرجع بصري لفراغ معيشة رحب.',
+      description_en: 'A selected studio reference for a generous living space.'
+    },
+    {
+      image: 'assets/projects/reception-american.jpg',
+      title_ar: 'منطقة الطعام',
+      title_en: 'Dining area',
+      alt_ar: 'تصور داخلي لمنطقة معيشة وطعام مفتوحة',
+      alt_en: 'Selected portfolio reference for an open living and dining space',
+      description_ar: 'نقطة انتقال بين المعيشة ومنطقة الطعام.',
+      description_en: 'An open living and dining reference along the route.'
+    },
+    {
+      image: 'assets/projects/modern-kitchen-360.jpg',
+      title_ar: 'المطبخ',
+      title_en: 'The kitchen',
+      alt_ar: 'تصور داخلي لمطبخ معاصر',
+      alt_en: 'Selected portfolio reference for a contemporary kitchen',
+      description_ar: 'مرجع بصري للمطبخ والتخزين المدمج.',
+      description_en: 'A selected studio reference for the kitchen and its storage.'
+    },
+    {
+      image: 'assets/projects/roof-design.png',
+      title_ar: 'الجلسة الخارجية',
+      title_en: 'Outdoor seating',
+      alt_ar: 'تصور استرشادي لجلسة خارجية',
+      alt_en: 'Selected portfolio reference for outdoor seating',
+      description_ar: 'أنهِ الجولة في جلسة خارجية مريحة.',
+      description_en: 'End the route with an outdoor seating reference.'
     }
+  ];
+  let villaTourIndex = 0;
 
-    if (reelFullscreenBtn) {
-      reelFullscreenBtn.addEventListener('click', () => {
-        if (reelVideo.requestFullscreen) {
-          reelVideo.requestFullscreen();
-        } else if (reelVideo.webkitRequestFullscreen) {
-          reelVideo.webkitRequestFullscreen();
-        }
-      });
-    }
+  function renderVillaTourScene() {
+    if (!villaTourShell || !villaTourImage) return;
+    const scene = villaTourScenes[villaTourIndex];
+    const lang = currentLang === 'en' ? 'en' : 'ar';
+    const title = scene['title_' + lang];
+    if (villaTourTitle) villaTourTitle.textContent = title;
+    if (villaTourDescription) villaTourDescription.textContent = scene['description_' + lang];
+    villaTourImage.alt = scene['alt_' + lang];
+    villaTourImage.classList.add('is-changing');
+    const imageLoader = new Image();
+    imageLoader.onload = () => {
+      villaTourImage.src = scene.image;
+      villaTourImage.classList.remove('is-changing');
+    };
+    imageLoader.onerror = () => {
+      villaTourImage.src = scene.image;
+      villaTourImage.classList.remove('is-changing');
+    };
+    imageLoader.src = scene.image;
 
-    reelChapterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const t = parseFloat(btn.getAttribute('data-time') || '0');
-        const cap = btn.getAttribute('data-caption') || '';
-        reelVideo.currentTime = t;
-        reelVideo.play().catch(() => {});
-        if (reelPlayIcon) reelPlayIcon.textContent = '⏸';
-        if (reelActiveCaption && cap) reelActiveCaption.textContent = cap;
-        reelChapterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
+    const number = String(villaTourIndex + 1).padStart(2, '0');
+    const total = String(villaTourScenes.length).padStart(2, '0');
+    if (villaTourCounter) villaTourCounter.textContent = number + ' / ' + total;
+    if (villaTourCurrentStep) villaTourCurrentStep.textContent = number;
+    if (villaTourProgress) villaTourProgress.style.width = ((villaTourIndex + 1) / villaTourScenes.length * 100) + '%';
+
+    document.querySelectorAll('[data-tour-scene]').forEach(button => {
+      const active = Number(button.getAttribute('data-tour-scene')) === villaTourIndex;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
     });
 
-    reelVideo.addEventListener('timeupdate', () => {
-      const ct = reelVideo.currentTime;
-      let activeBtn = reelChapterBtns[0];
-      reelChapterBtns.forEach(btn => {
-        const bt = parseFloat(btn.getAttribute('data-time') || '0');
-        if (ct >= bt) activeBtn = btn;
-      });
-      if (activeBtn && !activeBtn.classList.contains('active')) {
-        reelChapterBtns.forEach(b => b.classList.remove('active'));
-        activeBtn.classList.add('active');
-        const cap = activeBtn.getAttribute('data-caption');
-        if (reelActiveCaption && cap) reelActiveCaption.textContent = cap;
+    const fullscreenActive = document.fullscreenElement === villaTourShell || villaTourShell.classList.contains('is-windowed-fullscreen');
+    const fullscreenLabel = translations[lang][fullscreenActive ? 'walk.exit' : 'walk.fullscreen'];
+    if (villaTourFullscreenText) villaTourFullscreenText.textContent = fullscreenLabel;
+    if (villaTourFullscreenBtn) villaTourFullscreenBtn.setAttribute('aria-label', fullscreenLabel);
+  }
+
+  function goToVillaTourScene(index) {
+    villaTourIndex = (index + villaTourScenes.length) % villaTourScenes.length;
+    renderVillaTourScene();
+  }
+
+  const villaTourPrevBtn = document.getElementById('villaTourPrevBtn');
+  const villaTourNextBtn = document.getElementById('villaTourNextBtn');
+  if (villaTourPrevBtn) villaTourPrevBtn.addEventListener('click', () => goToVillaTourScene(villaTourIndex - 1));
+  if (villaTourNextBtn) villaTourNextBtn.addEventListener('click', () => goToVillaTourScene(villaTourIndex + 1));
+  document.querySelectorAll('[data-tour-scene]').forEach(button => {
+    button.addEventListener('click', () => goToVillaTourScene(Number(button.getAttribute('data-tour-scene'))));
+  });
+
+  function closeVillaTourFullscreen() {
+    if (document.fullscreenElement === villaTourShell && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    } else if (villaTourShell) {
+      villaTourShell.classList.remove('is-windowed-fullscreen');
+      document.body.classList.remove('tour-locked');
+    }
+    renderVillaTourScene();
+  }
+
+  if (villaTourFullscreenBtn && villaTourShell) {
+    villaTourFullscreenBtn.addEventListener('click', async () => {
+      const active = document.fullscreenElement === villaTourShell || villaTourShell.classList.contains('is-windowed-fullscreen');
+      if (active) {
+        closeVillaTourFullscreen();
+        return;
       }
+      if (villaTourShell.requestFullscreen) {
+        try {
+          await villaTourShell.requestFullscreen({ navigationUI: 'hide' });
+        } catch (error) {
+          villaTourShell.classList.add('is-windowed-fullscreen');
+          document.body.classList.add('tour-locked');
+        }
+      } else {
+        villaTourShell.classList.add('is-windowed-fullscreen');
+        document.body.classList.add('tour-locked');
+      }
+      renderVillaTourScene();
     });
+  }
+
+  document.addEventListener('fullscreenchange', renderVillaTourScene);
+  document.addEventListener('keydown', event => {
+    const fullscreenActive = villaTourShell && (document.fullscreenElement === villaTourShell || villaTourShell.classList.contains('is-windowed-fullscreen'));
+    if (event.key === 'Escape' && villaTourShell && villaTourShell.classList.contains('is-windowed-fullscreen')) {
+      closeVillaTourFullscreen();
+      return;
+    }
+    if (!fullscreenActive && (!villaTourShell || !villaTourShell.contains(document.activeElement))) return;
+    if (event.key === 'ArrowRight') goToVillaTourScene(villaTourIndex + 1);
+    if (event.key === 'ArrowLeft') goToVillaTourScene(villaTourIndex - 1);
+  });
+
+  let villaTourTouchStart = null;
+  if (villaTourViewer) {
+    villaTourViewer.addEventListener('touchstart', event => {
+      villaTourTouchStart = event.changedTouches[0]?.clientX ?? null;
+    }, { passive: true });
+    villaTourViewer.addEventListener('touchend', event => {
+      if (villaTourTouchStart === null) return;
+      const distance = event.changedTouches[0].clientX - villaTourTouchStart;
+      if (Math.abs(distance) > 70) goToVillaTourScene(villaTourIndex + (distance < 0 ? 1 : -1));
+      villaTourTouchStart = null;
+    }, { passive: true });
   }
 
   // Luxury staggered scroll-reveal animations
