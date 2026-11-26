@@ -4270,3 +4270,96 @@ input:focus-visible {
 @media (max-width: 480px) {
   .tiktok-video-grid { grid-template-columns: 1fr; max-width: 340px; }
 }
+
+
+/* ==========================================================================
+   Premium palette — warm ivory, architectural olive, and restrained orange
+   ========================================================================== */
+:root {
+  --bg-primary: #f8f5ed;
+  --bg-secondary: #efebe1;
+  --bg-tertiary: #e3ddcf;
+  --surface-ground: #f8f5ed;
+  --surface-card: #fffdf8;
+  --surface-card-hover: #fffdf8;
+  --bg-card: #fffdf8;
+  --bg-card-hover: #fbf1e4;
+
+  --accent-olive: #505940;
+  --accent-olive-dark: #343d2e;
+  --accent-olive-light: #707a58;
+  --accent-olive-soft: rgba(80, 89, 64, 0.10);
+  --accent-olive-glow: rgba(52, 61, 46, 0.18);
+  --accent-sage: #92977d;
+  --accent-orange: #ff8f3a;
+  --accent-orange-dark: #e87927;
+  --accent-orange-soft: rgba(255, 143, 58, 0.14);
+  --accent-gold: var(--accent-orange);
+  --accent-gold-light: #ffb36f;
+  --accent-gold-glow: rgba(255, 143, 58, 0.22);
+  --accent-blue-tech: #65715a;
+
+  --text-main: #24271f;
+  --text-light: #24271f;
+  --text-muted: #575b50;
+  --text-dim: #77796f;
+  --text-inverse: #fffdf8;
+
+  --border-subtle: rgba(80, 89, 64, 0.12);
+  --border-color: rgba(80, 89, 64, 0.22);
+  --border-gold: rgba(255, 143, 58, 0.38);
+  --border-hover: rgba(80, 89, 64, 0.52);
+  --shadow-sm: 0 8px 24px rgba(45, 49, 37, 0.04);
+  --shadow-card: 0 16px 44px rgba(45, 49, 37, 0.07);
+  --shadow-hover: 0 24px 55px rgba(45, 49, 37, 0.12);
+}
+
+.site-header {
+  background: rgba(248, 245, 237, 0.94);
+  border-bottom-color: var(--border-subtle);
+}
+.hero-section {
+  background:
+    radial-gradient(ellipse at 82% 12%, rgba(255, 143, 58, 0.12), transparent 34%),
+    linear-gradient(180deg, #fbf9f3 0%, #f1ede3 100%);
+}
+.stats-section { background: var(--accent-olive-dark); }
+.stat-number { color: #ffad68 !important; }
+.section-tag {
+  background: var(--accent-orange-soft) !important;
+  color: #6b3a18 !important;
+  border: 1px solid rgba(255, 143, 58, 0.34) !important;
+}
+.acc-icon { color: var(--accent-orange); }
+.btn-primary,
+.btn-quiz {
+  background: var(--accent-orange) !important;
+  border: 1px solid var(--accent-orange) !important;
+  color: var(--accent-olive-dark) !important;
+  box-shadow: 0 8px 22px rgba(230, 121, 39, 0.22) !important;
+}
+.btn-primary:hover,
+.btn-quiz:hover {
+  background: var(--accent-orange-dark) !important;
+  border-color: var(--accent-orange-dark) !important;
+  color: #24271f !important;
+  box-shadow: 0 10px 26px rgba(230, 121, 39, 0.28) !important;
+}
+.desktop-nav .btn-nav-cta {
+  background: var(--accent-orange-soft);
+  color: var(--accent-olive-dark) !important;
+  border-color: rgba(255, 143, 58, 0.38);
+}
+.desktop-nav .btn-nav-cta:hover {
+  background: var(--accent-orange);
+  color: var(--accent-olive-dark) !important;
+  border-color: var(--accent-orange);
+}
+.filter-btn.active {
+  background: var(--accent-olive-dark) !important;
+  border-color: var(--accent-olive-dark) !important;
+  color: #fffdf8 !important;
+}
+.project-card,
+.tiktok-video-card { background: var(--surface-card); }
+.contact-section { background: linear-gradient(180deg, var(--bg-secondary), #f6f2e9); }
