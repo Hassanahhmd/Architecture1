@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.skills": "المهارات والبرامج",
       "nav.contact": "تواصل معي",
 
+      "hero.portrait_role": "Architecture Engineer & 3D Visualization Specialist",
+      "reel.tag": "عرض سينمائي للأعمال",
+      "reel.title": "جولة مرئية داخل أبرز مشاريعنا المنفذة",
+      "reel.subtitle": "لقطات متحركة عالية الدقة تستعرض تفاصيل الإضاءة، الخامات، والتكوين المعماري من أرض الواقع والتصور ثلاثي الأبعاد",
+      "reel.kicker": "إظهار معماري ثلاثي الأبعاد وتنفيذ متكامل",
       "hero.badge": "متاح للمشاريع والاستشارات المعمارية",
       "hero.name": "حسن أحمد",
       "hero.subtitle": "مصمم معماري يقود التصميم والتنفيذ من الفكرة إلى التسليم",
@@ -252,6 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.skills": "Skills & Tools",
       "nav.contact": "Contact",
 
+      "hero.portrait_role": "Architecture Engineer & 3D Visualization Specialist",
+      "reel.tag": "Cinematic Studio Showreel",
+      "reel.title": "Motion Tour Inside Selected Signature Works",
+      "reel.subtitle": "High-definition animated architectural sequences showcasing lighting, material depth, and spatial flow",
+      "reel.kicker": "3D VISUALIZATION & TURNKEY EXECUTION",
       "hero.badge": "Available for Architecture & Interior Projects",
       "hero.name": "Hassan Ahmed",
       "hero.subtitle": "Architectural Design & Project Delivery",
@@ -1759,6 +1769,106 @@ I just completed your architectural style quiz and my result was:
       if (quizResult) quizResult.style.display = 'none';
       if (quizScreen) quizScreen.style.display = 'block';
     });
+  }
+
+
+  // ==========================================
+  // 8. Cinematic Showreel & $10K Motion Engine
+  // ==========================================
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  if (scrollProgressBar) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgressBar.style.width = `${progress}%`;
+    }, { passive: true });
+  }
+
+  // Showreel video controls & chapter sync
+  const reelVideo = document.getElementById('studioShowreelVideo');
+  const reelPlayPauseBtn = document.getElementById('reelPlayPauseBtn');
+  const reelPlayIcon = document.getElementById('reelPlayIcon');
+  const reelFullscreenBtn = document.getElementById('reelFullscreenBtn');
+  const reelActiveCaption = document.getElementById('reelActiveCaption');
+  const reelChapterBtns = document.querySelectorAll('.reel-chapter-btn');
+
+  if (reelVideo) {
+    // Ensure autoplay starts smoothly on browsers allowing muted playback
+    reelVideo.play().catch(() => {});
+
+    if (reelPlayPauseBtn) {
+      reelPlayPauseBtn.addEventListener('click', () => {
+        if (reelVideo.paused) {
+          reelVideo.play();
+          if (reelPlayIcon) reelPlayIcon.textContent = '⏸';
+        } else {
+          reelVideo.pause();
+          if (reelPlayIcon) reelPlayIcon.textContent = '▶';
+        }
+      });
+    }
+
+    if (reelFullscreenBtn) {
+      reelFullscreenBtn.addEventListener('click', () => {
+        if (reelVideo.requestFullscreen) {
+          reelVideo.requestFullscreen();
+        } else if (reelVideo.webkitRequestFullscreen) {
+          reelVideo.webkitRequestFullscreen();
+        }
+      });
+    }
+
+    reelChapterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const t = parseFloat(btn.getAttribute('data-time') || '0');
+        const cap = btn.getAttribute('data-caption') || '';
+        reelVideo.currentTime = t;
+        reelVideo.play().catch(() => {});
+        if (reelPlayIcon) reelPlayIcon.textContent = '⏸';
+        if (reelActiveCaption && cap) reelActiveCaption.textContent = cap;
+        reelChapterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    reelVideo.addEventListener('timeupdate', () => {
+      const ct = reelVideo.currentTime;
+      let activeBtn = reelChapterBtns[0];
+      reelChapterBtns.forEach(btn => {
+        const bt = parseFloat(btn.getAttribute('data-time') || '0');
+        if (ct >= bt) activeBtn = btn;
+      });
+      if (activeBtn && !activeBtn.classList.contains('active')) {
+        reelChapterBtns.forEach(b => b.classList.remove('active'));
+        activeBtn.classList.add('active');
+        const cap = activeBtn.getAttribute('data-caption');
+        if (reelActiveCaption && cap) reelActiveCaption.textContent = cap;
+      }
+    });
+  }
+
+  // Luxury staggered scroll-reveal animations
+  const revealTargets = document.querySelectorAll(
+    '.stat-card, .project-card, .lab-card, .quotas-matrix-banner, .estimator-card, .timeline-item, .skill-category, .edu-card, .contact-box, .reveal-on-scroll'
+  );
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealTargets.forEach((el, idx) => {
+      el.classList.add('reveal-item');
+      el.style.transitionDelay = `${Math.min((idx % 4) * 70, 210)}ms`;
+      revealObserver.observe(el);
+    });
+  } else {
+    revealTargets.forEach(el => el.classList.add('is-revealed'));
   }
 
 });

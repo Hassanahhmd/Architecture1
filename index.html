@@ -14,9 +14,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=2027-packages-social">
+  <link rel="stylesheet" href="style.css?v=2027-showreel-10k">
 </head>
 <body class="theme-olive-classic">
+  <!-- Top Architectural Scroll Progress -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
 
   <!-- Background Blueprint Subtle Grid Effect -->
   <div class="blueprint-overlay"></div>
@@ -147,7 +149,7 @@
               <img src="assets/profile.jpg" alt="Architect Hassan Ahmed" class="hero-portrait-img" loading="eager">
               <div class="portrait-badge">
                 <span class="p-name">ENG. HASSAN AHMED</span>
-                <span class="p-title" data-i18n="nav.role">مهندس معماري · ARCHITECT</span>
+                <span class="p-title" data-i18n="hero.portrait_role">Architecture Engineer &amp; 3D Visualization Specialist</span>
               </div>
             </div>
 
@@ -191,6 +193,58 @@
             <span class="stat-number" data-target="6">6+</span>
             <span class="stat-title" data-i18n="stats.p4_title">مجمعات سكنية كبرى</span>
             <span class="stat-desc" data-i18n="stats.p4_desc">Mivida, Mountain View, Orascom, Al-Futtaim وغيرهم</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CINEMATIC ARCHITECTURAL SHOWREEL (فيلم استعراض الأعمال المعمارية)
+         ========================================================================== -->
+    <section class="showreel-section reveal-on-scroll" id="showreel">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="reel.tag">عرض سينمائي للأعمال</div>
+          <h2 class="section-title" data-i18n="reel.title">جولة مرئية داخل أبرز مشاريعنا المنفذة</h2>
+          <p class="section-subtitle" data-i18n="reel.subtitle">لقطات متحركة عالية الدقة تستعرض تفاصيل الإضاءة، الخامات، والتكوين المعماري من أرض الواقع والتصور ثلاثي الأبعاد</p>
+        </div>
+
+        <div class="showreel-frame">
+          <div class="showreel-top-hud">
+            <div class="hud-brand-pill">
+              <span class="rec-dot"></span>
+              <span>HASSAN AHMED STUDIO · 2027 SHOWREEL</span>
+            </div>
+            <div class="showreel-controls">
+              <button type="button" id="reelPlayPauseBtn" class="reel-ctrl-btn" aria-label="Play or Pause Showreel" title="Play / Pause">
+                <span id="reelPlayIcon">⏸</span>
+              </button>
+              <button type="button" id="reelFullscreenBtn" class="reel-ctrl-btn" aria-label="Fullscreen Showreel" title="Fullscreen">
+                ⛶
+              </button>
+            </div>
+          </div>
+
+          <div class="showreel-video-wrap">
+            <video id="studioShowreelVideo" class="showreel-video" autoplay muted loop playsinline preload="metadata" poster="assets/projects/jewelry-store-1.jpg">
+              <source src="assets/showreel.mp4" type="video/mp4">
+            </video>
+            <div class="showreel-vignette"></div>
+            <div class="showreel-bottom-caption">
+              <span class="caption-kicker" data-i18n="reel.kicker">3D VISUALIZATION &amp; TURNKEY EXECUTION</span>
+              <strong id="reelActiveCaption">S.T.O.R.E — Luxury Diamond &amp; Jewelry Showroom</strong>
+            </div>
+          </div>
+
+          <div class="showreel-chapters">
+            <button type="button" class="reel-chapter-btn active" data-time="0" data-caption="S.T.O.R.E — Luxury Diamond &amp; Jewelry Showroom">01 · S.T.O.R.E</button>
+            <button type="button" class="reel-chapter-btn" data-time="2.2" data-caption="F.A.C.A.D.E. — Neoclassical 6-Story Building">02 · F.A.C.A.D.E.</button>
+            <button type="button" class="reel-chapter-btn" data-time="4.4" data-caption="DOUBLE HEIGHT RECEPTION — Calacatta &amp; Brass">03 · RECEPTION</button>
+            <button type="button" class="reel-chapter-btn" data-time="6.6" data-caption="MASTER BEDROOM — Bookmatched Marble Suite">04 · MASTER SUITE</button>
+            <button type="button" class="reel-chapter-btn" data-time="8.8" data-caption="D.R.E.S.S.I.N.G — Bespoke Walk-in Closet">05 · D.R.E.S.S.I.N.G</button>
+            <button type="button" class="reel-chapter-btn" data-time="11.0" data-caption="L.U.X.E. V.I.L.L.A. — Modern Architectural Massing">06 · LUXE VILLA</button>
+            <button type="button" class="reel-chapter-btn" data-time="13.2" data-caption="M.A.J.L.E.S — Contemporary Hospitality Lounge">07 · M.A.J.L.E.S</button>
+            <button type="button" class="reel-chapter-btn" data-time="15.4" data-caption="MODERN KITCHEN 360° — Spatial Flow">08 · KITCHEN 360°</button>
           </div>
         </div>
       </div>
@@ -263,9 +317,13 @@
           <p class="section-subtitle" data-i18n="lab.subtitle">اختبر الرؤية الهندسية، تفاعل مع الإضاءة والخامات، واكتشف الطراز المعماري الأنسب لبيتك</p>
         </div>
 
-        <!-- Experience Tab Switchers -->
+        <!-- Experience Tab Switchers (Architectural Style Quiz pinned first) -->
         <div class="lab-tabs">
-          <button type="button" class="lab-tab-btn active" data-tab="tab-lighting">
+          <button type="button" class="lab-tab-btn highlight-tab active" data-tab="tab-quiz">
+            <span class="tab-icon">🧬</span>
+            <span data-i18n="lab.tab_quiz">كويز الطراز المناسب</span>
+          </button>
+          <button type="button" class="lab-tab-btn" data-tab="tab-lighting">
             <span class="tab-icon">☀️</span>
             <span data-i18n="lab.tab_light">محاكي الشمس والضوء</span>
           </button>
@@ -277,14 +335,10 @@
             <span class="tab-icon">🎨</span>
             <span data-i18n="lab.tab_mat">مغير الخامات اللحظي</span>
           </button>
-          <button type="button" class="lab-tab-btn highlight-tab" data-tab="tab-quiz">
-            <span class="tab-icon">🧬</span>
-            <span data-i18n="lab.tab_quiz">كويز الطراز المناسب</span>
-          </button>
         </div>
 
         <!-- Tab 1: Lighting & Sun Simulator (Active) -->
-        <div class="lab-tab-content active" id="tab-lighting">
+        <div class="lab-tab-content" id="tab-lighting">
           <div class="lab-card">
             <div class="lab-card-header">
               <div>
@@ -428,7 +482,7 @@
         </div>
 
         <!-- Tab 5: Architectural Style Quiz -->
-        <div class="lab-tab-content" id="tab-quiz">
+        <div class="lab-tab-content active" id="tab-quiz">
           <div class="lab-card quiz-card">
             
             <div id="quizScreen">

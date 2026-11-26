@@ -3966,3 +3966,227 @@ input:focus-visible {
   color: #ffffff;
   border-color: #25d366;
 }
+
+/* ==========================================================================
+   $10,000 ARCHITECTURAL STUDIO MOTION, SHOWREEL & PORTRAIT BADGE POLISH
+   ========================================================================== */
+
+/* Top Scroll Progress Indicator */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-olive-dark), var(--accent-olive-light), #9fb898);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* Portrait Badge refinement for longer title */
+.portrait-badge {
+  text-align: center;
+  line-height: 1.35;
+  padding: 0.55rem 1.25rem !important;
+}
+
+.portrait-badge .p-name {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.portrait-badge .p-title {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-top: 0.12rem;
+}
+
+/* Cinematic Showreel Section */
+.showreel-section {
+  padding-block: var(--space-2xl);
+  background: var(--bg-primary);
+}
+
+.showreel-frame {
+  background: #121911;
+  border: 2px solid rgba(61, 86, 55, 0.35);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(20, 32, 18, 0.22);
+}
+
+.showreel-top-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: rgba(18, 25, 17, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f3efe8;
+}
+
+.hud-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #dce6d9;
+}
+
+.rec-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #6ea862;
+  box-shadow: 0 0 10px #6ea862;
+  animation: pulseOlive 1.8s infinite;
+}
+
+.showreel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reel-ctrl-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.reel-ctrl-btn:hover {
+  background: var(--accent-olive);
+  transform: translateY(-1px);
+}
+
+.showreel-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 640px;
+  background: #0b100b;
+  overflow: hidden;
+}
+
+.showreel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showreel-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(12, 18, 12, 0.15) 0%, transparent 35%, transparent 65%, rgba(12, 18, 12, 0.85) 100%);
+}
+
+.showreel-bottom-caption {
+  position: absolute;
+  bottom: 1.25rem;
+  inset-inline-start: 1.5rem;
+  inset-inline-end: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  pointer-events: none;
+  color: #ffffff;
+}
+
+.caption-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #b7ceb2;
+}
+
+.showreel-bottom-caption strong {
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+.showreel-chapters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background: #172016;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  scrollbar-width: thin;
+}
+
+.reel-chapter-btn {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #c8d4c5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.reel-chapter-btn:hover {
+  background: rgba(95, 124, 88, 0.35);
+  color: #ffffff;
+}
+
+.reel-chapter-btn.active {
+  background: var(--accent-olive);
+  border-color: var(--accent-olive-light);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(61, 86, 55, 0.45);
+}
+
+/* Luxury Scroll Reveal & Project Motion */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card .project-img-real {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+}
+
+.project-card:hover .project-img-real {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .project-card:hover .project-img-real {
+    transform: none;
+  }
+}
