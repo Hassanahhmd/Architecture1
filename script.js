@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "projects.view_details": "عرض التفاصيل والصور",
       "projects.behance_cta": "عرض كافة الأعمال على Behance",
 
-            // Estimator translations & 2025 Quotas (AR)
+            // Estimator translations & 2027 Quotas (AR)
       "est.tag": "تخطيط أولي للميزانية",
-      "est.title": "حاسبة تكلفة التشطيب التقديرية",
+      "est.title": "حاسبة تكلفة التشطيب التقديرية لعام 2027",
       "est.subtitle": "تقدير أولي للتكلفة حسب المساحة ومستوى التشطيب. الأسعار والمزايا قابلة للتغيير؛ اطلب عرض سعر مكتوباً ومحدثاً قبل اتخاذ قرار أو توقيع عقد.",
       "est.unit_type_label": "نوع الوحدة العقارية",
       "est.unit_apt": "شقة سكنية",
@@ -63,14 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
       "est.unit_retail": "محل تجاري / ريتيل",
       "est.area_label": "المساحة الإجمالية (متر مربع)",
       "est.m2": "م²",
-      "est.tier_label": "مستويات التشطيب وعناصر الباقة",
-      "est.quotas_live_tag": "أسعار استرشادية — تُؤكد بعرض سعر",
+      "est.tier_label": "باقات التشطيب لعام 2027 وعناصر كل باقة",
+      "est.quotas_live_tag": "أسعار باقات 2027 — تُؤكد بعرض سعر",
       "est.gift_box_title": "كوتة وهدايا الباقة المشمولة مجاناً:",
-      "est.gift_note": "تُحدد الإضافات والهدايا في عرض السعر الحالي.",
+      "est.gift_note": "مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.",
 
-      // 2025 Quotas Matrix
-      "matrix.badge": "دليل استرشادي للباقات والمزايا",
-      "matrix.title": "مقارنة مستويات التشطيب والمزايا",
+      // 2027 Quotas Matrix
+      "matrix.badge": "باقات وأسعار 2027 المعتمدة",
+      "matrix.title": "جدول باقات التشطيب والهدايا لعام 2027",
       "matrix.desc": "استخدم القيم للتخطيط الأولي فقط. الأسعار والمزايا قد تتغير ويجب تأكيدها بعرض سعر مكتوب.",
 
       // 7 Tiers (AR)
@@ -283,9 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "projects.view_details": "View Details & Renders",
       "projects.behance_cta": "View Full Portfolio on Behance",
 
-            // Estimator translations & 2025 Quotas (EN)
+            // Estimator translations & 2027 Quotas (EN)
       "est.tag": "Early Budget Planner",
-      "est.title": "Finishing Cost Estimate",
+      "est.title": "2027 Finishing Cost Estimate",
       "est.subtitle": "Build an initial budget from area and finish level. Prices and inclusions may change; confirm them in a current written quotation before making decisions or signing.",
       "est.unit_type_label": "Property Type",
       "est.unit_apt": "Apartment",
@@ -294,14 +294,14 @@ document.addEventListener('DOMContentLoaded', () => {
       "est.unit_retail": "Retail Store",
       "est.area_label": "Total Floor Area (Square Meters)",
       "est.m2": "m²",
-      "est.tier_label": "Finishing levels and package inclusions",
-      "est.quotas_live_tag": "Indicative pricing · confirm by quotation",
+      "est.tier_label": "2027 Finishing Packages & Inclusions",
+      "est.quotas_live_tag": "2027 Package Rates · Confirm by Quote",
       "est.gift_box_title": "Included Package Perks & Quota Bonus:",
-      "est.gift_note": "Package extras and gifts are confirmed in the current written quotation.",
+      "est.gift_note": "Included in 2027 packages and confirmed in the written quotation.",
 
-      // 2025 Quotas Matrix (EN)
-      "matrix.badge": "Indicative package guide",
-      "matrix.title": "Finishing levels & package inclusions",
+      // 2027 Quotas Matrix (EN)
+      "matrix.badge": "2027 Packages & Pricing",
+      "matrix.title": "2027 Finishing Packages & Inclusions",
       "matrix.desc": "Use these values for early planning only. Prices and inclusions can change; confirm them in a current written quote.",
 
       // 7 Tiers (EN)
@@ -1102,8 +1102,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Medium Package',
       giftAr: 'سخانات كهرباء عادية للحمامات + تكييف 1.5 حصان ميديا (Midea)',
       giftEn: 'Electric water heaters for bathrooms + 1.5 HP Midea AC',
-      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
-      noteEn: 'Package extras are confirmed in the current written quotation.'
+      noteAr: 'مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.',
+      noteEn: 'Included in 2027 packages and confirmed in the written quotation.'
     },
     vip: {
       rate: 9300,
@@ -1111,8 +1111,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'VIP Package',
       giftAr: 'تكييف 1.5 حصان ميديا + (2) شاشة LG 43 بوصة سمارت',
       giftEn: '1.5 HP Midea AC + (2) LG 43-inch Smart 4K TVs',
-      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
-      noteEn: 'Package extras are confirmed in the current written quotation.'
+      noteAr: 'مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.',
+      noteEn: 'Included in 2027 packages and confirmed in the written quotation.'
     },
     ultravip: {
       rate: 11000,
@@ -1120,8 +1120,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Ultra VIP Package',
       giftAr: '(2) تكييف 1.5 حصان + (2) شاشة LG 43 بوصة بدقة 4K',
       giftEn: '(2) 1.5 HP ACs + (2) LG 43-inch Smart 4K TVs',
-      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
-      noteEn: 'Package extras are confirmed in the current written quotation.'
+      noteAr: 'مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.',
+      noteEn: 'Included in 2027 packages and confirmed in the written quotation.'
     },
     superultravip: {
       rate: 13000,
@@ -1129,8 +1129,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Super Ultra VIP Package',
       giftAr: 'مطبخ كامل تفصيل هدية (15 متر) + جزامة مدخل تفصيل هدية',
       giftEn: 'Custom full kitchen (15m) + Custom entrance shoe cabinet',
-      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
-      noteEn: 'Package extras are confirmed in the current written quotation.'
+      noteAr: 'مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.',
+      noteEn: 'Included in 2027 packages and confirmed in the written quotation.'
     },
     elite: {
       rate: 20000,
@@ -1138,8 +1138,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Elite Package (Architectural Choice)',
       giftAr: 'مطبخ كامل تفصيل هدية (15 متر) + دريسنج روم كامل تفصيل هدية (5 متر)',
       giftEn: 'Custom luxury kitchen (15m) + Custom dressing room (5m)',
-      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
-      noteEn: 'Package extras are confirmed in the current written quotation.'
+      noteAr: 'مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.',
+      noteEn: 'Included in 2027 packages and confirmed in the written quotation.'
     },
     luxury: {
       rate: 24000,
@@ -1147,8 +1147,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nameEn: 'Luxury Royal Package',
       giftAr: 'مطبخ فاخر هدية (20 متر) + دريسنج روم ماستر هدية (8 متر) + غرفة أطفال كاملة مصنعة هدية (2 سرير 120 + 1 كومود + دولاب 160)',
       giftEn: 'Luxury kitchen (20m) + Master dressing room (8m) + Full custom kids bedroom set (2 beds 120 + nightstand + wardrobe 160)',
-      noteAr: 'تُحدد الإضافات والهدايا في عرض السعر الحالي.',
-      noteEn: 'Package extras are confirmed in the current written quotation.'
+      noteAr: 'مشمولة ضمن باقات 2027 وتُؤكد في عرض السعر المكتوب.',
+      noteEn: 'Included in 2027 packages and confirmed in the written quotation.'
     }
   };
 
@@ -1258,7 +1258,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ` +
           `• المساحة: ${area} م²
 ` +
-          `• الباقة المختارة (سعر استرشادي): ${tierName} (~${formatEGP(currentBaseRate)} ج.م/م²)
+          `• باقة التشطيب لعام 2027 (سعر استرشادي): ${tierName} (~${formatEGP(currentBaseRate)} ج.م/م²)
 ` +
           `• 🎁 الهدايا المشمولة مجاناً: ${tierGift}
 ` +
@@ -1279,7 +1279,7 @@ I used the estimator for an initial budget reference. Please send a current writ
 ` +
           `• Total Area: ${area} m²
 ` +
-          `• Selected package (indicative rate): ${tierName} (~${formatEGP(currentBaseRate)} EGP/m²)
+          `• 2027 Selected package (indicative rate): ${tierName} (~${formatEGP(currentBaseRate)} EGP/m²)
 ` +
           `• 🎁 Included Complimentary Perks: ${tierGift}
 ` +
