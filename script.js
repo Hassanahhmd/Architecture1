@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "reel.kicker": "إظهار معماري ثلاثي الأبعاد وتنفيذ متكامل",
       "hero.badge": "متاح للمشاريع والاستشارات المعمارية",
       "hero.name": "حسن أحمد",
-      "hero.subtitle": "مصمم معماري يقود التصميم والتنفيذ من الفكرة إلى التسليم",
+      "hero.quiz": "ابدأ اختبار الطراز المعماري",
+      "hero.subtitle": "Architecture Engineer & 3D Visualization Specialist",
       "hero.desc": "أصمم وأقود مشاريع معمارية وداخلية في مصر، من تطوير الفكرة والمخططات إلى تنسيق الموقع والتسليم. يجمع عملي بين وضوح الرؤية، دقة التفاصيل، وخبرة تسليم أكثر من 50 مشروعاً سكنياً وتجارياً وصناعياً.",
       "hero.zero_violations": "صفر مخالفات هندسية عبر 30+ مشروع",
       "hero.view_work": "تصفح المشاريع",
@@ -56,6 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "projects.filter_industrial": "صناعي وإنشائي",
       "projects.view_details": "عرض التفاصيل والصور",
       "projects.behance_cta": "عرض كافة الأعمال على Behance",
+      "tiktok.tag": "من أعمال الاستوديو",
+      "tiktok.title": "جولات المشاريع على تيك توك",
+      "tiktok.subtitle": "شاهد تفاصيل التصميم والتحولات المعمارية من Design-Scape.",
+      "tiktok.profile": "شاهد جميع الفيديوهات على تيك توك",
 
             // Estimator translations & 2027 Quotas (AR)
       "est.tag": "تخطيط أولي للميزانية",
@@ -160,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "est.cta_print": "طباعة المقايسة (PDF)",
 
       // Interactive Lab translations
-      "nav.lab": "المعمل التفاعلي ⚡",
+      "nav.lab": "🧬 اختبار الطراز المعماري",
       "lab.tag": "تجربة تفاعلية حصرية",
       "lab.title": "معمل الإبداع المعماري التفاعلي",
       "lab.subtitle": "اختبر الرؤية الهندسية، تفاعل مع الإضاءة والخامات، واكتشف الطراز المعماري الأنسب لبيتك",
@@ -264,7 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "reel.kicker": "3D VISUALIZATION & TURNKEY EXECUTION",
       "hero.badge": "Available for Architecture & Interior Projects",
       "hero.name": "Hassan Ahmed",
-      "hero.subtitle": "Architectural Design & Project Delivery",
+      "hero.quiz": "Take the Architectural Style Quiz",
+      "hero.subtitle": "Architecture Engineer & 3D Visualization Specialist",
       "hero.desc": "Architectural and interior design across Egypt, from concept development and drawings through site coordination and handover. A detail-led approach backed by 50+ residential, retail, and industrial projects delivered.",
       "hero.zero_violations": "Zero Code Violations across 30+ projects",
       "hero.view_work": "Explore Projects",
@@ -292,6 +298,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "projects.filter_industrial": "Industrial",
       "projects.view_details": "View Details & Renders",
       "projects.behance_cta": "View Full Portfolio on Behance",
+      "tiktok.tag": "From the studio",
+      "tiktok.title": "Project walkthroughs on TikTok",
+      "tiktok.subtitle": "Watch real design details and transformations from Design-Scape.",
+      "tiktok.profile": "View all videos on TikTok",
 
             // Estimator translations & 2027 Quotas (EN)
       "est.tag": "Early Budget Planner",
@@ -396,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "est.cta_print": "Print Estimate (PDF)",
 
       // Interactive Lab translations (EN)
-      "nav.lab": "Interactive Lab ⚡",
+      "nav.lab": "🧬 Architectural Style Quiz",
       "lab.tag": "Exclusive Architectural Experience",
       "lab.title": "Interactive Architectural Lab",
       "lab.subtitle": "Explore spatial concepts, interact with natural daylight and materials, and discover your design DNA",
@@ -1451,6 +1461,36 @@ I used the estimator for an initial budget reference. Please send a current writ
     });
   });
 
+  document.querySelectorAll('[data-open-quiz]').forEach(link => {
+    link.addEventListener('click', () => {
+      const quizButton = document.querySelector('.lab-tab-btn[data-tab="tab-quiz"]');
+      const quizContent = document.getElementById('tab-quiz');
+      if (!quizButton || !quizContent) return;
+      labTabBtns.forEach(button => button.classList.remove('active'));
+      labTabContents.forEach(content => content.classList.remove('active'));
+      quizButton.classList.add('active');
+      quizContent.classList.add('active');
+    });
+  });
+
+  // Pause every other TikTok embed when one begins playback.
+  window.addEventListener('message', event => {
+    if (event.origin !== 'https://www.tiktok.com' || !event.data) return;
+    let message = event.data;
+    if (typeof message === 'string') {
+      try { message = JSON.parse(message); } catch { return; }
+    }
+    if (message['x-tiktok-player'] !== true || message.type !== 'onStateChange' || Number(message.value) !== 1) return;
+    const players = Array.from(document.querySelectorAll('.tiktok-player'));
+    const activePlayer = players.find(player => player.contentWindow === event.source);
+    if (!activePlayer) return;
+    players.forEach(player => {
+      if (player !== activePlayer && player.contentWindow) {
+        player.contentWindow.postMessage({ type: 'pause', value: null, 'x-tiktok-player': true }, 'https://www.tiktok.com');
+      }
+    });
+  });
+
 
 // --- Module B: Removed per request ---
 
@@ -1850,7 +1890,7 @@ I just completed your architectural style quiz and my result was:
 
   // Luxury staggered scroll-reveal animations
   const revealTargets = document.querySelectorAll(
-    '.stat-card, .project-card, .lab-card, .quotas-matrix-banner, .estimator-card, .timeline-item, .skill-category, .edu-card, .contact-box, .reveal-on-scroll'
+    '.stat-card, .lab-card, .quotas-matrix-banner, .estimator-card, .timeline-item, .skill-category, .edu-card, .contact-box, .reveal-on-scroll'
   );
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries, obs) => {
