@@ -443,10 +443,11 @@ if (shell && viewport && canvas) {
   function addWallArtZ(z, y, x, width, height, color) {
     const frame = new THREE.MeshStandardMaterial({ color: 0x8f713f, metalness: 0.52, roughness: 0.38 });
     const artwork = new THREE.MeshStandardMaterial({ color, roughness: 0.9 });
+    const face = z < 0 || (z > 0 && z < 1) ? 1 : -1;
     addBox(x, y, z, width + 0.16, height + 0.16, 0.09, frame, scene, false);
-    addBox(x, y, z + (z < 0 ? 0.055 : -0.055), width, height, 0.045, artwork, scene, false);
-    addBox(x, y - height * 0.25, z + (z < 0 ? 0.084 : -0.084), width * 0.62, 0.045, 0.02, brassMat, scene, false);
-    addBox(x, y + height * 0.1, z + (z < 0 ? 0.084 : -0.084), width * 0.43, 0.035, 0.02, creamMat, scene, false);
+    addBox(x, y, z + face * 0.055, width, height, 0.045, artwork, scene, false);
+    addBox(x, y - height * 0.25, z + face * 0.084, width * 0.62, 0.045, 0.02, brassMat, scene, false);
+    addBox(x, y + height * 0.1, z + face * 0.084, width * 0.43, 0.035, 0.02, creamMat, scene, false);
   }
 
   // Majlis and guest reception seating.
@@ -496,7 +497,7 @@ if (shell && viewport && canvas) {
   addWallArtZ(6.82, 2.05, -6.5, 1.8, 1.35, 0x414b35);
   addWallArtZ(-2.22, 2.05, -6.7, 1.45, 1.15, 0xd4a45e);
   addWallArtZ(-6.82, 2.05, -6.5, 1.8, 1.3, 0x8d8777);
-  addWallArtX(10.42, 2.05, 1.35, 1.15, 1.5, 0x414b35);
+  addWallArtZ(0.28, 2.05, 7.0, 1.45, 1.1, 0x414b35);
   addWallArtX(-10.42, 2.05, -1.35, 1.15, 1.5, 0x8d8777);
   addLight(-6.4, 2.65, 4.6, 0.45, 6);
   addLight(-6.4, 2.65, -4.9, 0.48, 7);
