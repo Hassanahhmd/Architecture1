@@ -16,7 +16,7 @@ export default async function TourPage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations();
   return (
     <Section>
-      <PageHero tag={t("walk.type")} title={t("tour.title")} subtitle={t("tour.desc")} />
+      <PageHero light tag={t("walk.type")} title={t("tour.title")} subtitle={t("tour.desc")} />
       <TourViewer locale={locale} />
       <p className="mt-6 text-[0.82rem] text-ink-soft">{t("walk.note")}</p>
     </Section>
