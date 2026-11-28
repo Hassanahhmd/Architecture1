@@ -163,3 +163,23 @@ html {
 .panel-light {
   box-shadow: 0 24px 55px color-mix(in srgb, var(--color-olive-dark) 8%, transparent);
 }
+
+/* Floating 3D tour shortcut: transform and opacity only, off for reduced motion. */
+.tour-fab {
+  animation: tour-fab-bob 3.6s ease-in-out infinite;
+}
+.tour-fab-ring {
+  animation: tour-fab-pulse 2.4s ease-out infinite;
+}
+@keyframes tour-fab-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes tour-fab-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-fab, .tour-fab-ring { animation: none; }
+  .tour-fab-ring { opacity: 0; }
+}
