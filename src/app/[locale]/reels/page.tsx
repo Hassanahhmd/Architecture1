@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { PageHero } from "@/components/ui/page-hero";
+import { Section } from "@/components/ui/section";
 import { ReelsGrid } from "./reels-grid";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -15,7 +16,7 @@ export default async function ReelsPage({ params }: { params: Promise<{ locale: 
   const t = await getTranslations();
   return (
     <Section>
-      <SectionHeading tag={t("reel.tag")} title={t("tiktok.title")} subtitle={t("tiktok.subtitle")} />
+      <PageHero tag={t("reel.tag")} title={t("tiktok.title")} subtitle={t("tiktok.subtitle")} />
       <ReelsGrid />
     </Section>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { PageHero } from "@/components/ui/page-hero";
+import { Section } from "@/components/ui/section";
 import { TourViewer } from "./tour-viewer";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -15,7 +16,7 @@ export default async function TourPage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations();
   return (
     <Section>
-      <SectionHeading tag={t("walk.type")} title={t("tour.title")} subtitle={t("tour.desc")} />
+      <PageHero tag={t("walk.type")} title={t("tour.title")} subtitle={t("tour.desc")} />
       <TourViewer locale={locale} />
       <p className="mt-6 text-[0.82rem] text-ink-soft">{t("walk.note")}</p>
     </Section>

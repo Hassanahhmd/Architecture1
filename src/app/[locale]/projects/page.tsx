@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { PageHero } from "@/components/ui/page-hero";
+import { Section } from "@/components/ui/section";
 import { ProjectsGrid } from "./projects-grid";
 import type { Locale } from "@/i18n/routing";
 
@@ -18,7 +19,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
 
   return (
     <Section>
-      <SectionHeading tag={t("projects.tag")} title={t("projects.title")} subtitle={t("projects.subtitle")} />
+      <PageHero tag={t("projects.tag")} title={t("projects.title")} subtitle={t("projects.subtitle")} />
       <ProjectsGrid locale={locale as Locale} initialFilter={initial} />
       <p className="mt-10">
         <a

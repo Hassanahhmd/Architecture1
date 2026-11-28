@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
+import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
 
 export default async function LabLayout({
@@ -20,20 +21,19 @@ export default async function LabLayout({
   ];
   return (
     <Section>
-      <p className="mb-3 text-[0.8rem] tracking-[0.18em] text-brass-ink uppercase">{t("lab.tag")}</p>
-      <h1 className="text-[length:var(--text-step-3)] font-semibold">{t("lab.title")}</h1>
-      <p className="mt-3 max-w-2xl text-ink-soft">{t("lab.subtitle")}</p>
+      <PageHero tag={t("lab.tag")} title={t("lab.title")} subtitle={t("lab.subtitle")}>
       <nav className="mt-8 flex flex-wrap gap-2">
         {tabs.map((tab) => (
           <Link
             key={tab.href}
             href={tab.href}
-            className="rounded-xs border border-hairline px-3.5 py-2 text-[0.85rem] text-ink-soft hover:border-olive hover:text-olive"
+            className="rounded-xs border border-paper/35 px-3.5 py-2 text-[0.85rem] text-paper hover:border-orange hover:text-orange"
           >
             {tab.label}
           </Link>
         ))}
       </nav>
+      </PageHero>
       <div className="mt-10">{children}</div>
     </Section>
   );

@@ -100,7 +100,7 @@ export function ProjectsGrid({
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
-                    <span className="absolute top-3 start-3 rounded-xs bg-ink/70 px-2 py-1 text-[0.72rem] text-alabaster">
+                    <span className="absolute top-3 start-3 rounded-xs bg-orange px-2 py-1 text-[0.72rem] font-medium text-olive-dark">
                       {t(labels[project.category])}
                     </span>
                     <span className="absolute bottom-3 end-3 rounded-xs bg-alabaster/90 px-2 py-1 text-[0.72rem] text-ink">
@@ -108,9 +108,9 @@ export function ProjectsGrid({
                     </span>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-[1rem] font-medium leading-snug">
+                    <h2 className="text-[1rem] font-medium leading-snug">
                       {project.title[locale]}
-                    </h3>
+                    </h2>
                     <p className="mt-1 text-[0.82rem] text-ink-soft">
                       {project.client}
                     </p>
@@ -119,10 +119,10 @@ export function ProjectsGrid({
                     </p>
                   </div>
                 </Link>
-                <div className="border-t border-hairline px-4 py-2.5">
+                <div className="border-t-2 border-orange bg-olive-dark px-4 py-2.5">
                   <Link
                     href={`/${locale}/projects/${project.slug}`}
-                    className="text-[0.82rem] text-olive hover:underline"
+                    className="text-[0.82rem] font-medium text-orange hover:underline"
                   >
                     {t("projects.view_details")}
                   </Link>

@@ -59,47 +59,47 @@ function HomeContent({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <section id="top" className="relative overflow-hidden px-5 pt-14 pb-16 md:px-10 md:pt-24 md:pb-24">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+      <section id="top" className="relative px-3 pt-4 pb-10 md:px-10 md:pt-8 md:pb-16">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 overflow-hidden rounded-lg bg-[radial-gradient(ellipse_at_85%_10%,rgba(255,143,58,0.16),transparent_38%),linear-gradient(160deg,#4a5439_0%,#343d2e_70%)] px-5 py-9 text-paper shadow-[0_24px_55px_rgba(45,49,37,0.14)] md:px-12 md:py-16 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <Badge tone="olive">{t("hero.badge")}</Badge>
-            <h1 className="mt-5 text-[length:var(--text-step-4)] font-semibold text-ink">{t("hero.name")}</h1>
-            <p className="mt-2 text-[length:var(--text-step-1)] text-brass-ink">{t("hero.subtitle")}</p>
-            <p className="mt-5 max-w-xl text-[length:var(--text-step-0)] text-ink-soft">{t("hero.desc")}</p>
+            <Badge tone="onDark">{t("hero.badge")}</Badge>
+            <h1 className="mt-5 text-[length:var(--text-step-4)] font-semibold text-paper">{t("hero.name")}</h1>
+            <p className="mt-2 text-[length:var(--text-step-1)] text-orange">{t("hero.subtitle")}</p>
+            <p className="mt-5 max-w-xl text-[length:var(--text-step-0)] text-paper/80">{t("hero.desc")}</p>
 
             <ul className="mt-6 flex flex-wrap gap-2">
               {[t("hero.specialty.architecture"), t("hero.specialty.interiors"), t("hero.specialty.visualization")].map(
                 (item) => (
-                  <li key={item} className="rounded-xs border border-hairline px-3 py-1.5 text-[0.82rem] text-ink-soft">
+                  <li key={item} className="rounded-xs border border-paper/25 px-3 py-1.5 text-[0.82rem] text-paper/85">
                     {item}
                   </li>
                 ),
               )}
             </ul>
 
-            <ul className="mt-5 flex flex-wrap items-center gap-4 text-[0.82rem] text-ink-soft">
+            <ul className="mt-5 flex flex-wrap items-center gap-4 text-[0.82rem] text-paper/80">
               <li className="inline-flex items-center gap-1.5">
-                <BadgeCheck size={16} className="text-olive" aria-hidden /> {t("edu.validation")}
+                <BadgeCheck size={16} className="text-orange" aria-hidden /> {t("edu.validation")}
               </li>
               <li className="inline-flex items-center gap-1.5">
-                <BadgeCheck size={16} className="text-olive" aria-hidden /> {t("hero.zero_violations")}
+                <BadgeCheck size={16} className="text-orange" aria-hidden /> {t("hero.zero_violations")}
               </li>
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={`/${locale}/lab/quiz`}>{t("hero.quiz")}</ButtonLink>
-              <ButtonLink href={`/${locale}/projects`} variant="outline">
+              <ButtonLink href={`/${locale}/projects`} variant="paper">
                 {t("hero.view_work")}
               </ButtonLink>
-              <ButtonLink href={wa} variant="brass" external>
+              <ButtonLink href={wa} variant="light" external>
                 <MessageCircle size={17} aria-hidden />
                 {t("hero.whatsapp")}
               </ButtonLink>
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-sm">
-            <div className="relative aspect-4/5 overflow-hidden rounded-lg border border-hairline bg-sand">
+          <div className="relative mx-auto w-full max-w-[14rem] sm:max-w-sm">
+            <div className="relative aspect-4/5 overflow-hidden rounded-lg border border-paper/20 bg-olive">
               <Image
                 src="/images/profile.jpg"
                 alt={t("hero.name")}
@@ -109,23 +109,23 @@ function HomeContent({ locale }: { locale: Locale }) {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 start-4 rounded-sm bg-paper px-3.5 py-2 text-[0.78rem] shadow-sm ring-1 ring-hairline">
+            <div className="absolute -bottom-4 start-4 rounded-sm bg-paper px-3.5 py-2 text-[0.78rem] text-ink shadow-sm ring-1 ring-hairline">
               <span className="font-semibold text-olive">50+</span> {t("hero.floating_projects")}
             </div>
-            <div className="absolute top-4 end-4 rounded-sm bg-paper px-3.5 py-2 text-[0.78rem] shadow-sm ring-1 ring-hairline">
+            <div className="absolute top-4 end-4 rounded-sm bg-paper px-3.5 py-2 text-[0.78rem] text-ink shadow-sm ring-1 ring-hairline">
               {t("hero.floating_satisfaction")}
             </div>
           </div>
         </div>
       </section>
 
-      <Section tone="paper">
-        <dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <Section tone="olive" className="!py-10 md:!py-24">
+        <dl className="grid grid-cols-2 gap-x-5 gap-y-6 lg:grid-cols-4 lg:gap-8">
           {stats.map((stat, index) => (
             <Reveal key={stat.title} delay={index * 60}>
-              <dt className="text-[length:var(--text-step-3)] font-semibold text-olive" dir="ltr">{stat.value}</dt>
-              <dd className="mt-1 text-[0.95rem] font-medium">{stat.title}</dd>
-              <dd className="mt-1 text-[0.84rem] text-ink-soft">{stat.desc}</dd>
+              <dt className="text-[length:var(--text-step-2)] font-semibold text-orange md:text-[length:var(--text-step-3)]" dir="ltr">{stat.value}</dt>
+              <dd className="mt-1 text-[0.88rem] font-medium text-paper md:text-[0.95rem]">{stat.title}</dd>
+              <dd className="mt-1 text-[0.76rem] leading-snug text-paper/80 md:text-[0.84rem]">{stat.desc}</dd>
             </Reveal>
           ))}
         </dl>
@@ -177,10 +177,10 @@ function HomeContent({ locale }: { locale: Locale }) {
         </div>
       </Section>
 
-      <Section tone="paper">
+      <Section tone="orange">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div>
-            <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} />
+            <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} invert />
           </div>
           <ul className="space-y-3 text-[0.92rem]">
             <li className="rounded-sm border border-hairline bg-paper px-4 py-3">

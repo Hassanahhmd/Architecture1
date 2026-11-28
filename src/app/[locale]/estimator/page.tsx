@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { PageHero } from "@/components/ui/page-hero";
+import { Section } from "@/components/ui/section";
 import { Estimator } from "./estimator";
 import { tiers, type TierKey } from "@/features/estimator/pricing";
 import { formatEGP } from "@/features/estimator/logic";
@@ -17,7 +18,7 @@ export default async function EstimatorPage({ params }: { params: Promise<{ loca
   const t = await getTranslations();
   return (
     <Section>
-      <SectionHeading tag={t("est.tag")} title={t("est.title")} subtitle={t("est.subtitle")} />
+      <PageHero tag={t("est.tag")} title={t("est.title")} subtitle={t("est.subtitle")} />
       <Estimator locale={locale === "ar" ? "ar" : "en"} />
       <section className="mt-16" aria-labelledby="matrix-title">
         <p className="text-[0.78rem] tracking-[0.16em] text-brass-ink uppercase">{t("matrix.badge")}</p>
