@@ -60,38 +60,38 @@ function HomeContent({ locale }: { locale: Locale }) {
   return (
     <>
       <section id="top" className="relative px-3 pt-4 pb-10 md:px-10 md:pt-8 md:pb-16">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 overflow-hidden rounded-lg bg-[radial-gradient(ellipse_at_85%_10%,rgba(255,143,58,0.16),transparent_38%),linear-gradient(160deg,#4a5439_0%,#343d2e_70%)] px-5 py-9 text-paper shadow-[0_24px_55px_rgba(45,49,37,0.14)] md:px-12 md:py-16 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 overflow-hidden rounded-lg border border-hairline bg-gradient-to-br from-sand via-alabaster to-olive/10 px-5 py-9 text-ink shadow-[0_24px_55px_rgba(45,49,37,0.08)] md:px-12 md:py-16 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <Badge tone="onDark">{t("hero.badge")}</Badge>
-            <h1 className="mt-5 text-[length:var(--text-step-4)] font-semibold text-paper">{t("hero.name")}</h1>
-            <p className="mt-2 text-[length:var(--text-step-1)] text-orange">{t("hero.subtitle")}</p>
-            <p className="mt-5 max-w-xl text-[length:var(--text-step-0)] text-paper/80">{t("hero.desc")}</p>
+            <Badge tone="sand">{t("hero.badge")}</Badge>
+            <h1 className="mt-5 text-[length:var(--text-step-4)] font-semibold text-ink">{t("hero.name")}</h1>
+            <p className="mt-2 text-[length:var(--text-step-1)] text-brass-ink">{t("hero.subtitle")}</p>
+            <p className="mt-5 max-w-xl text-[length:var(--text-step-0)] text-ink-soft">{t("hero.desc")}</p>
 
             <ul className="mt-6 flex flex-wrap gap-2">
               {[t("hero.specialty.architecture"), t("hero.specialty.interiors"), t("hero.specialty.visualization")].map(
                 (item) => (
-                  <li key={item} className="rounded-xs border border-paper/25 px-3 py-1.5 text-[0.82rem] text-paper/85">
+                  <li key={item} className="rounded-xs border border-olive/30 px-3 py-1.5 text-[0.82rem] text-ink-soft">
                     {item}
                   </li>
                 ),
               )}
             </ul>
 
-            <ul className="mt-5 flex flex-wrap items-center gap-4 text-[0.82rem] text-paper/80">
+            <ul className="mt-5 flex flex-wrap items-center gap-4 text-[0.82rem] text-ink-soft">
               <li className="inline-flex items-center gap-1.5">
-                <BadgeCheck size={16} className="text-orange" aria-hidden /> {t("edu.validation")}
+                <BadgeCheck size={16} className="text-olive" aria-hidden /> {t("edu.validation")}
               </li>
               <li className="inline-flex items-center gap-1.5">
-                <BadgeCheck size={16} className="text-orange" aria-hidden /> {t("hero.zero_violations")}
+                <BadgeCheck size={16} className="text-olive" aria-hidden /> {t("hero.zero_violations")}
               </li>
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={`/${locale}/lab/quiz`}>{t("hero.quiz")}</ButtonLink>
-              <ButtonLink href={`/${locale}/projects`} variant="paper">
+              <ButtonLink href={`/${locale}/projects`} variant="outline">
                 {t("hero.view_work")}
               </ButtonLink>
-              <ButtonLink href={wa} variant="light" external>
+              <ButtonLink href={wa} variant="outline" external>
                 <MessageCircle size={17} aria-hidden />
                 {t("hero.whatsapp")}
               </ButtonLink>
@@ -99,7 +99,7 @@ function HomeContent({ locale }: { locale: Locale }) {
           </div>
 
           <div className="relative mx-auto w-full max-w-[14rem] sm:max-w-sm">
-            <div className="relative aspect-4/5 overflow-hidden rounded-lg border border-paper/20 bg-olive">
+            <div className="relative aspect-4/5 overflow-hidden rounded-lg border border-hairline bg-olive/10">
               <Image
                 src="/images/profile.jpg"
                 alt={t("hero.name")}
