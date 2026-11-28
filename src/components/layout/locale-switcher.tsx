@@ -22,9 +22,6 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
               "rounded-xs px-2 py-1 transition-colors",
               next === locale ? "bg-olive text-alabaster" : "text-ink-soft hover:text-olive",
             )}
-            onClick={() => {
-              document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000; samesite=lax`;
-            }}
           >
             {localeLabel[next]}
           </Link>

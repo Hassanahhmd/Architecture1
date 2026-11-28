@@ -3,7 +3,7 @@
 This checklist is the acceptance record for the rebuild. Boxes remain unchecked until verified in the finished app.
 
 ## Localization and shared layout
-- [x] English is the default locale (owner decision, 28 Nov 2026, overrides the brief's Arabic default); Arabic uses RTL and stays one click away; the language choice persists in the NEXT_LOCALE cookie.
+- [x] English is the default locale (owner decision, 28 Nov 2026, overrides the brief's Arabic default); Arabic uses RTL and stays one click away; `/` always opens English and no language choice is stored (owner decision, 28 Nov 2026).
 - [ ] English uses LTR; locale-prefixed routes, locale cookie, canonical and hreflang metadata work.
 - [ ] Shared sticky navbar, mobile drawer, active-route state, hover/focus prefetch, contact CTA, language switch.
 - [ ] Scroll progress, reduced-motion-aware reveal behavior, footer, social links and back-to-top.

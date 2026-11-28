@@ -70,3 +70,28 @@ test("project quick view opens from the grid with URL state, deep link works, de
   await page.goto("/en/projects/store/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
+
+test("root always opens English: fresh, after an Arabic visit, with an Arabic browser language and a stale cookie", async ({ browser }) => {
+  for (const opts of [{}, { locale: "ar-EG" }]) {
+    const ctx = await browser.newContext(opts);
+    await ctx.addCookies([{ name: "NEXT_LOCALE", value: "ar", url: "http://localhost:4173" }]).catch(() => {});
+    const page = await ctx.newPage();
+    await page.goto("/");
+    await page.waitForURL(/\/en\/$/);
+    await page.goto("/ar/");
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await page.goto("/");
+    await page.waitForURL(/\/en\/$/);
+    await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
+    await ctx.close();
+  }
+});
+
+test("locale switch keeps the corresponding page and stores nothing", async ({ page }) => {
+  await page.goto("/en/projects/");
+  await page.getByRole("link", { name: "العربية" }).first().click();
+  await expect(page).toHaveURL(/\/ar\/projects\/$/);
+  expect(await page.evaluate(() => document.cookie)).not.toContain("NEXT_LOCALE");
+  await page.getByRole("link", { name: "English" }).first().click();
+  await expect(page).toHaveURL(/\/en\/projects\/$/);
+});
