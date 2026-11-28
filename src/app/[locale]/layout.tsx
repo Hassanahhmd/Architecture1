@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing-config";
 import { isLocale, localeDirection, locales, type Locale } from "@/i18n/routing";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { TourFab } from "@/components/layout/tour-fab";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { JsonLd } from "@/components/seo/json-ld";
 import { LegacyAnchorRedirect } from "@/components/layout/legacy-anchor-redirect";
@@ -93,6 +94,7 @@ export default async function LocaleLayout({
           <Navbar locale={locale as Locale} />
           <main id="main">{children}</main>
           <Footer locale={locale as Locale} />
+          <TourFab locale={locale as Locale} />
         </NextIntlClientProvider>
       </body>
     </html>
