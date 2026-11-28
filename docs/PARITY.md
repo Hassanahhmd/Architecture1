@@ -69,7 +69,7 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 - [ ] Intercepting `@modal` lightbox route (dialog lightbox ships instead)
 - [x] Reels with click-to-load facades, one player at a time
 - [x] Tour poster + start gate; bundle served from `public/tour`
-- [x] Lab: quiz (tested scoring), lighting modes, panorama drag, materials
+- [ ] Lab: quiz scored and exercised in EN and AR (28 Nov); lighting, materials and panorama drag were found static or broken on 28 Nov and repaired, re-exercised in both locales. Earlier "[x]" here was not backed by an exercised control.
 - [x] Estimator with tested default 3,310,000 / 20,688, WhatsApp CTA, print
 - [x] About: experience, skills, training, domains, education, contact
 - [ ] Scroll reveal and page transitions (Phase 4)

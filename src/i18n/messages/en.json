@@ -225,7 +225,10 @@
     "morning": "Morning Sun",
     "sunset": "Golden Hour",
     "night": "Night Architectural Scene",
-    "illustrative": "Illustrative preview"
+    "illustrative": "Illustrative preview",
+    "hud_temp": "Color temp",
+    "hud_angle": "Sun altitude",
+    "hud_shadow": "Shadows"
   },
   "tour": {
     "title": "360° Panoramic Spatial Inspection",
@@ -238,9 +241,7 @@
     "title": "Live Material & Architectural Mood Board Swapper",
     "desc": "Test the atmospheric impact of contrasting marbles, tactile hardwoods, and acoustic paneling",
     "choose_palette": "Select your architectural material palette:",
-    "preset1": "Marble and natural stone",
-    "preset2": "Wood and soft plaster",
-    "preset3": "Metal and glass"
+    "style_prefix": "Style:"
   },
   "quiz": {
     "q1": "What primary emotion do you want your home to evoke when entering?",
