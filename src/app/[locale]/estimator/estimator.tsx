@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { computeEstimate, formatEGP, type Selection } from "@/features/estimator/logic";
 import { areaRange, defaultSelection, tiers, units, type TierKey, type UnitKey } from "@/features/estimator/pricing";
 import { buildWhatsAppUrl } from "@/config/site";
+import { whatsappTierCopy } from "@/features/estimator/whatsapp-copy";
 import { cn } from "@/lib/cn";
 
 type Action =
@@ -42,8 +43,8 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
   const chosen = (Object.keys(addonNames) as (keyof typeof addonNames)[]).filter((key) => selection[key]).map((key) => addonNames[key][locale]);
   const addonsText = chosen.length ? chosen.join(locale === "ar" ? "، " : ", ") : locale === "ar" ? "بدون إضافات" : "Standard";
   const unitName = t(`est.unit_${selection.unit === "apartment" ? "apt" : selection.unit}`);
-  const tierName = t(`tier.${selection.tier}_name`);
-  const tierGift = t(`tier.${selection.tier}_gift`);
+  const tierName = whatsappTierCopy[selection.tier][locale === "ar" ? "nameAr" : "nameEn"];
+  const tierGift = whatsappTierCopy[selection.tier][locale === "ar" ? "giftAr" : "giftEn"];
   const tierRate = formatEGP(tiers[selection.tier].rate, locale);
   const total = formatEGP(estimate.total, locale);
   const perM2 = formatEGP(estimate.ratePerM2, locale);
