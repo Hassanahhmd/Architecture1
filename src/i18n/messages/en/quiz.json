@@ -1,0 +1,17 @@
+{
+  "q1": "What primary emotion do you want your home to evoke when entering?",
+  "q2": "Which material finishes resonate most with your aesthetic taste?",
+  "q3": "How do you envision the ceiling and lighting systems in your ideal space?",
+  "res_tag": "Your Architectural DNA Analysis",
+  "cta_whatsapp": "Consult Eng. Hassan to Design This Style for My Home",
+  "retake": "Retake Quiz ↺",
+  "o_luxury": "Classic luxury with gilded detail",
+  "o_minimal": "Calm, simple, clean lines",
+  "o_modern": "Bold contemporary with natural materials",
+  "style_luxury": "Classic Luxury",
+  "style_minimal": "Quiet Minimal",
+  "style_modern": "Bold Contemporary",
+  "desc_luxury": "Marble, brass and warm layered lighting.",
+  "desc_minimal": "Open space, pale wood, indirect light.",
+  "desc_modern": "Clear volumes, wide glass, raw materials."
+}

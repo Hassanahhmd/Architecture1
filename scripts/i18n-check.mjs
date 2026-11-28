@@ -8,7 +8,14 @@ const flat = (obj, prefix = "") =>
   Object.entries(obj).flatMap(([k, v]) =>
     v && typeof v === "object" ? flat(v, `${prefix}${k}.`) : [[`${prefix}${k}`, v]],
   );
-const load = async (l) => new Map(flat(JSON.parse(await readFile(path.join(root, `src/i18n/messages/${l}.json`), "utf8"))));
+const load = async (l) => {
+  const dir = path.join(root, `src/i18n/messages/${l}`);
+  const out = {};
+  for (const f of (await readdir(dir)).filter((n) => n.endsWith(".json"))) {
+    out[f.replace(/\.json$/, "")] = JSON.parse(await readFile(path.join(dir, f), "utf8"));
+  }
+  return new Map(flat(out));
+};
 const [ar, en] = [await load("ar"), await load("en")];
 const errors = [];
 

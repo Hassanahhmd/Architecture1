@@ -1,0 +1,11 @@
+{
+  "title": "Daylight Optimization & Sun Angle Simulator",
+  "desc": "Observe how natural orientation, shadows, and architectural lighting sculpt exterior massing",
+  "morning": "Morning Sun",
+  "sunset": "Golden Hour",
+  "night": "Night Architectural Scene",
+  "illustrative": "Illustrative preview",
+  "hud_temp": "Color temp",
+  "hud_angle": "Sun altitude",
+  "hud_shadow": "Shadows"
+}

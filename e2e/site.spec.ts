@@ -55,3 +55,18 @@ test("locale switch goes to the other language", async ({ page }) => {
   await expect(page).toHaveURL(/\/ar\//);
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
 });
+
+test("project quick view opens from the grid with URL state, deep link works, details page stays direct", async ({ page }) => {
+  await page.goto("/en/projects/");
+  await page.locator("article a").first().click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await expect(page).toHaveURL(/\?project=[a-z0-9-]+/);
+  const url = page.url();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page).not.toHaveURL(/project=/);
+  await page.goto(url);
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await page.goto("/en/projects/store/");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+});

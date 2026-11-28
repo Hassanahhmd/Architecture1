@@ -1,0 +1,15 @@
+{
+  "tag": "Selected Portfolio",
+  "title": "Selected Work",
+  "subtitle": "Selected projects demonstrating clear design intent, detailed coordination, and considered delivery.",
+  "filter_all": "All",
+  "filter_arch": "Architecture",
+  "filter_interior": "Interior Design",
+  "filter_retail": "Retail & Commercial",
+  "filter_industrial": "Industrial",
+  "view_details": "View Details & Renders",
+  "behance_cta": "View Full Portfolio on Behance",
+  "close": "Close",
+  "expand": "View full screen",
+  "thumbnails": "Project images"
+}
