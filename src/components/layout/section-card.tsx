@@ -22,11 +22,11 @@ export function SectionCard({
     <Link
       href={href}
       className={cn(
-        "group relative block overflow-hidden rounded-md bg-olive/10 outline-offset-4",
+        "group relative flex flex-col overflow-hidden rounded-md border border-hairline bg-paper outline-offset-4",
         className,
       )}
     >
-      <div className="relative aspect-4/3 w-full">
+      <div className="relative aspect-4/3 w-full shrink-0 overflow-hidden bg-olive/10">
         <Image
           src={image}
           alt=""
@@ -35,12 +35,11 @@ export function SectionCard({
           priority={priority}
           className="object-cover transition-transform duration-300 ease-[var(--ease-out-soft)] group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
       </div>
-      <div className="absolute inset-x-0 bottom-0 p-5 text-alabaster">
+      <div className="flex flex-1 flex-col border-t-2 border-orange p-5 text-ink">
         <h3 className="text-[length:var(--text-step-1)] font-semibold">{title}</h3>
-        <p className="mt-1 text-[0.86rem] text-alabaster/80">{blurb}</p>
-        <span className="mt-3 inline-flex items-center gap-1.5 text-[0.82rem] text-brass">
+        <p className="mt-1 text-[0.88rem] text-ink-soft">{blurb}</p>
+        <span className="mt-3 inline-flex items-center gap-1.5 text-[0.82rem] font-medium text-brass-ink">
           <ArrowRight size={15} className="rtl:-scale-x-100" aria-hidden />
         </span>
       </div>

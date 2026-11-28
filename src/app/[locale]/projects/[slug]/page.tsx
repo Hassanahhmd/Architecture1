@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { projects, getProject } from "@/features/projects/data";
+import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
 import { ProjectGallery } from "@/components/projects/project-gallery";
 
@@ -39,14 +40,14 @@ export default async function ProjectPage({
 
   return (
     <Section>
-      <Link href={`/${locale}/projects`} className="text-[0.85rem] text-olive hover:underline">
-        {t("nav.projects")}
-      </Link>
-      <h1 className="mt-4 text-[length:var(--text-step-3)] font-semibold">{project.title[l]}</h1>
-      <p className="mt-2 text-[0.9rem] text-ink-soft">
-        {project.client} · {project.tools.join(" · ")}
-      </p>
-      <p className="mt-5 max-w-3xl text-[length:var(--text-step-0)] text-ink-soft">{project.description[l]}</p>
+      <PageHero title={project.title[l]} subtitle={project.description[l]}>
+        <Link href={`/${locale}/projects`} className="mb-4 block text-[0.85rem] text-orange hover:underline">
+          {t("nav.projects")}
+        </Link>
+        <p className="mt-4 text-[0.9rem] text-paper/85">
+          {project.client} · {project.tools.join(" · ")}
+        </p>
+      </PageHero>
 
       <div className="mt-8">
         <ProjectGallery

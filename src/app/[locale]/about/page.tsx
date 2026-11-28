@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { PageHero } from "@/components/ui/page-hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { buildWhatsAppUrl, site } from "@/config/site";
 
@@ -33,7 +34,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <>
       <Section id="experience">
-        <SectionHeading tag={t("exp.tag")} title={t("exp.title")} subtitle={t("exp.subtitle")} />
+        <PageHero tag={t("exp.tag")} title={t("exp.title")} subtitle={t("exp.subtitle")} />
         <ol className="space-y-8">
           {roles.map((role, index) => (
             <li key={index} className="border-s-2 border-hairline ps-5">
@@ -98,9 +99,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </ul>
       </Section>
 
-      <Section id="education">
-        <SectionHeading tag={t("edu.tag")} title={t("edu.title")} />
-        <div className="rounded-md border border-hairline bg-paper p-6">
+      <Section tone="olive" id="education">
+        <SectionHeading tag={t("edu.tag")} title={t("edu.title")} dark />
+        <div className="rounded-md border border-hairline bg-paper p-6 text-ink">
           <p className="text-[length:var(--text-step-1)] font-medium">{t("edu.degree")}</p>
           <p className="mt-1 text-ink-soft">{t("edu.school")}</p>
           <p className="mt-1 text-[0.86rem] text-ink-soft">{t("edu.partner")}</p>
@@ -108,8 +109,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
       </Section>
 
-      <Section tone="sand" id="contact">
-        <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} />
+      <Section tone="orange" id="contact">
+        <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} invert />
         <ul className="grid gap-3 sm:grid-cols-2">
           <li className="rounded-sm border border-hairline bg-paper px-4 py-3">
             <a href={buildWhatsAppUrl(locale === "ar" ? "مرحبًا م. حسن، عايز أستشيرك في مشروع." : "Hi Hassan, I'd like to discuss a project.")} target="_blank" rel="noreferrer noopener" className="font-medium hover:text-olive">

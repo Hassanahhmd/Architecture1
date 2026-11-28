@@ -56,11 +56,11 @@ export function Lighting({ locale, labels, hud }: { locale: "en" | "ar"; labels:
             type="button"
             aria-pressed={mode === m.key}
             onClick={() => setMode(m.key)}
-            className={`flex flex-col items-center gap-1 rounded-md border px-3 py-3 text-[0.86rem] ${mode === m.key ? "border-olive bg-olive text-alabaster" : "border-hairline bg-paper text-ink-soft"}`}
+            className={`flex flex-col items-center gap-1 rounded-md border px-3 py-3 text-[0.86rem] ${mode === m.key ? "border-orange bg-orange text-olive-dark" : "border-hairline bg-paper text-ink-soft"}`}
           >
             {(() => { const I = icons[m.key]; return <I size={18} aria-hidden />; })()}
             <span className="font-medium">{labels[m.key]}</span>
-            <span className="text-[0.75rem] opacity-80" dir="ltr">{m.time}</span>
+            <span className="text-[0.75rem]" dir="ltr">{m.time}</span>
           </button>
         ))}
       </div>

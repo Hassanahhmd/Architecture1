@@ -103,7 +103,7 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
                 key={tier}
                 className={cn(
                   "cursor-pointer rounded-sm border px-4 py-3",
-                  selection.tier === tier ? "border-olive bg-sand/60" : "border-hairline",
+                  selection.tier === tier ? "border-orange bg-orange/15" : "border-hairline",
                 )}
               >
                 <input
@@ -160,23 +160,23 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
         </fieldset>
       </div>
 
-      <aside className="print-summary h-fit rounded-md border border-hairline bg-paper p-6 lg:sticky lg:top-24 print:border-0 print:p-0">
-        <p className="text-[0.78rem] tracking-[0.16em] text-brass-ink uppercase">{t("est.summary_tag")}</p>
-        <p className="mt-2 text-[0.85rem] text-ink-soft">{t("est.summary_title")}</p>
-        <p className="mt-4 text-[length:var(--text-step-2)] font-semibold text-olive">
-          {formatEGP(estimate.total, locale)} <span className="text-[0.9rem] font-normal text-ink-soft">{t("est.currency")}</span>
+      <aside className="print-summary h-fit rounded-md border-t-4 border-t-orange bg-olive-dark p-6 text-paper print:bg-transparent print:text-ink lg:sticky lg:top-24 print:border-0 print:p-0">
+        <p className="text-[0.78rem] tracking-[0.16em] text-orange print:text-brass-ink uppercase">{t("est.summary_tag")}</p>
+        <p className="mt-2 text-[0.85rem] text-paper/80 print:text-ink-soft">{t("est.summary_title")}</p>
+        <p className="mt-4 text-[length:var(--text-step-2)] font-semibold text-orange print:text-olive">
+          {formatEGP(estimate.total, locale)} <span className="text-[0.9rem] font-normal text-paper/80 print:text-ink-soft">{t("est.currency")}</span>
         </p>
-        <p className="mt-1 text-[0.85rem] text-ink-soft">
+        <p className="mt-1 text-[0.85rem] text-paper/80 print:text-ink-soft">
           {formatEGP(estimate.ratePerM2, locale)} {t("est.currency")} / {t("est.m2")}
         </p>
 
-        <dl className="mt-5 space-y-2 border-t border-hairline pt-4 text-[0.85rem]">
+        <dl className="mt-5 space-y-2 border-t border-paper/20 print:border-hairline pt-4 text-[0.85rem]">
           <div className="flex justify-between"><dt>{t("est.b_materials")}</dt><dd>{formatEGP(estimate.breakdown.materials, locale)}</dd></div>
           <div className="flex justify-between"><dt>{t("est.b_labor")}</dt><dd>{formatEGP(estimate.breakdown.labor, locale)}</dd></div>
           <div className="flex justify-between"><dt>{t("est.b_supervision")}</dt><dd>{formatEGP(estimate.breakdown.supervision, locale)}</dd></div>
         </dl>
 
-        <dl className="mt-4 space-y-2 border-t border-hairline pt-4 text-[0.85rem]">
+        <dl className="mt-4 space-y-2 border-t border-paper/20 print:border-hairline pt-4 text-[0.85rem]">
           <div className="flex justify-between">
             <dt>{t("est.timeline_lbl")}</dt>
             <dd dir="ltr">{estimate.timeline.min}–{estimate.timeline.max} {t("est.weeks")}</dd>
@@ -184,13 +184,13 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
           <div className="flex justify-between"><dt>{t("est.warranty_lbl")}</dt><dd>{t("est.warranty_val")}</dd></div>
         </dl>
 
-        <div className="mt-4 border-t border-hairline pt-4">
+        <div className="mt-4 border-t border-paper/20 print:border-hairline pt-4">
           <p className="text-[0.85rem] font-medium">{t("est.milestones_title")}</p>
           <ol className="mt-2 space-y-2 text-[0.85rem]">
             {estimate.milestones.map((m, i) => (
               <li key={i} className="flex justify-between gap-3">
                 <span>
-                  <span dir="ltr" className="me-2 text-ink-soft">{m.percent}%</span>
+                  <span dir="ltr" className="me-2 text-paper/80 print:text-ink-soft">{m.percent}%</span>
                   {t(i === 1 ? "est.m2_label" : `est.m${i + 1}`)}
                 </span>
                 <span>{formatEGP(m.amount, locale)}</span>
@@ -199,21 +199,21 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
           </ol>
         </div>
 
-        <p className="mt-4 text-[0.75rem] text-ink-soft">{t("est.disclaimer")}</p>
+        <p className="mt-4 text-[0.75rem] text-paper/80 print:text-ink-soft">{t("est.disclaimer")}</p>
 
         <div className="mt-5 flex flex-col gap-2 print-hide">
           <a
             href={buildWhatsAppUrl(message)}
             target="_blank"
             rel="noreferrer noopener"
-            className="rounded-sm bg-olive px-4 py-3 text-center text-[0.9rem] text-alabaster"
+            className="rounded-sm bg-orange px-4 py-3 text-center text-[0.9rem] font-medium text-olive-dark"
           >
             {t("est.cta_whatsapp")}
           </a>
           <button
             type="button"
             onClick={() => window.print()}
-            className="rounded-sm border border-hairline px-4 py-3 text-[0.9rem]"
+            className="rounded-sm border border-paper/40 px-4 py-3 text-[0.9rem] text-paper"
           >
             {t("est.cta_print")}
           </button>

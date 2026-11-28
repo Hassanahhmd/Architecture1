@@ -5,9 +5,11 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-[0.95rem] font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants = {
-  primary: "bg-olive text-alabaster hover:bg-olive-soft",
+  primary: "bg-orange text-olive-dark hover:bg-orange-dark",
   outline: "border border-hairline text-ink hover:border-olive hover:text-olive",
-  brass: "bg-brass-ink text-alabaster hover:bg-[#5f451c]",
+  brass: "bg-olive-dark text-paper hover:bg-olive",
+  light: "border border-paper/45 text-paper hover:bg-paper/10",
+  paper: "bg-paper text-olive-dark hover:bg-sand",
 } as const;
 
 type Variant = keyof typeof variants;
