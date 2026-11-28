@@ -31,8 +31,30 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+/** GitHub Pages cannot send headers, so the policy is a meta tag. frame-ancestors and report-uri
+ *  are ignored in a meta tag. Inline scripts and styles are needed by the Next.js export. */
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://mir-s3-cdn-cf.behance.net https://kuula.co",
+  "font-src 'self' data:",
+  "frame-src 'self' https://www.tiktok.com",
+  "connect-src 'self'",
+  "media-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://hassanahhmd.github.io/Architecture1"),
+  openGraph: {
+    type: "website",
+    siteName: "Hassan Ahmed",
+    images: [{ url: "https://hassanahhmd.github.io/Architecture1/og.png", width: 1200, height: 630, alt: "Hassan Ahmed, Architecture Engineer and 3D Visualization Specialist" }],
+  },
+  twitter: { card: "summary_large_image", images: ["https://hassanahhmd.github.io/Architecture1/og.png"] },
 };
 
 export default async function LocaleLayout({
@@ -53,6 +75,9 @@ export default async function LocaleLayout({
       dir={localeDirection[locale as Locale]}
       className={locale === "ar" ? plexArabic.variable : `${jakarta.variable} ${cormorant.variable}`}
     >
+      <head>
+        <meta httpEquiv="Content-Security-Policy" content={csp} />
+      </head>
       <body className="min-h-dvh bg-alabaster text-ink">
         <JsonLd locale={locale as Locale} />
         <NextIntlClientProvider locale={locale}>

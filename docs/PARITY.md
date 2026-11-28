@@ -54,9 +54,9 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 ## Quality and delivery
 - [ ] Every route has localized metadata, loading state and error state.
 - [ ] Keyboard access, visible focus, AA contrast, skip link, landmarks and reduced motion.
-- [ ] SEO: sitemap, robots, OpenGraph, Person and ProfessionalService JSON-LD. Shipped and live: sitemap, robots, JSON-LD (PR #7). Not done: OpenGraph image.
+- [x] SEO: sitemap, robots, OpenGraph and Twitter image (public/og.png, 1200x630), Person and ProfessionalService JSON-LD (e2e checks the tags and the image).
 - [ ] Images use responsive AVIF/WebP, correct sizes, hero-only priority and fallback.
-- [ ] Security headers/CSP allow only verified origins.
+- [x] CSP allows only verified origins, as a meta tag (GitHub Pages cannot send headers, so frame-ancestors and report-uri cannot be enforced). 22 route tests and the tour test fail on any CSP violation.
 - [ ] Before/after Lighthouse and per-route bundle sizes are recorded; no unmeasured speed claims.
 - [x] Typecheck, lint, unit tests, i18n parity, build, E2E route/interaction tests and axe checks pass. (npm scripts, local; not wired into CI, workflow scope not granted)
 - [ ] Deployment target, domain and analytics are owner-approved.
@@ -74,7 +74,7 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 - [x] About: experience, skills, training, domains, education, contact
 - [ ] Scroll reveal and page transitions (Phase 4)
 - [x] Axe sweep: e2e runs axe on 11 routes in EN and AR, no serious issues (28 Nov)
-- [ ] CSP headers (GitHub Pages: meta CSP only) and Lighthouse CI wiring
+- [ ] Lighthouse CI wiring (needs workflow scope, not granted)
 
 ## Motion (phase 4, in progress)
 

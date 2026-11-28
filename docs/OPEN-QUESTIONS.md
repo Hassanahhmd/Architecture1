@@ -24,3 +24,5 @@ Reconciled 28 Nov 2026 against the owner's decisions. Items marked CLOSED need n
 - **JS budget: about 200 KB per route (28 Nov 2026).** See item 2.
 
 - **Namespace messages and tooling (batch 2/3).** Messages live in `src/i18n/messages/<locale>/<namespace>.json`. React Compiler was tried and rejected: it raised project detail to 212.3 KB and /projects to 205.7 KB. react-scan is dev-only (`NEXT_PUBLIC_SCAN=1`) and adds 0 KB to production. Motion (the library) was not added: the budget has no headroom and the CSS reveal covers the need. Cross-document view transitions do not apply to Next client navigation.
+
+- **Performance isolation (28 Nov 2026).** Local Lighthouse (gzip static server, default mobile, same machine) gives /en/ LCP 0.9 s and 0.98 to 0.99 for builds 8da91d5, f1da283 and 90eb31c alike, so the code changes did not move LCP. Live runs from the sandbox varied from 1.1 s (earlier) to 2.3 to 2.7 s (later) with the LCP element being the hero paragraph and TTFB about 30 ms, which points at the network path, not the build. Unresolved; re-measure live from another network.
