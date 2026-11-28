@@ -12,6 +12,7 @@ for (const { l, dir } of locales) {
     test(`${l}${r || "/"} renders with ${dir}, no page errors, no serious axe issues`, async ({ page }) => {
       const errors: string[] = [];
       page.on("pageerror", (e) => errors.push(e.message));
+      page.on("console", (m) => /Content Security Policy|violates/i.test(m.text()) && errors.push(m.text()));
       await page.route("**/villa-tour/**", (route) => route.abort());
       await page.route("**/*tiktok*", (route) => route.abort());
       await page.goto(`/${l}${r}/`, { waitUntil: "networkidle" });
@@ -94,4 +95,25 @@ test("locale switch keeps the corresponding page and stores nothing", async ({ p
   expect(await page.evaluate(() => document.cookie)).not.toContain("NEXT_LOCALE");
   await page.getByRole("link", { name: "English" }).first().click();
   await expect(page).toHaveURL(/\/en\/projects\/$/);
+});
+
+test("CSP meta is present and the tour starts and loads under it", async ({ page }) => {
+  const csp: string[] = [];
+  page.on("console", (m) => /Content Security Policy|violates/i.test(m.text()) && csp.push(m.text()));
+  await page.goto("/en/tour/");
+  await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveCount(1);
+  await page.getByRole("button").filter({ hasText: /start|begin|enter|explore/i }).first().click();
+  const frame = page.locator("iframe").first();
+  await expect(frame).toBeVisible();
+  await expect(frame).toHaveAttribute("src", /villa-tour/);
+  await page.waitForTimeout(1500);
+  expect(csp).toEqual([]);
+});
+
+test("OpenGraph and Twitter image tags point at the shipped og.png", async ({ page, request }) => {
+  await page.goto("/en/");
+  const og = await page.locator('meta[property="og:image"]').first().getAttribute("content");
+  expect(og).toMatch(/og\.png$/);
+  expect((await request.get("/og.png")).status()).toBe(200);
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
 });
