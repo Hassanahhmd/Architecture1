@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Moon, Sunrise, Sunset } from "lucide-react";
+
+const icons = { morning: Sunrise, sunset: Sunset, night: Moon } as const;
 
 type Mode = "morning" | "sunset" | "night";
 
-const modes: { key: Mode; icon: string; time: string; temp: { en: string; ar: string }; angle: { en: string; ar: string }; shadow: { en: string; ar: string } }[] = [
-  { key: "morning", icon: "🌅", time: "09:00 AM", temp: { en: "5500K (Daylight)", ar: "5500K (ضوء النهار)" }, angle: { en: "45° East", ar: "45° شرقاً" }, shadow: { en: "Crisp / Natural", ar: "حادة / طبيعية" } },
-  { key: "sunset", icon: "🌇", time: "05:30 PM", temp: { en: "3200K (Golden Glow)", ar: "3200K (وهج ذهبي)" }, angle: { en: "18° West", ar: "18° غرباً" }, shadow: { en: "Long / Dramatic", ar: "طويلة / درامية" } },
-  { key: "night", icon: "🌙", time: "09:00 PM", temp: { en: "2700K (Warm LED)", ar: "2700K (LED دافئ)" }, angle: { en: "Cove & Accent", ar: "كوف وإضاءة موجهة" }, shadow: { en: "Soft Ambient", ar: "ناعمة محيطة" } },
+const modes: { key: Mode; time: string; temp: { en: string; ar: string }; angle: { en: string; ar: string }; shadow: { en: string; ar: string } }[] = [
+  { key: "morning", time: "09:00 AM", temp: { en: "5500K (Daylight)", ar: "5500K (ضوء النهار)" }, angle: { en: "45° East", ar: "45° شرقاً" }, shadow: { en: "Crisp / Natural", ar: "حادة / طبيعية" } },
+  { key: "sunset", time: "05:30 PM", temp: { en: "3200K (Golden Glow)", ar: "3200K (وهج ذهبي)" }, angle: { en: "18° West", ar: "18° غرباً" }, shadow: { en: "Long / Dramatic", ar: "طويلة / درامية" } },
+  { key: "night", time: "09:00 PM", temp: { en: "2700K (Warm LED)", ar: "2700K (LED دافئ)" }, angle: { en: "Cove & Accent", ar: "كوف وإضاءة موجهة" }, shadow: { en: "Soft Ambient", ar: "ناعمة محيطة" } },
 ];
 
 const filters: Record<Mode, string> = {
@@ -28,7 +31,7 @@ export function Lighting({ locale, labels, hud }: { locale: "en" | "ar"; labels:
   return (
     <div>
       <p data-testid="light-badge" className="mb-4 inline-flex rounded-full border border-hairline bg-paper px-4 py-1.5 text-[0.82rem]" dir="auto">
-        {current.icon} {current.time} — {labels[mode]}
+        <span className="inline-flex items-center gap-2">{(() => { const I = icons[mode]; return <I size={15} aria-hidden />; })()}{current.time} — {labels[mode]}</span>
       </p>
       <div className="relative aspect-16/10 overflow-hidden rounded-md border border-hairline bg-ink/90">
         <Image
@@ -55,7 +58,7 @@ export function Lighting({ locale, labels, hud }: { locale: "en" | "ar"; labels:
             onClick={() => setMode(m.key)}
             className={`flex flex-col items-center gap-1 rounded-md border px-3 py-3 text-[0.86rem] ${mode === m.key ? "border-olive bg-olive text-alabaster" : "border-hairline bg-paper text-ink-soft"}`}
           >
-            <span aria-hidden>{m.icon}</span>
+            {(() => { const I = icons[m.key]; return <I size={18} aria-hidden />; })()}
             <span className="font-medium">{labels[m.key]}</span>
             <span className="text-[0.75rem] opacity-80" dir="ltr">{m.time}</span>
           </button>

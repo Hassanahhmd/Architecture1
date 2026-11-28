@@ -33,10 +33,25 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
   const unitKeys = Object.keys(units) as UnitKey[];
   const tierKeys = Object.keys(tiers) as TierKey[];
 
+  const addonNames = {
+    gypsum: { ar: "أسقف معلقة كناوف", en: "Gypsum Board Ceilings" },
+    door: { ar: "باب مصفح تركي ونجارة", en: "Armored & Interior Doors" },
+    smart: { ar: "أنظمة سمارت هوم", en: "Smart Home Automation" },
+    hvac: { ar: "تجهيزات تكييف كونسيلد", en: "Concealed HVAC Prep" },
+  } as const;
+  const chosen = (Object.keys(addonNames) as (keyof typeof addonNames)[]).filter((key) => selection[key]).map((key) => addonNames[key][locale]);
+  const addonsText = chosen.length ? chosen.join(locale === "ar" ? "، " : ", ") : locale === "ar" ? "بدون إضافات" : "Standard";
+  const unitName = t(`est.unit_${selection.unit === "apartment" ? "apt" : selection.unit}`);
+  const tierName = t(`tier.${selection.tier}_name`);
+  const tierGift = t(`tier.${selection.tier}_gift`);
+  const tierRate = formatEGP(tiers[selection.tier].rate, locale);
+  const total = formatEGP(estimate.total, locale);
+  const perM2 = formatEGP(estimate.ratePerM2, locale);
+  const { min, max } = estimate.timeline;
   const message =
     locale === "ar"
-      ? `مرحبًا م. حسن، حاسبة التكلفة طلعت ${formatEGP(estimate.total, "ar")} جنيه لـ${t(`est.unit_${selection.unit === "apartment" ? "apt" : selection.unit}`)} ${selection.area} متر. عايز نتكلم في التفاصيل.`
-      : `Hi Hassan, the estimator gave ${formatEGP(estimate.total, "en")} EGP for a ${selection.area} m² ${selection.unit}. I'd like to discuss the details.`;
+      ? `مرحباً م. حسن أحمد،\nاستخدمت الحاسبة للحصول على تقدير أولي للميزانية. أرجو إرسال عرض سعر محدث ومكتوب للتأكيد:\n\n• نوع الوحدة: ${unitName}\n• المساحة: ${selection.area} م²\n• باقة التشطيب لعام 2027 (سعر استرشادي): ${tierName} (~${tierRate} ج.م/م²)\n• 🎁 الهدايا المشمولة مجاناً: ${tierGift}\n• البنود الإضافية: ${addonsText}\n• التكلفة الإجمالية التقديرية: ${total} جنيه مصري (~${perM2} ج.م/م²)\n• مدة التنفيذ المقترحة: ${min}-${max} أسبوع\n\nبرجاء إفادتي بإمكانية تحديد موعد لمعاينة الموقع ومناقشة تفاصيل التعاقد واستلام الهدايا المشمولة. شكراً لك!`
+      : `Hello Eng. Hassan Ahmed,\nI used the estimator for an initial budget reference. Please send a current written quotation to confirm:\n\n• Property Type: ${unitName}\n• Total Area: ${selection.area} m²\n• 2027 Selected package (indicative rate): ${tierName} (~${tierRate} EGP/m²)\n• 🎁 Included Complimentary Perks: ${tierGift}\n• Selected Add-ons: ${addonsText}\n• Estimated Total: ${total} EGP (~${perM2} EGP/m²)\n• Estimated Timeline: ${min}-${max} weeks\n\nLooking forward to scheduling a site inspection and discussing contract execution and perks. Thank you!`;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] print:block">

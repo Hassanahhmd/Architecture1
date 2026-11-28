@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { site } from "@/config/site";
+import { buildWhatsAppUrl, site } from "@/config/site";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -54,10 +54,19 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div className="grid gap-8 md:grid-cols-2">
           <div>
             <h3 className="text-[0.8rem] tracking-[0.16em] text-brass-ink uppercase">{t("skills.software_title")}</h3>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {["AutoCAD", "Revit", "3ds Max", "Lumion", "Photoshop", "D5 Render", "AI Visualization"].map((tool) => (
-                <li key={tool} className="rounded-xs border border-hairline px-3 py-1.5 text-[0.85rem] text-ink-soft">
-                  {tool}
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2" dir="ltr">
+              {[
+                ["AutoCAD (2019)", "Working Drawings & Detailing"],
+                ["Revit (2021)", "BIM Modeling & Documentation"],
+                ["3ds Max (2021)", "High-Poly Modeling & Staging"],
+                ["Lumion (2022)", "Architectural Animation & Renders"],
+                ["D5 Render (2025)", "Next-Gen Real-time Raytracing"],
+                ["Photoshop (2019)", "Post-Production & Mood Boards"],
+                ["AI Visualization", "Concept Acceleration & Prompting"],
+              ].map(([tool, note]) => (
+                <li key={tool} className="rounded-xs border border-hairline px-3 py-2 text-[0.85rem]">
+                  <span className="font-medium">{tool}</span>
+                  <span className="block text-[0.78rem] text-ink-soft">{note}</span>
                 </li>
               ))}
             </ul>
@@ -102,6 +111,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <Section tone="sand">
         <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} />
         <ul className="grid gap-3 sm:grid-cols-2">
+          <li className="rounded-sm border border-hairline bg-paper px-4 py-3">
+            <a href={buildWhatsAppUrl(locale === "ar" ? "مرحبًا م. حسن، عايز أستشيرك في مشروع." : "Hi Hassan, I'd like to discuss a project.")} target="_blank" rel="noreferrer noopener" className="font-medium hover:text-olive">
+              WhatsApp <span dir="ltr">{site.phoneDisplay}</span>
+            </a>
+          </li>
           <li className="rounded-sm border border-hairline bg-paper px-4 py-3">
             <a href={`tel:${site.phone}`} dir="ltr" className="font-medium hover:text-olive">
               {site.phoneDisplay}
