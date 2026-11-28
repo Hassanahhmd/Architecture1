@@ -19,10 +19,10 @@ export function PageHero({
   return (
     <header
       className={cn(
-        "mb-10 overflow-hidden rounded-lg border-b-4 border-orange md:px-12 md:py-14",
+        "mb-10 overflow-hidden rounded-lg md:px-12 md:py-14",
         light
           ? "border border-hairline border-b-4 border-b-orange bg-gradient-to-br from-sand via-alabaster to-olive/10 px-6 py-9 text-ink panel-light"
-          : "panel-olive",
+          : "border-b-4 border-orange panel-olive",
         className,
       )}
     >
