@@ -1,0 +1,68 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.85,
+    "values": [
+      0.85,
+      0.7,
+      0.75
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:35667/ar/projects/"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 200,
+    "actual": 212.7840000000001,
+    "values": [
+      212.7840000000001,
+      560.4612000000002,
+      360.5
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "total-blocking-time",
+    "level": "error",
+    "url": "http://localhost:35667/ar/projects/",
+    "auditTitle": "Total Blocking Time",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.87,
+    "values": [
+      0.87,
+      0.76,
+      0.78
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:35667/en/"
+  },
+  {
+    "name": "maxNumericValue",
+    "expected": 200,
+    "actual": 329.49999999999955,
+    "values": [
+      329.49999999999955,
+      772,
+      498
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "total-blocking-time",
+    "level": "error",
+    "url": "http://localhost:35667/en/",
+    "auditTitle": "Total Blocking Time",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/lighthouse-total-blocking-time/"
+  }
+]

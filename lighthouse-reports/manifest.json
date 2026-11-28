@@ -1,0 +1,182 @@
+[
+  {
+    "url": "http://localhost:35667/ar/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_-2026_11_28_08_50_00.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_-2026_11_28_08_50_00.report.json",
+    "summary": {
+      "performance": 0.88,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_-2026_11_28_08_50_15.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_-2026_11_28_08_50_15.report.json",
+    "summary": {
+      "performance": 0.9,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/projects/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_projects_-2026_11_28_08_50_29.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_projects_-2026_11_28_08_50_29.report.json",
+    "summary": {
+      "performance": 0.85,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/projects/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_projects_-2026_11_28_08_51_04.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_projects_-2026_11_28_08_51_04.report.json",
+    "summary": {
+      "performance": 0.75,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/estimator/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_estimator_-2026_11_28_08_51_35.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_estimator_-2026_11_28_08_51_35.report.json",
+    "summary": {
+      "performance": 0.93,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/estimator/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_estimator_-2026_11_28_08_51_49.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_estimator_-2026_11_28_08_51_49.report.json",
+    "summary": {
+      "performance": 0.89,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/lab/quiz/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_lab_quiz_-2026_11_28_08_52_03.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_lab_quiz_-2026_11_28_08_52_03.report.json",
+    "summary": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/lab/quiz/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_lab_quiz_-2026_11_28_08_52_17.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_lab_quiz_-2026_11_28_08_52_17.report.json",
+    "summary": {
+      "performance": 0.89,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/en/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_en_-2026_11_28_08_52_44.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_en_-2026_11_28_08_52_44.report.json",
+    "summary": {
+      "performance": 0.87,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/en/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_en_-2026_11_28_08_52_59.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_en_-2026_11_28_08_52_59.report.json",
+    "summary": {
+      "performance": 0.76,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_-2026_11_28_08_49_45.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_-2026_11_28_08_49_45.report.json",
+    "summary": {
+      "performance": 0.88,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/projects/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_projects_-2026_11_28_08_50_46.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_projects_-2026_11_28_08_50_46.report.json",
+    "summary": {
+      "performance": 0.7,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/estimator/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_estimator_-2026_11_28_08_51_21.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_estimator_-2026_11_28_08_51_21.report.json",
+    "summary": {
+      "performance": 0.76,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/ar/lab/quiz/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_lab_quiz_-2026_11_28_08_52_30.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_ar_lab_quiz_-2026_11_28_08_52_30.report.json",
+    "summary": {
+      "performance": 0.94,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://localhost:35667/en/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/tmp/arch1/lighthouse-reports/localhost-_en_-2026_11_28_08_53_14.report.html",
+    "jsonPath": "/tmp/arch1/lighthouse-reports/localhost-_en_-2026_11_28_08_53_14.report.json",
+    "summary": {
+      "performance": 0.78,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  }
+]
