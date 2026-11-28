@@ -5,7 +5,7 @@ import { Panorama } from "./panorama";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "lab" });
-  return { title: t("tab_360"), description: `${t("tab_360")} — ${t("subtitle")}` };
+  return { alternates: { canonical: `/${locale}/lab/panorama` }, title: t("tab_360"), description: `${t("tab_360")} — ${t("subtitle")}` };
 }
 
 export default async function PanoramaPage({ params }: { params: Promise<{ locale: string }> }) {
