@@ -11,7 +11,11 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "images": "node scripts/images.mjs",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "lhci autorun",
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "analyze": "node scripts/bundle-report.mjs",
+    "images:fetch": "node scripts/fetch-remote-images.mjs",
+    "e2e": "BASE_PATH= next build && node scripts/trim-font-preloads.mjs && playwright test"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.4.1",
@@ -29,6 +33,8 @@
     "tailwind-merge": "^3.7.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^22",
     "@types/react": "^19",

@@ -86,7 +86,7 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
               step={areaRange.step}
               value={selection.area}
               onChange={(event) => dispatch({ type: "area", value: Number(event.target.value) })}
-              className="w-full accent-[#414B35]"
+              className="w-full accent-olive"
               aria-label={t("est.area_label")}
             />
             <output className="min-w-20 rounded-xs border border-hairline px-2 py-1 text-center text-[0.85rem]">
@@ -151,7 +151,7 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
                   type="checkbox"
                   checked={selection[key]}
                   onChange={() => dispatch({ type: "toggle", key })}
-                  className="size-4 accent-[#414B35]"
+                  className="size-4 accent-olive"
                 />
                 {t(label)}
               </label>

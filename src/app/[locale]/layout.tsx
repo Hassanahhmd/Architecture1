@@ -8,6 +8,7 @@ import { isLocale, localeDirection, locales, type Locale } from "@/i18n/routing"
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { JsonLd } from "@/components/seo/json-ld";
 import { LegacyAnchorRedirect } from "@/components/layout/legacy-anchor-redirect";
 import "../globals.css";
 
@@ -52,6 +53,7 @@ export default async function LocaleLayout({
       className={locale === "ar" ? plexArabic.variable : `${jakarta.variable} ${cormorant.variable}`}
     >
       <body className="min-h-dvh bg-alabaster text-ink">
+        <JsonLd locale={locale as Locale} />
         <NextIntlClientProvider locale={locale}>
           <ScrollProgress />
           <LegacyAnchorRedirect locale={locale} />
