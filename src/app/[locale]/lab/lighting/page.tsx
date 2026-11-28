@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "lab" });
-  return { title: t("tab_light"), description: `${t("tab_light")} — ${t("subtitle")}` };
+  return { alternates: { canonical: `/${locale}/lab/lighting` }, title: t("tab_light"), description: `${t("tab_light")} — ${t("subtitle")}` };
 }
 
 export default async function LightingPage({ params }: { params: Promise<{ locale: string }> }) {
