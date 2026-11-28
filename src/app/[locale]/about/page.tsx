@@ -1,0 +1,125 @@
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { site } from "@/config/site";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const nav = await getTranslations({ locale, namespace: "nav" });
+  const about = await getTranslations({ locale, namespace: "exp" });
+  return {
+    title: nav("about"),
+    description: about("subtitle"),
+    alternates: { canonical: `/${locale}/about` },
+  };
+}
+
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  const roles = [
+    { role: t("exp.r1_role"), company: t("exp.r1_comp"), points: [t("exp.r1_p1"), t("exp.r1_p2"), t("exp.r1_p3"), t("exp.r1_p4")] },
+    { role: t("exp.r2_role"), company: "", points: [t("exp.r2_p1")] },
+    { role: t("exp.r3_role"), company: "", points: [t("exp.r3_p1")] },
+  ];
+  const training = [
+    { title: t("skills.t1_title"), desc: t("skills.t1_desc") },
+    { title: t("skills.t2_title"), desc: t("skills.t2_desc") },
+    { title: t("skills.t3_title"), desc: t("skills.t3_desc") },
+  ];
+  const domains = [t("domain.d1"), t("domain.d2"), t("domain.d3"), t("domain.d4"), t("domain.d5"), t("domain.d6")];
+
+  return (
+    <>
+      <Section>
+        <SectionHeading tag={t("exp.tag")} title={t("exp.title")} subtitle={t("exp.subtitle")} />
+        <ol className="space-y-8">
+          {roles.map((role, index) => (
+            <li key={index} className="border-s-2 border-hairline ps-5">
+              <p className="text-[length:var(--text-step-1)] font-medium">{role.role}</p>
+              {role.company ? <p className="text-[0.88rem] text-brass-ink">{role.company}</p> : null}
+              <ul className="mt-2 space-y-1.5 text-[0.92rem] text-ink-soft">
+                {role.points.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section tone="paper">
+        <SectionHeading title={t("skills.title")} />
+        <div className="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 className="text-[0.8rem] tracking-[0.16em] text-brass-ink uppercase">{t("skills.software_title")}</h3>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {["AutoCAD", "Revit", "3ds Max", "Lumion", "Photoshop", "D5 Render", "AI Visualization"].map((tool) => (
+                <li key={tool} className="rounded-xs border border-hairline px-3 py-1.5 text-[0.85rem] text-ink-soft">
+                  {tool}
+                </li>
+              ))}
+            </ul>
+            <h3 className="mt-6 text-[0.8rem] tracking-[0.16em] text-brass-ink uppercase">{t("skills.languages_title")}</h3>
+            <p className="mt-2 text-[0.9rem] text-ink-soft">
+              {t("skills.lang_ar")} — {t("skills.lang_ar_lvl")} · {t("skills.lang_en")} — {t("skills.lang_en_lvl")}
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[0.8rem] tracking-[0.16em] text-brass-ink uppercase">{t("skills.training_title")}</h3>
+            <ul className="mt-3 space-y-4">
+              {training.map((item) => (
+                <li key={item.title}>
+                  <p className="font-medium">{item.title}</p>
+                  <p className="text-[0.88rem] text-ink-soft">{item.desc}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <h3 className="mt-10 text-[0.8rem] tracking-[0.16em] text-brass-ink uppercase">{t("exp.tag")}</h3>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {domains.map((domain) => (
+            <li key={domain} className="rounded-xs bg-sand px-3 py-1.5 text-[0.85rem] text-ink-soft">
+              {domain}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section>
+        <SectionHeading tag={t("edu.tag")} title={t("edu.title")} />
+        <div className="rounded-md border border-hairline bg-paper p-6">
+          <p className="text-[length:var(--text-step-1)] font-medium">{t("edu.degree")}</p>
+          <p className="mt-1 text-ink-soft">{t("edu.school")}</p>
+          <p className="mt-1 text-[0.86rem] text-ink-soft">{t("edu.partner")}</p>
+          <p className="mt-1 text-[0.86rem] text-brass-ink">{t("edu.dates")}</p>
+        </div>
+      </Section>
+
+      <Section tone="sand">
+        <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} />
+        <ul className="grid gap-3 sm:grid-cols-2">
+          <li className="rounded-sm border border-hairline bg-paper px-4 py-3">
+            <a href={`tel:${site.phone}`} dir="ltr" className="font-medium hover:text-olive">
+              {site.phoneDisplay}
+            </a>
+          </li>
+          <li className="rounded-sm border border-hairline bg-paper px-4 py-3">
+            <a href={`mailto:${site.email}`} className="font-medium hover:text-olive">
+              {site.email}
+            </a>
+          </li>
+          <li className="rounded-sm border border-hairline bg-paper px-4 py-3">
+            <a href={site.behance} target="_blank" rel="noreferrer noopener" className="font-medium hover:text-olive">
+              Behance
+            </a>
+          </li>
+          <li className="rounded-sm border border-hairline bg-paper px-4 py-3 text-[0.9rem]">{t("contact.loc_val")}</li>
+        </ul>
+      </Section>
+    </>
+  );
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hassan Ahmed — Architecture1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="en/" />
+    <script>
+      // Static export has no server to read a locale cookie, so "/" picks the
+      // visitor's last choice here and sends them to the matching locale.
+      (function () {
+        var match = document.cookie.match(/(?:^|;\s*)NEXT_LOCALE=(ar|en)/);
+        var locale = match ? match[1] : "en";
+        // Works at the domain root and under a project path such as /Architecture1/.
+        var base = window.location.pathname.replace(/index\.html$/, "").replace(/\/?$/, "/");
+        var target = base + locale + "/";
+        window.location.replace(target);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=en/" /></noscript>
+  </head>
+  <body>
+    <p><a href="en/">English</a> · <a href="ar/">العربية</a></p>
+  </body>
+</html>
