@@ -47,7 +47,7 @@ export function Panorama({ rooms }: { rooms: { src: string; label: string }[] })
   useEffect(() => {
     if (!rotating) return;
     const tick = () => {
-      setOffset((value) => value + 0.6);
+      setOffset((value) => value - 0.6);
       frame.current = requestAnimationFrame(tick);
     };
     frame.current = requestAnimationFrame(tick);
@@ -94,7 +94,7 @@ export function Panorama({ rooms }: { rooms: { src: string; label: string }[] })
       </div>
       <div
         ref={viewport}
-        className="relative aspect-16/9 cursor-grab overflow-hidden rounded-md border border-hairline bg-ink active:cursor-grabbing"
+        className="relative aspect-16/9 cursor-grab touch-pan-y select-none overflow-hidden rounded-md border border-hairline bg-ink active:cursor-grabbing"
         onPointerDown={(event) => {
           dragging.current = { x: event.clientX, start: offset };
           event.currentTarget.setPointerCapture(event.pointerId);
@@ -113,13 +113,13 @@ export function Panorama({ rooms }: { rooms: { src: string; label: string }[] })
         <div
           ref={strip}
           className="absolute inset-y-0 flex"
-          style={{ transform: `translate3d(${-(((offset % loopWidth) + loopWidth) % loopWidth)}px, 0, 0)` }}
+          style={{ transform: `translate3d(${-((((-offset) % loopWidth) + loopWidth) % loopWidth)}px, 0, 0)` }}
         >
           <div className="relative h-full w-[1600px] shrink-0">
-            <Image src={rooms[room].src} alt={rooms[room].label} fill sizes="1600px" className="object-cover" />
+            <Image src={rooms[room].src} alt={rooms[room].label} fill sizes="1600px" className="object-cover" draggable={false} />
           </div>
           <div className="relative h-full w-[1600px] shrink-0">
-            <Image src={rooms[room].src} alt="" fill sizes="1600px" className="object-cover" />
+            <Image src={rooms[room].src} alt="" fill sizes="1600px" className="object-cover" draggable={false} />
           </div>
         </div>
         <p className="pointer-events-none absolute bottom-3 start-3 rounded-xs bg-ink/60 px-2 py-1 text-[0.72rem] text-alabaster">

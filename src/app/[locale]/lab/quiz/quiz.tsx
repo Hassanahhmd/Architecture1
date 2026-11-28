@@ -1,8 +1,10 @@
 "use client";
 
 import { useReducer } from "react";
+import { Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { scoreQuiz, type Style } from "@/features/quiz/logic";
+import { quizLabels, quizMessage, quizOptions, quizResults } from "@/features/quiz/content";
 import { buildWhatsAppUrl } from "@/config/site";
 import { cn } from "@/lib/cn";
 
@@ -16,12 +18,6 @@ function reducer(state: State, action: Action): State {
   return { step: state.step + 1, answers: [...state.answers, action.value] };
 }
 
-const options: { style: Style; key: string }[] = [
-  { style: "luxury", key: "quiz.o_luxury" },
-  { style: "minimal", key: "quiz.o_minimal" },
-  { style: "modern", key: "quiz.o_modern" },
-];
-
 export function Quiz({ locale }: { locale: "ar" | "en" }) {
   const t = useTranslations();
   const [state, dispatch] = useReducer(reducer, initial);
@@ -29,18 +25,31 @@ export function Quiz({ locale }: { locale: "ar" | "en" }) {
 
   if (state.step >= questions.length) {
     const result = scoreQuiz(state.answers);
-    const message =
-      locale === "ar"
-        ? `مرحبًا م. حسن، عملت الكويز وطلعلي طراز ${t(`quiz.style_${result}`)}، عايز نتكلم في تصميمه.`
-        : `Hi Hassan, I took the quiz and got ${t(`quiz.style_${result}`)}. I'd like to discuss designing it.`;
+    const content = quizResults[result];
+    const title = content.title[locale];
+    const mats = content.mats[locale];
     return (
       <div className="rounded-md border border-hairline bg-paper p-6">
         <p className="text-[0.78rem] tracking-[0.16em] text-brass-ink uppercase">{t("quiz.res_tag")}</p>
-        <h2 className="mt-2 text-[length:var(--text-step-2)] font-semibold">{t(`quiz.style_${result}`)}</h2>
-        <p className="mt-3 max-w-2xl text-ink-soft">{t(`quiz.desc_${result}`)}</p>
+        <h2 className="mt-2 text-[length:var(--text-step-2)] font-semibold">{title}</h2>
+        <p className="mt-3 max-w-2xl text-ink-soft">{content.desc[locale]}</p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-sm border border-hairline p-4">
+            <p className="text-[0.75rem] text-ink-soft">{quizLabels.materials[locale]}</p>
+            <p className="mt-1 font-medium">{mats}</p>
+          </div>
+          <div className="rounded-sm border border-hairline p-4">
+            <p className="text-[0.75rem] text-ink-soft">{quizLabels.palette[locale]}</p>
+            <div className="mt-2 flex gap-2">
+              {content.swatches.map((color) => (
+                <span key={color} className="size-8 rounded-full border border-hairline" style={{ background: color }} />
+              ))}
+            </div>
+          </div>
+        </div>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
-            href={buildWhatsAppUrl(message)}
+            href={buildWhatsAppUrl(quizMessage(locale, title, mats))}
             target="_blank"
             rel="noreferrer noopener"
             className="rounded-sm bg-olive px-5 py-3 text-[0.9rem] text-alabaster"
@@ -62,9 +71,7 @@ export function Quiz({ locale }: { locale: "ar" | "en" }) {
   return (
     <div className="rounded-md border border-hairline bg-paper p-6">
       <div className="flex items-center gap-3">
-        <span className="text-[0.78rem] text-ink-soft">
-          {state.step + 1} / {questions.length}
-        </span>
+        <span className="text-[0.78rem] text-ink-soft">{quizLabels.step[locale](state.step + 1, questions.length)}</span>
         <div
           role="progressbar"
           aria-label={t("lab.tab_quiz")}
@@ -75,23 +82,28 @@ export function Quiz({ locale }: { locale: "ar" | "en" }) {
         >
           <div
             className="h-1 rounded-full bg-olive transition-[width] duration-300"
-            style={{ width: `${(state.step / questions.length) * 100}%` }}
+            style={{ width: `${((state.step + 1) / questions.length) * 100}%` }}
           />
         </div>
+        <span className="inline-flex items-center gap-1 text-[0.78rem] text-ink-soft">
+          <Zap size={13} aria-hidden />
+          {quizLabels.hint[locale]}
+        </span>
       </div>
       <h2 className="mt-5 text-[length:var(--text-step-1)] font-medium">{questions[state.step]}</h2>
       <div className="mt-5 grid gap-2">
-        {options.map((option) => (
+        {quizOptions[state.step].map((option) => (
           <button
-            key={option.key}
+            key={option.style}
             type="button"
             onClick={() => dispatch({ type: "answer", value: option.style })}
             className={cn(
-              "rounded-sm border border-hairline px-4 py-3 text-start text-[0.92rem]",
+              "rounded-sm border border-hairline px-4 py-3 text-start",
               "hover:border-olive hover:bg-sand/60",
             )}
           >
-            {t(option.key)}
+            <strong className="block text-[0.95rem] font-medium">{option.title[locale]}</strong>
+            <span className="mt-0.5 block text-[0.82rem] text-ink-soft">{option.sub[locale]}</span>
           </button>
         ))}
       </div>

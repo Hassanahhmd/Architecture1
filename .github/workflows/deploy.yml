@@ -4,9 +4,9 @@ name: Deploy to GitHub Pages
 # Needs Settings > Pages > Build and deployment > Source = "GitHub Actions".
 # If any step fails, the deploy job never runs and the currently published site stays up.
 
+# Manual only on purpose: a push to main must never replace the published site.
+# Run it from Actions > Deploy to GitHub Pages > Run workflow when the owner approves a release.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

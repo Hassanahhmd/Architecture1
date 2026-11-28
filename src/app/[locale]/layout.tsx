@@ -8,6 +8,7 @@ import { isLocale, localeDirection, locales, type Locale } from "@/i18n/routing"
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { LegacyAnchorRedirect } from "@/components/layout/legacy-anchor-redirect";
 import "../globals.css";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" });
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
       <body className="min-h-dvh bg-alabaster text-ink">
         <NextIntlClientProvider locale={locale}>
           <ScrollProgress />
+          <LegacyAnchorRedirect locale={locale} />
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:z-50 focus:rounded-sm focus:bg-olive focus:px-4 focus:py-2 focus:text-alabaster"

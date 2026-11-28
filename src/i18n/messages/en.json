@@ -67,6 +67,7 @@
     "introText": "Explore a walkable three dimensional concept model based on the supplied ground floor plan.",
     "start": "Start the walkthrough",
     "controls": "Drag to look · use WASD or arrows to walk",
+    "openFull": "Tour not loading? Open it in its own page",
     "note": "Concept model based on the supplied plan; dimensions, finishes, and interior details need approval before construction."
   },
   "stats": {
@@ -138,7 +139,8 @@
     "cta_print": "Print Estimate (PDF)",
     "currency": "EGP",
     "weeks": "weeks",
-    "disclaimer": "Indicative pricing; final cost depends on site and delivery."
+    "disclaimer": "Indicative pricing; final cost depends on site and delivery.",
+    "m2_label": "Post MEP rough-in"
   },
   "matrix": {
     "badge": "2027 Packages & Pricing",
@@ -224,7 +226,10 @@
     "morning": "Morning Sun",
     "sunset": "Golden Hour",
     "night": "Night Architectural Scene",
-    "illustrative": "Illustrative preview"
+    "illustrative": "Illustrative preview",
+    "hud_temp": "Color temp",
+    "hud_angle": "Sun altitude",
+    "hud_shadow": "Shadows"
   },
   "tour": {
     "title": "360° Panoramic Spatial Inspection",
@@ -237,9 +242,7 @@
     "title": "Live Material & Architectural Mood Board Swapper",
     "desc": "Test the atmospheric impact of contrasting marbles, tactile hardwoods, and acoustic paneling",
     "choose_palette": "Select your architectural material palette:",
-    "preset1": "Marble and natural stone",
-    "preset2": "Wood and soft plaster",
-    "preset3": "Metal and glass"
+    "style_prefix": "Style:"
   },
   "quiz": {
     "q1": "What primary emotion do you want your home to evoke when entering?",
@@ -285,10 +288,10 @@
     "lang_en_lvl": "Professional Working Proficiency",
     "t1_title": "Zed Park — Orascom (Jan–Feb 2024)",
     "t1_desc": "Site training on curtain walls, thermal and water insulation, and advanced GRC cladding.",
-    "t2_title": "Site coordination training",
-    "t2_desc": "Coordination between architectural, structural and MEP drawings on residential compounds.",
-    "t3_title": "Visualization pipeline",
-    "t3_desc": "From 3ds Max and Revit models to finished Lumion and D5 renders."
+    "t2_title": "Linear Park Project — Redcon Spain (Jul–Aug 2023)",
+    "t2_desc": "Supervision and training on landscape works (softscape and hardscape) and external finishing.",
+    "t3_title": "Alco Eg Aluminium and Special Profiles Company",
+    "t3_desc": "Accredited training certificate in special aluminium profile techniques and advanced architectural systems."
   },
   "edu": {
     "tag": "Education",

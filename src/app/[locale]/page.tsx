@@ -51,7 +51,7 @@ function HomeContent({ locale }: { locale: Locale }) {
 
   const cards = [
     { href: `/${locale}/projects`, title: t("projects.title"), blurb: t("projects.subtitle"), image: "/images/projects/luxe-villa.jpg" },
-    { href: `/${locale}/tour`, title: t("tour.title"), blurb: t("tour.desc"), image: "/images/tour-poster.jpg" },
+    { href: `/${locale}/tour`, title: t("tour.title"), blurb: t("tour.desc"), image: "/images/tour-poster-card.jpg" },
     { href: `/${locale}/lab`, title: t("lab.title"), blurb: t("lab.subtitle"), image: "/images/projects/master-bedroom-marble.jpg" },
     { href: `/${locale}/estimator`, title: t("est.title"), blurb: t("est.subtitle"), image: "/images/projects/neoclassical-apartment.jpg" },
     { href: `/${locale}/reels`, title: t("tiktok.title"), blurb: t("tiktok.subtitle"), image: "/images/projects/kitchen-design.jpg" },
@@ -171,7 +171,7 @@ function HomeContent({ locale }: { locale: Locale }) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, index) => (
             <Reveal key={card.href} delay={index * 60} className={index === 0 ? "sm:col-span-2" : ""}>
-              <SectionCard {...card} priority={index === 0} />
+              <SectionCard {...card} />
             </Reveal>
           ))}
         </div>
