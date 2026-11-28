@@ -19,6 +19,7 @@ for (const { l, dir } of locales) {
       await expect(page.locator("html")).toHaveAttribute("lang", l);
       await expect(page.locator("html")).toHaveAttribute("dir", dir);
       await expect(page.locator("h1").first()).toBeVisible();
+      await page.waitForTimeout(800); // let the 500 ms scroll reveal finish so axe does not read mid-fade colours
       const { violations } = await new AxeBuilder({ page }).analyze();
       const bad = violations.filter((v) => v.impact === "serious" || v.impact === "critical").map((v) => v.id);
       expect(bad).toEqual([]);
@@ -116,4 +117,18 @@ test("OpenGraph and Twitter image tags point at the shipped og.png", async ({ pa
   expect(og).toMatch(/og\.png$/);
   expect((await request.get("/og.png")).status()).toBe(200);
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+});
+
+test("gallery full screen opens, steps, closes with Escape and returns focus", async ({ page }) => {
+  await page.goto("/en/projects/store/");
+  const expand = page.getByRole("button", { name: /expand|full/i }).first();
+  await expand.click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText("1 /");
+  await dialog.getByRole("button", { name: /next/i }).click();
+  await expect(dialog).toContainText("2 /");
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
+  await expect(expand).toBeFocused();
 });
