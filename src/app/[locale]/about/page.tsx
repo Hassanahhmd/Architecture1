@@ -32,7 +32,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <Section>
+      <Section id="experience">
         <SectionHeading tag={t("exp.tag")} title={t("exp.title")} subtitle={t("exp.subtitle")} />
         <ol className="space-y-8">
           {roles.map((role, index) => (
@@ -49,7 +49,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </ol>
       </Section>
 
-      <Section tone="paper">
+      <Section tone="paper" id="skills">
         <SectionHeading title={t("skills.title")} />
         <div className="grid gap-8 md:grid-cols-2">
           <div>
@@ -98,7 +98,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </ul>
       </Section>
 
-      <Section>
+      <Section id="education">
         <SectionHeading tag={t("edu.tag")} title={t("edu.title")} />
         <div className="rounded-md border border-hairline bg-paper p-6">
           <p className="text-[length:var(--text-step-1)] font-medium">{t("edu.degree")}</p>
@@ -108,7 +108,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
       </Section>
 
-      <Section tone="sand">
+      <Section tone="sand" id="contact">
         <SectionHeading tag={t("contact.tag")} title={t("contact.title")} subtitle={t("contact.desc")} />
         <ul className="grid gap-3 sm:grid-cols-2">
           <li className="rounded-sm border border-hairline bg-paper px-4 py-3">

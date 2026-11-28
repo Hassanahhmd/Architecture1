@@ -13,7 +13,9 @@
         var locale = match ? match[1] : "en";
         // Works at the domain root and under a project path such as /Architecture1/.
         var base = window.location.pathname.replace(/index\.html$/, "").replace(/\/?$/, "/");
-        var target = base + locale + "/";
+        var legacy = {"showreel": "tour/", "tour": "tour/", "projects": "projects/", "lab": "lab/", "estimator": "estimator/", "experience": "about/#experience", "skills": "about/#skills", "education": "about/#education", "contact": "about/#contact"};
+        var key = window.location.hash.slice(1);
+        var target = base + locale + "/" + (Object.prototype.hasOwnProperty.call(legacy, key) ? legacy[key] : window.location.hash);
         window.location.replace(target);
       })();
     </script>
