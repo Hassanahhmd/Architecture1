@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import { cn } from "@/lib/cn";
@@ -20,6 +20,7 @@ export function ProjectGallery({
 }) {
   const [index, setIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const opener = useRef<HTMLButtonElement>(null);
   const list = images.length ? images : [""];
 
   const step = useCallback(
@@ -49,6 +50,7 @@ export function ProjectGallery({
           priority={index === 0}
         />
         <button
+          ref={opener}
           type="button"
           onClick={() => setExpanded(true)}
           aria-label={labels.expand}
@@ -91,7 +93,13 @@ export function ProjectGallery({
       <Dialog.Root open={expanded} onOpenChange={setExpanded}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-ink/90" />
-          <Dialog.Content className="fixed inset-0 z-50 flex flex-col p-4 md:p-8">
+          <Dialog.Content
+          className="fixed inset-0 z-50 flex flex-col p-4 md:p-8"
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            opener.current?.focus();
+          }}
+        >
             <div className="flex items-center justify-between">
               <Dialog.Title className="text-[0.9rem] text-alabaster">
                 {alt} {index + 1} / {list.length}

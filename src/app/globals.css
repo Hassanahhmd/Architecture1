@@ -144,3 +144,8 @@
     background: transparent !important;
   }
 }
+
+/* Keep anchors and keyboard focus clear of the sticky header. */
+html {
+  scroll-padding-top: 6rem;
+}
