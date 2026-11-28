@@ -109,6 +109,17 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
               </label>
             ))}
           </div>
+          <div className="mt-4 rounded-sm border border-hairline bg-sand/40 p-4" aria-live="polite">
+            <p className="text-[0.78rem] tracking-[0.16em] text-brass-ink uppercase">{t("est.quotas_live_tag")}</p>
+            <p className="mt-2 text-[0.82rem] font-medium">{t("est.gift_box_title")}</p>
+            <p className="mt-1 text-[0.85rem]">{t(`tier.${selection.tier}_gift`)}</p>
+            <ul className="mt-3 list-disc space-y-1 ps-5 text-[0.82rem] text-ink-soft">
+              {(["f1", "f2", "f3", "f4"] as const).map((f) => (
+                <li key={f}>{t(`tier.${selection.tier}_${f}`)}</li>
+              ))}
+            </ul>
+            <p className="mt-3 text-[0.75rem] text-ink-soft">{t("est.gift_note")}</p>
+          </div>
         </fieldset>
 
         <fieldset>
@@ -157,6 +168,21 @@ export function Estimator({ locale }: { locale: "ar" | "en" }) {
           </div>
           <div className="flex justify-between"><dt>{t("est.warranty_lbl")}</dt><dd>{t("est.warranty_val")}</dd></div>
         </dl>
+
+        <div className="mt-4 border-t border-hairline pt-4">
+          <p className="text-[0.85rem] font-medium">{t("est.milestones_title")}</p>
+          <ol className="mt-2 space-y-2 text-[0.85rem]">
+            {estimate.milestones.map((m, i) => (
+              <li key={i} className="flex justify-between gap-3">
+                <span>
+                  <span dir="ltr" className="me-2 text-ink-soft">{m.percent}%</span>
+                  {t(i === 1 ? "est.m2_label" : `est.m${i + 1}`)}
+                </span>
+                <span>{formatEGP(m.amount, locale)}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
 
         <p className="mt-4 text-[0.75rem] text-ink-soft">{t("est.disclaimer")}</p>
 

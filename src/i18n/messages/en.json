@@ -138,7 +138,8 @@
     "cta_print": "Print Estimate (PDF)",
     "currency": "EGP",
     "weeks": "weeks",
-    "disclaimer": "Indicative pricing; final cost depends on site and delivery."
+    "disclaimer": "Indicative pricing; final cost depends on site and delivery.",
+    "m2_label": "Post MEP rough-in"
   },
   "matrix": {
     "badge": "2027 Packages & Pricing",
