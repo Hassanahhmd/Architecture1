@@ -60,7 +60,7 @@ function HomeContent({ locale }: { locale: Locale }) {
   return (
     <>
       <section id="top" className="relative px-3 pt-4 pb-10 md:px-10 md:pt-8 md:pb-16">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 overflow-hidden rounded-lg border border-hairline bg-gradient-to-br from-sand via-alabaster to-olive/10 px-5 py-9 text-ink shadow-[0_24px_55px_rgba(45,49,37,0.08)] md:px-12 md:py-16 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 overflow-hidden rounded-lg border border-hairline bg-gradient-to-br from-sand via-alabaster to-olive/10 px-5 py-9 text-ink panel-light md:px-12 md:py-16 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <Badge tone="sand">{t("hero.badge")}</Badge>
             <h1 className="mt-5 text-[length:var(--text-step-4)] font-semibold text-ink">{t("hero.name")}</h1>

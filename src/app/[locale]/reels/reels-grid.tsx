@@ -35,7 +35,7 @@ export function ReelsGrid() {
                   type="button"
                   onClick={() => setPlaying(id)}
                   className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-alabaster"
-                  aria-label={`${t("tiktok.title")} — ${id}`}
+                  aria-label={`${t("reel.kicker")} (${t("tiktok.title")})`}
                 >
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-alabaster/15">
                     <Play size={22} aria-hidden />

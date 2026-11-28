@@ -16,7 +16,7 @@ export function PageHero({
   return (
     <header
       className={cn(
-        "mb-10 overflow-hidden rounded-lg border-b-4 border-orange bg-[radial-gradient(ellipse_at_90%_0%,rgba(255,143,58,0.18),transparent_40%),linear-gradient(160deg,#4a5439_0%,#343d2e_70%)] px-5 py-9 text-paper shadow-[0_18px_40px_rgba(45,49,37,0.12)] md:px-12 md:py-14",
+        "mb-10 overflow-hidden rounded-lg border-b-4 border-orange panel-olive md:px-12 md:py-14",
         className,
       )}
     >
