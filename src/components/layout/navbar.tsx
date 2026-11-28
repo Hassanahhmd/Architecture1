@@ -119,7 +119,7 @@ export function Navbar({ locale }: { locale: Locale }) {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            aria-label={t("nav.home")}
+            aria-label={t("nav.menu")}
             className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-hairline lg:hidden"
           >
             {open ? <X size={18} aria-hidden /> : <Menu size={18} aria-hidden />}
