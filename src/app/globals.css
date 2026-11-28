@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --color-alabaster: #faf6ef;
+  --color-paper: #fffdf8;
+  --color-sand: #f2ece0;
+  --color-ink: #1c1a17;
+  --color-ink-soft: #5c564c;
+  --color-olive: #414b35;
+  --color-olive-soft: #5b6a4a;
+  --color-brass: #a17d42;
+  /* darker brass for small text on alabaster: 5.1:1 contrast */
+  --color-brass-ink: #7a5a28;
+  --color-hairline: #e2d9c9;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --text-step--1: clamp(0.82rem, 0.8rem + 0.2vw, 0.9rem);
+  --text-step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --text-step-1: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  --text-step-2: clamp(1.35rem, 1.15rem + 1vw, 1.9rem);
+  --text-step-3: clamp(1.75rem, 1.3rem + 2vw, 2.8rem);
+  --text-step-4: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem);
+
+  --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-alabaster);
+    color: var(--color-ink);
+    font-family: var(--font-body, var(--font-arabic)), system-ui, sans-serif;
+    line-height: 1.7;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display, var(--font-body, var(--font-arabic))), system-ui, serif;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  /* Arabic pages load only the Arabic family, so the display face falls back to it. */
+  [dir="rtl"] body,
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4 {
+    font-family: var(--font-arabic), system-ui, sans-serif;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: var(--color-olive);
+    color: var(--color-alabaster);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reading progress: pure CSS, transform-only, absent without support. */
+.scroll-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 60;
+  height: 2px;
+  background: var(--color-olive);
+  scale: 0 1;
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+[dir="rtl"] .scroll-progress {
+  transform-origin: 100% 50%;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: scroll-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+@keyframes scroll-progress {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
+}
+
+/* Lab menu: hover or keyboard focus opens it; plain CSS so it cannot drift. */
+.nav-menu {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.nav-menu-wrap:hover .nav-menu,
+.nav-menu-wrap:focus-within .nav-menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Printing the estimator: only the summary, on white, without the site chrome. */
+@media print {
+  header,
+  footer,
+  nav,
+  .print-hide {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .print-summary {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .print-summary * {
+    color: #000 !important;
+    background: transparent !important;
+  }
+}

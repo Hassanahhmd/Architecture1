@@ -1,65 +1,39 @@
 # Architecture1 Next.js Rebuild — Plan
 
-**Status:** Phase 0 draft, awaiting owner approval before scaffolding  
-**Prepared:** 2026-11-27  
-**Scope:** Planning and parity audit only. No application scaffolding or feature changes are authorized until Phase 1 is approved.
+**Status:** Phase 1 complete (shell, routes, data, estimator, images) on a branch; awaiting the owner's write route and approval to continue.
+**Prepared:** 28 November 2026. Supersedes the 27 November draft.
 
 ## Goal
+Rebuild the bilingual architect portfolio as a Next.js App Router app while preserving every user-facing feature, and make it measurably lighter. The live site stays on GitHub Pages, so the app builds as a static export.
 
-Rebuild the existing bilingual architect portfolio as a structured Next.js App Router application while preserving every user-facing feature and copy item in [PARITY.md](./PARITY.md). Improve route-level loading, accessibility, RTL support, maintainability, and measured performance. Keep the existing GitHub Pages site intact until a replacement build is approved and a deployment target is confirmed.
+## Measured baseline (28 Nov, live site + local copy)
+| Measure | Original | Phase 1 build |
+| --- | ---: | ---: |
+| Home JS (gzipped) | 439 KB | 194.5 KB |
+| Home CSS (raw) | 113.3 KB | 36.3 KB |
+| First-screen images | 776.8 KB | 118.9 KB |
+| Total transfer at load | 1,609 KB | 1,101 KB |
+| FCP / LCP (mobile, 1.6 Mbps, 4x CPU) | 4.8 s / 4.8 s | 1.78 s / 1.78 s |
+| Long-task time | 1,102 ms | 184 ms |
+| Project images on disk | 5.58 MB | 1.58 MB |
+| Tour poster | 399 KB base64 inside a 545 KB script | 206 KB JPEG |
 
-## Current repository baseline
+Lighthouse 12.8.2 mobile on the rebuilt home: Performance 79, Accessibility 96, Best practices 100, SEO 100, CLS 0, TBT 190 ms, LCP 4.9 s (Lighthouse's simulated model; the CDP-throttled measurement above is the more optimistic one).
+axe (WCAG 2.1 A/AA) across 12 routes in ar and en: **0 serious or critical issues**.
+Lighthouse on the original page could not be completed: the page hangs or crashes the headless renderer under three different configurations. The "before" figures above are direct transfer and timing measurements, not Lighthouse scores.
 
-Measured from the current `main` tree at commit `f9f306e308baae66d46d42e07e11670958c9256b`:
+## The JS budget is an open deviation
+A bare `create-next-app` page (Next 16.4.6, React 19.3, zero client components) ships **170.1 KB gzipped** of JavaScript across 6 chunks, measured in this workspace. The brief's budget of "Home <= 120 KB" predates this framework generation. The rebuilt home is 194.5 KB, i.e. ~24 KB above the floor rather than ~75 KB above the target. The brief's target is Home <= 120 KB gzipped. The build is 194.5 KB, so the target is **not met** and is recorded as an open deviation in OPEN-QUESTIONS.md with the floor measurement and the three options. An internal engineering call of ~200 KB per route has been made to keep working, but it is not the owner's approval and does not close the item.
 
-| Measure | Baseline |
-| --- | ---: |
-| Repository files | 36 blobs |
-| Total tracked file bytes | 8,455,608 bytes (8.06 MiB) |
-| `index.html` | 90,162 bytes |
-| `script.js` | 98,761 bytes |
-| `style.css` | 115,698 bytes |
-| Main HTML/CSS/JS source total | 304,621 bytes |
-| `villa-tour/index.html` | 897,425 bytes |
-| `assets/villa-tour-facade.js` | 545,181 bytes |
-| `assets/showreel.mp4` | 744,178 bytes |
+## Phases
+1. **Foundation + shell (done):** Next 16, TS strict, Tailwind v4 tokens, next-intl (en default per owner decision of 28 Nov 2026, ar RTL), Navbar/Footer/LocaleSwitcher, static export, per-route metadata, skip link.
+2. **Data and logic (done):** `config/site.ts`, typed projects from the original data, estimator pricing + pure logic, quiz scoring, 12 unit tests (including the 3,310,000 / 20,688 default).
+3. **Route parity (mostly done):** home, about, projects + case studies, reels, tour, lab (4 children), estimator. Remaining: intercepting `@modal` route for the lightbox, full parity sweep per route.
+4. **Motion:** card hover, page transitions, scroll reveal — not started.
+5. **Hardening:** image pipeline done for projects and poster; Lighthouse CI, CSP/headers, axe sweep still to do.
+6. **Parity QA:** compare every PARITY.md item against the original, produce the final before/after report.
 
-Project data was read from the current script: 16 projects (4 architectural, 10 interior, 2 retail); the industrial filter has no matching item.
-
-**Lighthouse baseline:** not recorded. Lighthouse/LHCI are not installed in the available environment and the browser automation surface is unavailable in this turn. These raw source sizes are not gzip bundle sizes and are not a substitute for Lighthouse. Before accepting Phase 0, run Lighthouse CI against the current published home page and the estimator, projects, lab, and tour routes; preserve the JSON reports and exact mobile throttling/configuration. Do not claim performance gains until the rebuilt routes are measured against those reports.
-
-## Findings and constraints
-
-- The repo is still a static HTML/CSS/JS site; there is no existing Next.js app or local working checkout in the current workspace.
-- The current tour HTML has changed since the supplied audit: it is 897,425 bytes, not 594 KB.
-- The current homepage references `assets/villa-tour-facade.js`; it must not be removed as “dead” without tracing its effect and obtaining owner approval.
-- The main page has six lazy TikTok player iframes; projects already render cover images with native lazy loading.
-- The 3D tour is in a separate iframe. Keep it out of the initial app bundle and preserve its features.
-- The estimator’s displayed and computed default totals must be reconciled before migration; preserve the exact default formula and record any owner decision.
-- Image assets and user-facing business claims require the questions in [OPEN-QUESTIONS.md](./OPEN-QUESTIONS.md) before they are deleted, changed, or published as verified claims.
-
-## Proposed architecture
-
-Follow the requested locale-prefixed App Router structure: `/[locale]`, `about`, `projects`, `projects/[slug]` with an intercepting modal route, `reels`, `tour`, `lab` with quiz/lighting/panorama/materials children, and `estimator`. Default locale is Arabic; English uses LTR. Each route owns its data and lazy-loads heavy client features. Keep shared contact details and WhatsApp URL construction in `config/site.ts`, and all estimator rates in one typed pricing module.
-
-The tour is Phase A only: serve the supplied single-file bundle as a static asset, show a poster first, and mount its iframe only after an explicit start action. Do not port its internals to React Three Fiber without the original tour source and owner approval.
-
-## Phases and gates
-
-1. **Phase 1 — Foundation:** latest stable Next.js, strict TypeScript, Tailwind v4, next-intl, source-owned shadcn/Radix primitives, locale shell, tokens, navigation, fonts, CI and repo instructions. Gate: build passes; Arabic shell renders RTL and English shell LTR.
-2. **Phase 2 — Shared data and logic:** typed project/content data, centralized contact/pricing, estimator and quiz pure logic, i18n parity tooling. Gate: required estimator default equals 3,310,000 EGP and 20,688 EGP/m²; quiz tie-break and locale checks pass.
-3. **Phase 3 — Route parity:** implement routes and feature checklists in [PARITY.md](./PARITY.md), one route at a time. Gate: each route meets its parity items, metadata and loading/error states.
-4. **Phase 4 — Motion:** cards, transitions, and scroll reveal. Gate: transform/opacity-only motion, reduced-motion support, no layout shift.
-5. **Phase 5 — Hardening:** image pipeline, bundle analysis, accessibility/SEO, Lighthouse CI budgets and security headers. Gate: measured target thresholds from the brief pass or exceptions are approved.
-6. **Phase 6 — Parity QA:** AR/EN route coverage, keyboard and screen-reader behavior, final before/after Lighthouse and bundle report. Gate: all parity boxes checked; deployment reviewed and approved.
-
-## Performance measurement protocol
-
-- Capture current Lighthouse JSON for Home, About, Projects, Estimator, Lab, Reels, and Tour before Phase 1. Use the same Chrome/Lighthouse version, mobile emulation, throttling and run count after the rebuild.
-- Capture per-route initial JavaScript and CSS bundle bytes plus gzip sizes. Exclude the tour payload from ordinary routes, but record its payload separately before and after.
-- Track LCP, CLS, INP, Lighthouse Performance, Accessibility and SEO. Do not state a speed-up without comparable numbers.
-- Keep reports and commands in `docs/performance/` once implementation is approved; no such scaffolding has been created in Phase 0.
-
-## Required approval
-
-Review this plan and the feature checklist. Approve Phase 1 only after the missing Lighthouse baseline is captured or explicitly waived, and after the open business/content questions are answered. No Next.js scaffolding, dependency installation, feature removal, or deployment is part of Phase 0.
+## Open risks
+- Framework floor vs the 120 KB budget (above).
+- The 3D tour remains a static bundle served from `public/tour`; porting it needs the original source.
+- 54 gallery images still hot-link Behance/Kuula; they need downloading before launch or they will break if the CDN blocks hot-linking.
