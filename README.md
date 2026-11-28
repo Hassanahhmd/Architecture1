@@ -22,7 +22,7 @@ workflow) and keep `.nojekyll` in it so `_next/` is served. Nothing is published
 - `src/config/site.ts` — phone, email, socials, WhatsApp builder (the only place they exist)
 - `src/features/estimator/pricing.ts` — every price (the only place they exist)
 - `src/features/projects/data.ts` — the 16 projects and their galleries
-- `src/i18n/messages/{ar,en}.json` — all visible copy
+- `src/i18n/messages/<locale>/<namespace>.json` — all visible copy (list namespaces in `src/i18n/namespaces.ts`)
 - `docs/` — plan, parity checklist, open questions
 
 ## Deployment (GitHub Pages)
@@ -34,3 +34,12 @@ The live site is served from `https://hassanahhmd.github.io/Architecture1/`, so 
 - Safe order: merge the PR first (the old root `index.html` stays in `main`, so the current site keeps serving while Source is still "Deploy from a branch"), then switch Source to "GitHub Actions" and run the "Deploy to GitHub Pages" workflow once (Actions tab > Run workflow).
 - If the build, lint, tests or deploy fail, the deploy job does not run and the last published site stays up.
 - Local work and tests use no base path (`npm run build`). To test the Pages build: `BASE_PATH=/Architecture1 npm run build`.
+
+## Scripts
+
+- `npm run i18n:check` — ar/en key parity and empty values (unused keys warn; `-- --strict` fails)
+- `npm run analyze` — gzip first-load JS per route (budget about 200 KB; the script's hard limit is 210 KB)
+- `npm run images:fetch` (`-- --dry`) — lists and downloads remote images to `public/projects/<slug>/`; does not rewrite data
+- `npm run e2e` — builds with no base path, then Playwright plus axe on 11 routes in EN and AR (`CHROME_PATH=/usr/bin/google-chrome`)
+- `NEXT_PUBLIC_SCAN=1 npm run dev` — react-scan render profiler, dev only, 0 KB in production
+- These are not wired into CI: the deploy token has no workflow scope. Run them locally.

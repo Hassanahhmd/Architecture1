@@ -1,3 +1,4 @@
+import { ReactScan } from "@/components/dev/react-scan";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Cormorant_Garamond, IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
@@ -56,6 +57,7 @@ export default async function LocaleLayout({
         <JsonLd locale={locale as Locale} />
         <NextIntlClientProvider locale={locale}>
           <ScrollProgress />
+          <ReactScan />
           <LegacyAnchorRedirect locale={locale} />
           <a
             href="#main"

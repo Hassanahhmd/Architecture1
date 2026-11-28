@@ -1,0 +1,19 @@
+{
+  "portrait_role": "Architecture Engineer & 3D Visualization Specialist",
+  "badge": "متاح للمشاريع والاستشارات المعمارية",
+  "name": "حسن أحمد",
+  "quiz": "ابدأ اختبار الطراز المعماري",
+  "subtitle": "Architecture Engineer & 3D Visualization Specialist",
+  "desc": "أقود التصميم المعماري والداخلي من الفكرة إلى التسليم، مع تنسيق الموقع وإدارة التفاصيل. أكثر من 50 مشروعاً سكنياً وتجارياً وصناعياً في مصر.",
+  "specialty": {
+    "architecture": "التصميم المعماري",
+    "interiors": "التصميم الداخلي",
+    "visualization": "التصور ثلاثي الأبعاد"
+  },
+  "zero_violations": "صفر مخالفات هندسية عبر 30+ مشروع",
+  "view_work": "تصفح المشاريع",
+  "whatsapp": "محادثة واتساب",
+  "avatar_label": "HASSAN AHMED ARCHITECTURE",
+  "floating_projects": "مشروع منفذ",
+  "floating_satisfaction": "جودة وتسليم للمفتاح"
+}

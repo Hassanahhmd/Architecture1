@@ -1,8 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { useTranslations } from "next-intl";
 import {
   categories,
@@ -11,6 +12,8 @@ import {
 } from "@/features/projects/data";
 import { cn } from "@/lib/cn";
 import type { Locale } from "@/i18n/routing";
+
+const ProjectModal = dynamic(() => import("@/components/projects/project-modal"), { ssr: false });
 
 type Filter = ProjectCategory | "all";
 
@@ -31,6 +34,43 @@ export function ProjectsGrid({
 }) {
   const t = useTranslations();
   const [filter, setFilter] = useState<Filter>(initialFilter);
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const pushed = useRef(false);
+
+  useEffect(() => {
+    const sync = () => {
+      const slug = new URLSearchParams(window.location.search).get("project");
+      setOpenSlug(slug && projects.some((p) => p.slug === slug) ? slug : null);
+    };
+    const id = requestAnimationFrame(sync);
+    window.addEventListener("popstate", sync);
+    return () => {
+      cancelAnimationFrame(id);
+      window.removeEventListener("popstate", sync);
+    };
+  }, []);
+
+  const openProject = (event: MouseEvent<HTMLAnchorElement>, slug: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const url = new URL(window.location.href);
+    url.searchParams.set("project", slug);
+    window.history.pushState(null, "", url);
+    pushed.current = true;
+    setOpenSlug(slug);
+  };
+
+  const closeProject = () => {
+    if (pushed.current) {
+      pushed.current = false;
+      window.history.back();
+      return;
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.delete("project");
+    window.history.replaceState(null, "", url);
+    setOpenSlug(null);
+  };
 
   useEffect(() => {
     const param = new URLSearchParams(window.location.search).get("category");
@@ -87,6 +127,7 @@ export function ProjectsGrid({
                 <Link
                   href={`/${locale}/projects/${project.slug}`}
                   className="block w-full text-start"
+                  onClick={(event) => openProject(event, project.slug)}
                 >
                   <div className="relative aspect-4/3 w-full overflow-hidden bg-sand">
                     <Image
@@ -132,6 +173,7 @@ export function ProjectsGrid({
           ))}
         </ul>
       )}
+      {openSlug && <ProjectModal slug={openSlug} locale={locale} onClose={closeProject} />}
     </>
   );
 }

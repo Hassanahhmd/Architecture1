@@ -1,0 +1,31 @@
+{
+  "status": "WALKABLE 3D CONCEPT MODEL",
+  "type": "CONCEPT MODEL",
+  "fullscreen": "Full screen",
+  "exit": "EXIT FULL SCREEN",
+  "route": "WALK THE PLAN",
+  "prev": "Previous",
+  "next": "Next",
+  "rooms": "Choose a room",
+  "of": "of",
+  "room": {
+    "facade": "Facade",
+    "majlis": "Majlis",
+    "living": "Living",
+    "dining": "Dining",
+    "dining1": "Dining 1",
+    "dining2": "Dining 2",
+    "kitchen": "Kitchen",
+    "outdoor": "Outdoor sitting",
+    "store": "Store",
+    "maid": "Maid's room",
+    "laundry": "Laundry and ironing"
+  },
+  "introTitle": "Step inside the villa",
+  "introText": "Explore a walkable three dimensional concept model based on the supplied ground floor plan.",
+  "start": "Start the walkthrough",
+  "controls": "Drag to look · use WASD or arrows to walk",
+  "openFull": "Tour not loading? Open it in its own page",
+  "exitFullscreen": "Exit full screen",
+  "note": "Concept model based on the supplied plan; dimensions, finishes, and interior details need approval before construction."
+}

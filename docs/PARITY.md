@@ -17,8 +17,8 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 - [ ] About has all three experience roles, seven skills/tools, three training items, six domains, education and full contact cards.
 
 ## Projects and case studies
-- [ ] 16 projects and all five filters: all, architectural, interior, retail and industrial.
-- [ ] Industrial filter stays available and shows a localized empty state.
+- [x] 16 projects and all five filters: all, architectural, interior, retail and industrial. (e2e: 16 articles, filter round trip)
+- [x] Industrial filter stays available and shows a localized empty state. (e2e)
 - [ ] Cards preserve category, client, tools, gallery count and Behance CTA.
 - [ ] Case-study route preserves localized title/description, full gallery and metadata.
 - [x] Every project is a prerendered, directly addressable page (`/ar/projects/store/`). The intercepting modal route the brief asks for cannot exist under `output: 'export'` — recorded as OPEN-QUESTIONS 11, awaiting the owner.
@@ -47,18 +47,18 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 - [ ] Seven tiers with localized copy, rates, gifts and four feature lines.
 - [ ] Add-ons and exact formula match the approved spec.
 - [ ] Default state is Elite/apartment/160 m² with gypsum and door selected unless owner changes it.
-- [ ] Default total is exactly 3,310,000 EGP and 20,688 EGP/m².
+- [x] Default total is exactly 3,310,000 EGP and 20,688 EGP/m². (e2e asserts 3,310,000 and 20,688)
 - [ ] Materials/labor/supervision breakdown, timeline, milestones, warranty and gift box.
 - [ ] AR/EN WhatsApp message and print-only-summary stylesheet; commercial disclaimers stay visible.
 
 ## Quality and delivery
 - [ ] Every route has localized metadata, loading state and error state.
 - [ ] Keyboard access, visible focus, AA contrast, skip link, landmarks and reduced motion.
-- [ ] SEO: sitemap, robots, OpenGraph, Person and ProfessionalService JSON-LD.
+- [ ] SEO: sitemap, robots, OpenGraph, Person and ProfessionalService JSON-LD. Shipped and live: sitemap, robots, JSON-LD (PR #7). Not done: OpenGraph image.
 - [ ] Images use responsive AVIF/WebP, correct sizes, hero-only priority and fallback.
 - [ ] Security headers/CSP allow only verified origins.
 - [ ] Before/after Lighthouse and per-route bundle sizes are recorded; no unmeasured speed claims.
-- [ ] Typecheck, lint, unit tests, i18n parity, build, E2E route/interaction tests and axe checks pass.
+- [x] Typecheck, lint, unit tests, i18n parity, build, E2E route/interaction tests and axe checks pass. (npm scripts, local; not wired into CI, workflow scope not granted)
 - [ ] Deployment target, domain and analytics are owner-approved.
 
 ## Phase 1 status notes
@@ -66,14 +66,15 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 - [x] Shared navbar, mobile drawer, footer, back-to-top, skip link
 - [x] 16 projects with five filters (industrial shows a localized empty state)
 - [x] Case-study route per project
-- [ ] Intercepting `@modal` lightbox route (dialog lightbox ships instead)
+- [ ] Intercepting `@modal` lightbox route: impossible under static export. Batch 2 ships a lazy client quick view with `?project=slug` URL state, deep link and the prerendered page as fallback (e2e covered).
 - [x] Reels with click-to-load facades, one player at a time
 - [x] Tour poster + start gate; bundle served from `public/tour`
 - [ ] Lab: quiz scored and exercised in EN and AR (28 Nov); lighting, materials and panorama drag were found static or broken on 28 Nov and repaired, re-exercised in both locales. Earlier "[x]" here was not backed by an exercised control.
 - [x] Estimator with tested default 3,310,000 / 20,688, WhatsApp CTA, print
 - [x] About: experience, skills, training, domains, education, contact
 - [ ] Scroll reveal and page transitions (Phase 4)
-- [ ] Lighthouse CI, CSP headers, axe sweep (Phase 5)
+- [x] Axe sweep: e2e runs axe on 11 routes in EN and AR, no serious issues (28 Nov)
+- [ ] CSP headers (GitHub Pages: meta CSP only) and Lighthouse CI wiring
 
 ## Motion (phase 4, in progress)
 
