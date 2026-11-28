@@ -62,7 +62,7 @@ export function Navbar({ locale }: { locale: Locale }) {
               <Link
                 key={link.key}
                 href={link.href}
-                prefetch
+
                 aria-current={active ? "page" : undefined}
                 className={cn("whitespace-nowrap transition-colors hover:text-olive", active ? "text-olive" : "text-ink-soft")}
               >
@@ -86,7 +86,7 @@ export function Navbar({ locale }: { locale: Locale }) {
                       <li key={child.href}>
                         <Link
                           href={child.href}
-                          prefetch
+
                           className={cn(
                             "block rounded-xs px-2.5 py-1.5 transition-colors hover:bg-sand",
                             pathname === child.href ? "text-olive" : "text-ink-soft",

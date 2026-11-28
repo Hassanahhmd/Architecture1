@@ -26,3 +26,11 @@ Reconciled 28 Nov 2026 against the owner's decisions. Items marked CLOSED need n
 - **Namespace messages and tooling (batch 2/3).** Messages live in `src/i18n/messages/<locale>/<namespace>.json`. React Compiler was tried and rejected: it raised project detail to 212.3 KB and /projects to 205.7 KB. react-scan is dev-only (`NEXT_PUBLIC_SCAN=1`) and adds 0 KB to production. Motion (the library) was not added: the budget has no headroom and the CSS reveal covers the need. Cross-document view transitions do not apply to Next client navigation.
 
 - **Performance isolation (28 Nov 2026).** Local Lighthouse (gzip static server, default mobile, same machine) gives /en/ LCP 0.9 s and 0.98 to 0.99 for builds 8da91d5, f1da283 and 90eb31c alike, so the code changes did not move LCP. Live runs from the sandbox varied from 1.1 s (earlier) to 2.3 to 2.7 s (later) with the LCP element being the hero paragraph and TTFB about 30 ms, which points at the network path, not the build. Unresolved; re-measure live from another network.
+
+## Claims reconciliation (28 Nov)
+
+Checked against tag `original-site-2026-11-28` (`script.js`, `index.html`). Carried over unchanged from the original, none newly written: "Zero Code Violations across 30+ projects", "Zero code violations across 30 supervised builds" (English stats), "10-Year Structural" warranty, "2027 Package Rates · Confirm by Quote", "Cape Breton Univ (Canada)", "50+" projects, "6+" compounds. The original Arabic stats line says "30+" where the English says "30 supervised builds"; both are carried as in the original. Confirming them with the owner stays optional.
+
+## Header navigation (28 Nov)
+
+Header links used `prefetch`. On the static export that made some clicks (for example /en/about to /en/estimator) request an HTML page as a data payload and stall with no navigation. Removing `prefetch` fixed it in all tested paths, with no visual change. Covered by an e2e test.
