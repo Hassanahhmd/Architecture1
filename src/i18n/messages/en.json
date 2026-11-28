@@ -67,6 +67,7 @@
     "introText": "Explore a walkable three dimensional concept model based on the supplied ground floor plan.",
     "start": "Start the walkthrough",
     "controls": "Drag to look · use WASD or arrows to walk",
+    "openFull": "Tour not loading? Open it in its own page",
     "note": "Concept model based on the supplied plan; dimensions, finishes, and interior details need approval before construction."
   },
   "stats": {
