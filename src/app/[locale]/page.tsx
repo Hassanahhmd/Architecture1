@@ -105,6 +105,7 @@ function HomeContent({ locale }: { locale: Locale }) {
                 alt={t("hero.name")}
                 fill
                 priority
+                fetchPriority="high"
                 sizes="(min-width: 1024px) 380px, 90vw"
                 className="object-cover"
               />
