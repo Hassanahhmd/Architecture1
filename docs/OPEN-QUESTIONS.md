@@ -20,7 +20,7 @@ Reconciled 28 Nov 2026 against the owner's decisions. Items marked CLOSED need n
 
 ## Owner decisions
 
-- **Default language: English (28 Nov 2026).** The owner said the site must always open in the English version. This overrides the brief's Arabic default. `/` sends a first-time visitor to `/en/`; a visitor who picked Arabic through the switcher is sent to `/ar/` next time via the NEXT_LOCALE cookie. If he wants English every time regardless of the stored choice, remove the cookie check in `public/index.html`.
+- **Default language: English, always (28 Nov 2026).** The owner said the site opens in English automatically, and Arabic only when he presses the Arabic button. `/` always redirects to `/en/`, regardless of browser language, a stored cookie or an earlier Arabic visit (`public/index.html` reads no cookie). The switcher links to `/ar/` and stores nothing. Explicit `/ar/...` URLs still work. e2e covers a fresh visit, an Arabic-browser visit and a stale Arabic cookie.
 - **JS budget: about 200 KB per route (28 Nov 2026).** See item 2.
 
 - **Namespace messages and tooling (batch 2/3).** Messages live in `src/i18n/messages/<locale>/<namespace>.json`. React Compiler was tried and rejected: it raised project detail to 212.3 KB and /projects to 205.7 KB. react-scan is dev-only (`NEXT_PUBLIC_SCAN=1`) and adds 0 KB to production. Motion (the library) was not added: the budget has no headroom and the CSS reveal covers the need. Cross-document view transitions do not apply to Next client navigation.
