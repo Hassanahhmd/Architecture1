@@ -1,13 +1,62 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { ExternalLink, Play } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ExternalLink, Maximize2, Minimize2, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export function TourViewer({ locale }: { locale: string }) {
   const t = useTranslations();
   const [started, setStarted] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const nativeFullscreen = useRef(false);
+
+  // "Expanded" is a fixed full-viewport layer, so it works on every phone (iPhone Safari
+  // cannot fullscreen a normal element). Where the browser supports the Fullscreen API
+  // we also ask for real fullscreen, which hides the browser bars.
+  const enter = useCallback(() => {
+    setExpanded(true);
+    const box = boxRef.current;
+    if (box?.requestFullscreen) {
+      box
+        .requestFullscreen()
+        .then(() => {
+          nativeFullscreen.current = true;
+        })
+        .catch(() => {
+          nativeFullscreen.current = false;
+        });
+    }
+  }, []);
+
+  const exit = useCallback(() => {
+    if (document.fullscreenElement) void document.exitFullscreen().catch(() => {});
+    nativeFullscreen.current = false;
+    setExpanded(false);
+    toggleRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") exit();
+    };
+    const onFullscreenChange = () => {
+      // The user left native fullscreen (browser Esc or gesture): leave expanded mode too.
+      if (nativeFullscreen.current && !document.fullscreenElement) exit();
+    };
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+    };
+  }, [expanded, exit]);
   // Same file and path the original site served, so old links to /villa-tour/ keep working.
   const rememberLang = () => {
     try {
@@ -20,8 +69,32 @@ export function TourViewer({ locale }: { locale: string }) {
 
   return (
     <div>
-      <div className="overflow-hidden rounded-md border border-hairline bg-ink">
-        <div className="relative aspect-16/10 w-full">
+      <div
+        ref={boxRef}
+        className={
+          expanded
+            ? "fixed inset-0 z-100 bg-ink"
+            : "overflow-hidden rounded-md border border-hairline bg-ink"
+        }
+      >
+        <div
+          className={
+            expanded
+              ? "relative h-dvh w-full"
+              : "relative h-[72dvh] min-h-[22rem] w-full md:h-auto md:aspect-16/10"
+          }
+        >
+          <button
+            ref={toggleRef}
+            type="button"
+            onClick={expanded ? exit : enter}
+            aria-pressed={expanded}
+            className="absolute bottom-3 end-3 z-10 inline-flex items-center gap-2 rounded-sm bg-alabaster/90 px-3 py-2 text-[0.8rem] font-medium text-ink shadow-sm backdrop-blur"
+            style={expanded ? { bottom: "max(0.75rem, env(safe-area-inset-bottom))" } : undefined}
+          >
+            {expanded ? <Minimize2 size={15} aria-hidden /> : <Maximize2 size={15} aria-hidden />}
+            {expanded ? t("walk.exitFullscreen") : t("walk.fullscreen")}
+          </button>
           {started ? (
             <iframe
               src={tourUrl}

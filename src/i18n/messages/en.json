@@ -68,6 +68,8 @@
     "start": "Start the walkthrough",
     "controls": "Drag to look · use WASD or arrows to walk",
     "openFull": "Tour not loading? Open it in its own page",
+    "fullscreen": "Full screen",
+    "exitFullscreen": "Exit full screen",
     "note": "Concept model based on the supplied plan; dimensions, finishes, and interior details need approval before construction."
   },
   "stats": {
