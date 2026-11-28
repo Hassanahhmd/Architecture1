@@ -87,9 +87,12 @@ function HomeContent({ locale }: { locale: Locale }) {
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={`/${locale}/lab/quiz`}>{t("hero.quiz")}</ButtonLink>
-              <ButtonLink href={`/${locale}/projects`} variant="outline">
-                {t("hero.view_work")}
+              <ButtonLink href={`/${locale}/projects`}>{t("hero.view_work")}</ButtonLink>
+              <ButtonLink href={`/${locale}/tour`} variant="brass">
+                {t("nav.tour")}
+              </ButtonLink>
+              <ButtonLink href={`/${locale}/lab/quiz`} variant="outline">
+                {t("hero.quiz")}
               </ButtonLink>
               <ButtonLink href={wa} variant="outline" external>
                 <MessageCircle size={17} aria-hidden />
