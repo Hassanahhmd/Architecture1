@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
+import dynamic from "next/dynamic";
+import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import { cn } from "@/lib/cn";
+
+const GalleryFullscreen = dynamic(() => import("./gallery-fullscreen"), { ssr: false });
 
 /** Gallery viewer for a project page: one large frame, thumbnails, arrow keys
  *  (mirrored in RTL) and a full-screen view closed with Escape. Thumbnails are
@@ -90,38 +92,17 @@ export function ProjectGallery({
         </button>
       </div>
 
-      <Dialog.Root open={expanded} onOpenChange={setExpanded}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-50 bg-ink/90" />
-          <Dialog.Content
-          className="fixed inset-0 z-50 flex flex-col p-4 md:p-8"
-          onCloseAutoFocus={(event) => {
-            event.preventDefault();
-            opener.current?.focus();
-          }}
-        >
-            <div className="flex items-center justify-between">
-              <Dialog.Title className="text-[0.9rem] text-alabaster">
-                {alt} {index + 1} / {list.length}
-              </Dialog.Title>
-              <Dialog.Close className="rounded-sm border border-alabaster/40 p-2 text-alabaster" aria-label={labels.close}>
-                <X size={18} aria-hidden />
-              </Dialog.Close>
-            </div>
-            <div className="relative mt-4 flex-1">
-              <Image src={list[index]} alt={`${alt} ${index + 1}`} fill sizes="100vw" className="object-contain" />
-            </div>
-            <div className="mt-4 flex items-center justify-center gap-4">
-              <button type="button" onClick={() => step(-1)} aria-label={labels.previous} className="rounded-sm border border-alabaster/40 p-2 text-alabaster">
-                <ChevronLeft size={18} className="rtl:-scale-x-100" aria-hidden />
-              </button>
-              <button type="button" onClick={() => step(1)} aria-label={labels.next} className="rounded-sm border border-alabaster/40 p-2 text-alabaster">
-                <ChevronRight size={18} className="rtl:-scale-x-100" aria-hidden />
-              </button>
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
+      {expanded && (
+        <GalleryFullscreen
+          list={list}
+          index={index}
+          alt={alt}
+          labels={labels}
+          step={step}
+          onClose={() => setExpanded(false)}
+          opener={opener}
+        />
+      )}
     </div>
   );
 }

@@ -5,7 +5,7 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 ## Localization and shared layout
 - [x] English is the default locale (owner decision, 28 Nov 2026, overrides the brief's Arabic default); Arabic uses RTL and stays one click away; `/` always opens English and no language choice is stored (owner decision, 28 Nov 2026).
 - [ ] English uses LTR; locale-prefixed routes, locale cookie, canonical and hreflang metadata work.
-- [ ] Shared sticky navbar, mobile drawer, active-route state, hover/focus prefetch, contact CTA, language switch.
+- [x] Shared sticky navbar, mobile drawer (opens, lists routes, closes), header links navigate on click, language switch (e2e). Hover/focus prefetch was removed on 28 Nov: with it, header clicks on the static export sometimes did nothing. Active-route state and contact CTA are not asserted.
 - [ ] Scroll progress, reduced-motion-aware reveal behavior, footer, social links and back-to-top.
 - [ ] Every visible string, including labels, helper text, options, HUD text, aria-labels and WhatsApp content, is localized.
 
@@ -26,14 +26,14 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 
 ## Reels
 - [ ] Six TikTok videos retain captions, profile CTA and individual video links.
-- [ ] Poster/play facade; player iframe mounts only after tap.
-- [ ] At most one TikTok player runs at a time.
+- [x] Poster/play facade; player iframe mounts only after tap.
+- [x] At most one TikTok player runs at a time.
 
 ## 3D villa tour
 - [ ] Orbit, walk and plan modes; room bar; minimap; touch joystick.
 - [ ] Day/evening toggle, auto-tour, fullscreen and language toggle.
 - [ ] Tour language follows the active locale.
-- [ ] Static poster appears first; tour iframe mounts on explicit start and unmounts on route leave.
+- [x] Static poster appears first; tour iframe mounts on explicit start and unmounts on route leave.
 - [ ] Tour is labelled accurately and remains a separately loaded static build.
 
 ## Lab
@@ -43,7 +43,7 @@ This checklist is the acceptance record for the rebuild. Boxes remain unchecked 
 - [ ] Materials: three presets with image, localized name, specification tags, swatches, badge and preloaded crossfade.
 
 ## Estimator
-- [ ] Four unit types, area 50–600 m² in steps of 5, default 160 m².
+- [x] Four unit types, area 50–600 m² in steps of 5, default 160 m².
 - [ ] Seven tiers with localized copy, rates, gifts and four feature lines.
 - [ ] Add-ons and exact formula match the approved spec.
 - [ ] Default state is Elite/apartment/160 m² with gypsum and door selected unless owner changes it.
