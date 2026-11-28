@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { categories, projects, type ProjectCategory } from "@/features/projects/data";
+import {
+  categories,
+  projects,
+  type ProjectCategory,
+} from "@/features/projects/data";
 import { cn } from "@/lib/cn";
 import type { Locale } from "@/i18n/routing";
 
@@ -18,7 +22,13 @@ const labels: Record<Filter, string> = {
   industrial: "projects.filter_industrial",
 };
 
-export function ProjectsGrid({ locale, initialFilter }: { locale: Locale; initialFilter: Filter }) {
+export function ProjectsGrid({
+  locale,
+  initialFilter,
+}: {
+  locale: Locale;
+  initialFilter: Filter;
+}) {
   const t = useTranslations();
   const [filter, setFilter] = useState<Filter>(initialFilter);
 
@@ -29,7 +39,10 @@ export function ProjectsGrid({ locale, initialFilter }: { locale: Locale; initia
     return () => cancelAnimationFrame(id);
   }, []);
   const list = useMemo(
-    () => (filter === "all" ? projects : projects.filter((p) => p.category === filter)),
+    () =>
+      filter === "all"
+        ? projects
+        : projects.filter((p) => p.category === filter),
     [filter],
   );
 
@@ -52,7 +65,9 @@ export function ProjectsGrid({ locale, initialFilter }: { locale: Locale; initia
             aria-pressed={filter === key}
             className={cn(
               "rounded-xs border px-3.5 py-2 text-[0.85rem] transition-colors",
-              filter === key ? "border-olive bg-olive text-alabaster" : "border-hairline text-ink-soft hover:border-olive",
+              filter === key
+                ? "border-olive bg-olive text-alabaster"
+                : "border-hairline text-ink-soft hover:border-olive",
             )}
           >
             {t(labels[key])}
@@ -69,10 +84,16 @@ export function ProjectsGrid({ locale, initialFilter }: { locale: Locale; initia
           {list.map((project, index) => (
             <li key={project.slug}>
               <article className="group overflow-hidden rounded-md border border-hairline bg-paper">
-                <Link href={`/${locale}/projects/${project.slug}`} className="block w-full text-start">
+                <Link
+                  href={`/${locale}/projects/${project.slug}`}
+                  className="block w-full text-start"
+                >
                   <div className="relative aspect-4/3 w-full overflow-hidden bg-sand">
                     <Image
-                      src={project.cover}
+                      src={project.cover.replace(
+                        "/images/projects/",
+                        "/images/projects/thumbs/",
+                      )}
                       alt={project.title[locale]}
                       fill
                       priority={index < 3}
@@ -87,13 +108,22 @@ export function ProjectsGrid({ locale, initialFilter }: { locale: Locale; initia
                     </span>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-[1rem] font-medium leading-snug">{project.title[locale]}</h3>
-                    <p className="mt-1 text-[0.82rem] text-ink-soft">{project.client}</p>
-                    <p className="mt-2 text-[0.76rem] text-brass-ink">{project.tools.join(" · ")}</p>
+                    <h3 className="text-[1rem] font-medium leading-snug">
+                      {project.title[locale]}
+                    </h3>
+                    <p className="mt-1 text-[0.82rem] text-ink-soft">
+                      {project.client}
+                    </p>
+                    <p className="mt-2 text-[0.76rem] text-brass-ink">
+                      {project.tools.join(" · ")}
+                    </p>
                   </div>
                 </Link>
                 <div className="border-t border-hairline px-4 py-2.5">
-                  <Link href={`/${locale}/projects/${project.slug}`} className="text-[0.82rem] text-olive hover:underline">
+                  <Link
+                    href={`/${locale}/projects/${project.slug}`}
+                    className="text-[0.82rem] text-olive hover:underline"
+                  >
                     {t("projects.view_details")}
                   </Link>
                 </div>
@@ -102,7 +132,6 @@ export function ProjectsGrid({ locale, initialFilter }: { locale: Locale; initia
           ))}
         </ul>
       )}
-
     </>
   );
 }
